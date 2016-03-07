@@ -127,7 +127,6 @@ public class FragmentHome extends BaseFragment implements OkHttpUtil.OnDownLoadL
             BindViewPager();
             //热门标签的操作
             BindViewHotCategrories();
-
             //绑定sweet的Id
             BindSweetId();
             //加载视图西顿厨友的操作
@@ -158,6 +157,7 @@ public class FragmentHome extends BaseFragment implements OkHttpUtil.OnDownLoadL
      *    //热门标签的操作
      */
     private void BindViewHotCategrories() {
+        Log.e(TAG, "BindViewHotCategrories: "+moreCookBooksEntityByJson.getData().getMostPopularOfWeek().getDescription() );
         hotCategoriestv.get(0).setText(moreCookBooksEntityByJson.getData().getMostPopularOfWeek().getDescription());
         hotCategoriestv.get(1).setText(moreCookBooksEntityByJson.getData().getNewCookbook().getDescription());
         hotCategoriestv.get(2).setText(moreCookBooksEntityByJson.getData().getNewWorks().getDescription());
@@ -194,7 +194,6 @@ public class FragmentHome extends BaseFragment implements OkHttpUtil.OnDownLoadL
         // 设置轮播时间，默认5000ms
         cycleViewPager.setTime(1000);
     }
-
     /**
      * 绑定sweet的Id
      */

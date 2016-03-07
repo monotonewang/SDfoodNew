@@ -6,6 +6,7 @@
     <string name="activity_bottom_rgb_msg">消息</string>
     <string name="activity_bottom_rgb_mine">我</string>
     <string name="activity_bottom_rgb_like">我的</string>
+    <string name="fragment_home_hot_catagroies">热门标签</string>
     <string name="fragment_home_newuser">西顿厨友</string>
     <string name="fragment_hoem_gueesLike">猜你喜欢</string>
     <string name="fragment_hoem_gueesLike_discuss">向左滑动可评论和收藏也~</string>

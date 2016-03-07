@@ -3,14 +3,19 @@
     android:orientation="vertical"
     xmlns:fresco="http://schemas.android.com/apk/res-auto"
     android:layout_width="match_parent"
+    android:background="@color/fragment_home_view_bgcolor"
+    android:paddingLeft="@dimen/fragment_home_hot_catagories"
+    android:paddingRight="@dimen/fragment_home_hot_catagories"
     android:layout_height="match_parent">
     <com.facebook.drawee.view.SimpleDraweeView
         android:id="@+id/fragment_home_newuser_user_sdv"
-        android:layout_width="100dp"
+        fresco:roundAsCircle="true"
+        android:layout_width="@dimen/x70"
         fresco:viewAspectRatio="1"
         android:layout_height="wrap_content" />
 
     <TextView
+        android:layout_gravity="center_horizontal"
         android:id="@+id/fragment_home_newuser_nickName"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"

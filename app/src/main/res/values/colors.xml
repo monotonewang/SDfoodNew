@@ -8,4 +8,7 @@
     <color name="activityLVFirstBgColor">#65DB9E</color>
     <color name="activityLVSecondBgColor">#FE8800</color>
     <color name="activityLVMenuWordColor">#C9FFEB</color>
+    <!--FragmentHome的view的背景颜色-->
+    <color name="fragment_home_view_bgcolor">#FFFFFF</color>
+    <color name="fragment_home_hot_catagories_view_bgclor">#c4c4c4</color>
 </resources>

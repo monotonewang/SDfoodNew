@@ -3,5 +3,10 @@
     <dimen name="activity_horizontal_margin">16dp</dimen>
     <dimen name="activity_vertical_margin">16dp</dimen>
     <dimen name="activity_corner_radius">10dp</dimen>
+    <!--热门标签的字体大小-->
+    <dimen name="fragment_home_view_head_word">18sp</dimen>
+    <dimen name="fragment_home_view_hot_categories_wordsecond">16sp</dimen>
+    <dimen name="fragment_home_main_padding">10dp</dimen>
+    <dimen name="fragment_home_hot_catagories">5dp</dimen>
     <dimen name="activity_lv_margin_top_bottom">10dp</dimen>
 </resources>

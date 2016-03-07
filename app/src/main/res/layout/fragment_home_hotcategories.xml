@@ -1,83 +1,125 @@
-<?xml version="1.0" encoding="utf-8"?>
-<!--这是热门标签的布局-->
+<?xml version="1.0" encoding="utf-8"?><!--这是热门标签的布局-->
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
-    android:orientation="horizontal"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:fresco="http://schemas.android.com/apk/res-auto"
     android:layout_width="match_parent"
-    android:layout_height="match_parent">
+    android:layout_height="match_parent"
+    android:background="@color/fragment_home_view_bgcolor"
+    android:orientation="horizontal">
+
+
     <LinearLayout
-        android:layout_weight="1"
         android:layout_width="0dp"
-        android:layout_height="wrap_content">
+        android:layout_height="wrap_content"
+        android:layout_weight="1"
+        android:orientation="horizontal"
+        android:paddingRight="@dimen/fragment_home_hot_catagories">
+
         <FrameLayout
             android:id="@+id/fragment_home_hotcategries_mostPopularOfWeek"
+
             android:layout_width="wrap_content"
             android:layout_height="wrap_content">
+
+
             <com.facebook.drawee.view.SimpleDraweeView
                 android:id="@+id/fragment_home_hotcategries_mostPopularOfWeek_sdv"
-                fresco:viewAspectRatio="1"
                 android:layout_width="wrap_content"
-                android:layout_height="100dp" />
+                android:layout_height="@dimen/x70"
+                app:roundedCornerRadius="@dimen/fragment_home_main_padding"
+                fresco:viewAspectRatio="1" />
+
             <TextView
                 android:id="@+id/fragment_home_hotcategries_mostPopularOfWeek_tv"
                 android:layout_width="wrap_content"
-                android:layout_height="wrap_content" />
+                android:layout_height="wrap_content"
+                android:layout_gravity="center_horizontal" />
+
+
         </FrameLayout>
     </LinearLayout>
+
     <LinearLayout
-        android:layout_weight="1"
         android:layout_width="0dp"
-        android:layout_height="wrap_content">
+        android:layout_height="wrap_content"
+        android:layout_weight="1"
+        android:paddingLeft="@dimen/fragment_home_hot_catagories"
+        android:paddingRight="@dimen/fragment_home_hot_catagories">
+
         <FrameLayout
             android:layout_width="wrap_content"
             android:layout_height="wrap_content">
+
+            =
+
             <com.facebook.drawee.view.SimpleDraweeView
                 android:id="@+id/fragment_home_hotcategries_newCookbook_sdv"
-                fresco:viewAspectRatio="1"
                 android:layout_width="wrap_content"
-                android:layout_height="100dp" />
+                android:layout_height="@dimen/x70"
+                app:roundedCornerRadius="@dimen/fragment_home_main_padding"
+                fresco:viewAspectRatio="1" />
+            =
+
             <TextView
                 android:id="@+id/fragment_home_hotcategries_newCookbook_tv"
                 android:layout_width="wrap_content"
-                android:layout_height="wrap_content" />
+                android:layout_height="wrap_content"
+                android:layout_gravity="center_horizontal" />
         </FrameLayout>
     </LinearLayout>
+
     <LinearLayout
-        android:layout_weight="1"
         android:layout_width="0dp"
-        android:layout_height="wrap_content">
+        android:layout_height="wrap_content"
+        android:layout_weight="1"
+        android:paddingLeft="@dimen/fragment_home_hot_catagories"
+        android:paddingRight="@dimen/fragment_home_hot_catagories">
+
         <FrameLayout
             android:layout_width="wrap_content"
             android:layout_height="wrap_content">
+
+
             <com.facebook.drawee.view.SimpleDraweeView
                 android:id="@+id/fragment_home_hotcategries_newWorks_sdv"
-                fresco:viewAspectRatio="1"
                 android:layout_width="wrap_content"
-                android:layout_height="100dp" />
+                android:layout_height="@dimen/x70"
+                app:roundedCornerRadius="@dimen/fragment_home_main_padding"
+                fresco:viewAspectRatio="1" />
+
+
             <TextView
                 android:id="@+id/fragment_home_hotcategries_newWorks_tv"
                 android:layout_width="wrap_content"
-                android:layout_height="wrap_content" />
+                android:layout_height="wrap_content"
+                android:layout_gravity="center_horizontal" />
         </FrameLayout>
     </LinearLayout>
+
     <LinearLayout
-        android:layout_weight="1"
         android:layout_width="0dp"
-        android:layout_height="wrap_content">
+        android:layout_height="wrap_content"
+        android:layout_weight="1"
+        android:paddingLeft="@dimen/fragment_home_hot_catagories">
+
         <FrameLayout
             android:layout_width="wrap_content"
             android:layout_height="wrap_content">
+
+
             <com.facebook.drawee.view.SimpleDraweeView
                 android:id="@+id/fragment_home_hotcategries_newPai_sdv"
-                fresco:viewAspectRatio="1"
                 android:layout_width="wrap_content"
-                android:layout_height="100dp" />
+                android:layout_height="@dimen/x70"
+                app:roundedCornerRadius="@dimen/fragment_home_main_padding"
+                fresco:viewAspectRatio="1" />
+
             <TextView
                 android:id="@+id/fragment_home_hotcategries_newPai_tv"
                 android:layout_width="wrap_content"
-                android:layout_height="wrap_content" />
+                android:layout_height="wrap_content"
+                android:layout_gravity="center_horizontal" />
         </FrameLayout>
     </LinearLayout>
-
-
 </LinearLayout>
+

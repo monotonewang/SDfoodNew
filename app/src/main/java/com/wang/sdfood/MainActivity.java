@@ -6,6 +6,7 @@ import android.support.v4.app.FragmentManager;
 import android.support.v4.app.FragmentTransaction;
 import android.widget.RadioButton;
 import android.widget.RadioGroup;
+import android.widget.TextView;
 
 import com.wang.sdfood.base.BaseActivity;
 import com.wang.sdfood.fragment.FragmentHome;
@@ -22,6 +23,8 @@ public class MainActivity extends BaseActivity implements RadioGroup.OnCheckedCh
     public RadioGroup radioGroup;
     @Bind({R.id.activiy_radiobtn_home, R.id.activiy_radiobtn_visible, R.id.activiy_radiobtn_msg, R.id.activiy_radiobtn_mine})
     public List<RadioButton> radioButtonList;
+    @Bind(R.id.tv_index)
+    public TextView mTvIndex;
     private Fragment fragmentHome;
     private Fragment fragmentVisible;
     private Fragment fragmentMsg;
@@ -50,6 +53,9 @@ public class MainActivity extends BaseActivity implements RadioGroup.OnCheckedCh
         beginTransaction.add(R.id.activity_main_fl, fragmentMsg);
         beginTransaction.add(R.id.activity_main_fl, fragmentMine);
         beginTransaction.commit();
+
+        mTvIndex.setFocusable(true);
+        mTvIndex.setFocusableInTouchMode(true);
     }
 
     @Override

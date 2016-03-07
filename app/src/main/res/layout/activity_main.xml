@@ -7,9 +7,10 @@
     tools:context="com.wang.sdfood.MainActivity">
 
     <TextView
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="index" />
+        android:layout_width="1dp"
+        android:layout_height="1dp"
+        android:id="@+id/tv_index">
+        </TextView>
 
     <FrameLayout
         android:id="@+id/activity_main_fl"

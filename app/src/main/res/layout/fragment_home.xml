@@ -1,6 +1,8 @@
 <?xml version="1.0" encoding="utf-8"?>
 <ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="match_parent"
+    android:paddingLeft="@dimen/fragment_home_main_padding"
+    android:paddingRight="@dimen/fragment_home_main_padding"
     android:layout_height="match_parent"
     android:orientation="vertical">
 
@@ -8,13 +10,17 @@
         android:layout_width="match_parent"
         android:layout_height="match_parent"
         android:orientation="vertical">
-        <TextView
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:text="home" />
         <!--这是VP的布局-->
         <include layout="@layout/fragment_home_viewpager"></include>
         <!--这是热门标签的布局-->
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent">
+            <TextView
+                android:text="@string/fragment_home_hot_catagroies"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content" />
+        </LinearLayout>
         <include layout="@layout/fragment_home_hotcategories"></include>
         <!--这是sweet甜食的布局-->
         <include layout="@layout/fragment_home_sweet"></include>
@@ -22,6 +28,7 @@
         <include layout="@layout/fragment_home_newuser"></include>
         <!--这是猜你喜欢的布局-->
         <include layout="@layout/fragment_home_guesslike"></include>
+
         <com.wang.sdfood.menucustem.SlideAndDragListView
             android:id="@+id/fragment_home_sadlView"
             android:layout_width="match_parent"
