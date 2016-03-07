@@ -1,6 +1,12 @@
 <resources>
     <string name="app_name">SDfood</string>
-
+    <!--主页的Activity的抽屉布局的menu的文字-->
+    <string name="activity_main_dl_menu_doucument">历史浏览</string>
+    <string name="activity_main_dl_menu_star">我的收藏</string>
+    <string name="activity_main_dl_menu_private">我的动态</string>
+    <string name="activity_main_dl_menu_sensor">Megcook智能灶</string>
+    <string name="activity_main_dl_menu_settings">设置</string>
+    <!--主页的Activity的RadioGroup的文字-->
     <string name="activity_bottom_rgb_home">西顿</string>
     <string name="activity_bottom_rgb_visible">发现</string>
     <string name="activity_bottom_rgb_msg">消息</string>

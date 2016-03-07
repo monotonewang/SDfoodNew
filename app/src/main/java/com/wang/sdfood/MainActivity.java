@@ -1,9 +1,12 @@
 package com.wang.sdfood;
 
 
+import android.support.design.widget.FloatingActionButton;
+import android.support.design.widget.NavigationView;
 import android.support.v4.app.Fragment;
 import android.support.v4.app.FragmentManager;
 import android.support.v4.app.FragmentTransaction;
+import android.view.MenuItem;
 import android.widget.RadioButton;
 import android.widget.RadioGroup;
 import android.widget.TextView;
@@ -18,17 +21,20 @@ import java.util.List;
 
 import butterknife.Bind;
 
-public class MainActivity extends BaseActivity implements RadioGroup.OnCheckedChangeListener {
+public class MainActivity extends BaseActivity implements RadioGroup.OnCheckedChangeListener, NavigationView.OnNavigationItemSelectedListener {
     @Bind(R.id.activiy_home_radiogp)
     public RadioGroup radioGroup;
     @Bind({R.id.activiy_radiobtn_home, R.id.activiy_radiobtn_visible, R.id.activiy_radiobtn_msg, R.id.activiy_radiobtn_mine})
     public List<RadioButton> radioButtonList;
     @Bind(R.id.tv_index)
     public TextView mTvIndex;
-    private Fragment fragmentHome;
-    private Fragment fragmentVisible;
-    private Fragment fragmentMsg;
-    private Fragment fragmentMine;
+    //找到NavView的ID
+    @Bind(R.id.activity_main_dl_nav)
+    public NavigationView navigationView;
+    //找到Nfab的ID
+    @Bind(R.id.activty_main_fab)
+    public FloatingActionButton floatingActionButton;
+    private Fragment fragmentHome,fragmentVisible,fragmentMsg,fragmentMine;
     private FragmentManager fragmentManager;
     private android.support.v4.app.FragmentTransaction beginTransaction;
 
@@ -53,9 +59,13 @@ public class MainActivity extends BaseActivity implements RadioGroup.OnCheckedCh
         beginTransaction.add(R.id.activity_main_fl, fragmentMsg);
         beginTransaction.add(R.id.activity_main_fl, fragmentMine);
         beginTransaction.commit();
-
+        /**
+         * 使TextView获取焦点，
+         */
         mTvIndex.setFocusable(true);
         mTvIndex.setFocusableInTouchMode(true);
+        //设置Nav的监听
+        navigationView.setNavigationItemSelectedListener(this);
     }
 
     @Override
@@ -104,5 +114,33 @@ public class MainActivity extends BaseActivity implements RadioGroup.OnCheckedCh
                 break;
 
         }
+    }
+
+    /**
+     * 抽屉布局Menu的回调方法
+     * @param item
+     * @return
+     */
+    @Override
+    public boolean onNavigationItemSelected(MenuItem item) {
+        switch(item.getItemId()){
+            case R.id.activity_dl_menu_document:
+
+                break;
+            case R.id.activity_dl_menu_star:
+
+                break;
+            case R.id.activity_dl_menu_private:
+
+                break;
+            case R.id.activity_dl_menu_sensor:
+
+                break;
+            case R.id.activity_dl_menu_setting:
+
+                break;
+        }
+        return false;
+
     }
 }

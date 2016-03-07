@@ -1,5 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
@@ -7,79 +8,48 @@
     tools:context="com.wang.sdfood.MainActivity">
 
     <TextView
+        android:id="@+id/tv_index"
         android:layout_width="1dp"
-        android:layout_height="1dp"
-        android:id="@+id/tv_index">
-        </TextView>
+        android:layout_height="1dp"></TextView>
 
-    <FrameLayout
-        android:id="@+id/activity_main_fl"
+    <android.support.v4.widget.DrawerLayout
         android:layout_width="match_parent"
-        android:layout_height="0dp"
-        android:layout_weight="9"></FrameLayout>
+        android:layout_height="match_parent">
 
-    <RadioGroup
-        android:id="@+id/activiy_home_radiogp"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:layout_gravity="bottom"
-        android:orientation="horizontal"
-        android:paddingLeft="0dp">
+        <android.support.design.widget.CoordinatorLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:orientation="vertical">
+            <!--Fragment帧布局占位-->
+            <FrameLayout
 
-        <RadioButton
-            android:id="@+id/activiy_radiobtn_home"
-            android:layout_width="0dp"
-            android:layout_height="wrap_content"
-            android:layout_weight="1"
-            android:button="@null"
-            android:drawableTop="@drawable/selector_activity_bottom_home"
-            android:gravity="center"
-            android:text="@string/activity_bottom_rgb_home"
-            android:textColor="@drawable/selector_activity_bottom_word_color" />
+                android:id="@+id/activity_main_fl"
+                android:layout_width="match_parent"
+                android:layout_height="@dimen/y432"></FrameLayout>
 
-        <RadioButton
-            android:id="@+id/activiy_radiobtn_visible"
-            android:layout_width="0dp"
-            android:layout_height="wrap_content"
-            android:layout_weight="1"
-            android:button="@null"
-            android:drawableTop="@drawable/selector_activity_bottom_visible"
-            android:gravity="center"
-            android:text="@string/activity_bottom_rgb_visible"
-            android:textColor="@drawable/selector_activity_bottom_word_color" />
+            <android.support.design.widget.FloatingActionButton
+                android:id="@+id/activty_main_fab"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_gravity="bottom|right"
+                android:layout_marginBottom="@dimen/x20"
+                android:layout_marginRight="@dimen/x20"
+                app:backgroundTint="@color/activityBottomTextCheckColor"
+                android:src="@drawable/menu_icon_upload_recipe" />
+            <!--添加radioGroup的布局-->
+            <include layout="@layout/activity_main_radiogroup"></include>
+        </android.support.design.widget.CoordinatorLayout>
 
-        <RadioButton
-            android:id="@+id/activiy_radiobtn_msg"
-            android:layout_width="0dp"
-            android:layout_height="wrap_content"
-            android:layout_weight="1"
-            android:button="@null"
-            android:drawableTop="@drawable/selector_activity_bottom_msg"
-            android:gravity="center"
-            android:text="@string/activity_bottom_rgb_msg"
-            android:textColor="@drawable/selector_activity_bottom_word_color" />
+        <android.support.design.widget.NavigationView
+            android:id="@+id/activity_main_dl_nav"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:layout_gravity="left"
+            app:headerLayout="@layout/activity_main_dl_headview"
+            app:menu="@menu/activity_main_navigation_menu">
 
-        <RadioButton
-            android:id="@+id/activiy_radiobtn_mine"
-            android:layout_width="0dp"
-            android:layout_height="wrap_content"
-            android:layout_weight="1"
-            android:button="@null"
-            android:drawableTop="@drawable/selector_activity_bottom_mine"
-            android:gravity="center"
-            android:text="@string/activity_bottom_rgb_mine"
-            android:textColor="@drawable/selector_activity_bottom_word_color" />
+        </android.support.design.widget.NavigationView>
+    </android.support.v4.widget.DrawerLayout>
 
-        <RadioButton
-            android:id="@+id/activiy_radiobtn_like"
-            android:layout_width="0dp"
-            android:layout_height="wrap_content"
-            android:layout_weight="1"
-            android:button="@null"
-            android:drawableTop="@drawable/selector_activity_bottom_msg"
-            android:gravity="center"
-            android:text="@string/activity_bottom_rgb_like"
-            android:textColor="@drawable/selector_activity_bottom_word_color"
-            android:visibility="invisible" />
-    </RadioGroup>
+
 </LinearLayout>

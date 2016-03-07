@@ -1,0 +1,18 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!--这是抽屉布局的头部的布局-->
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:orientation="horizontal"
+    android:layout_marginTop="@dimen/y70"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent">
+    <ImageView
+        android:id="@+id/activity_main_dl_headview_iv"
+        android:layout_width="wrap_content"
+        android:src="@mipmap/ic_launcher"
+        android:layout_height="wrap_content" />
+    <TextView
+        android:id="@+id/activity_main_dl_headview_tv"
+        android:text="@string/activity_bottom_rgb_home"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content" />
+</LinearLayout>

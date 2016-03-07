@@ -1,8 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="match_parent"
-    android:paddingLeft="@dimen/fragment_home_main_padding"
-    android:paddingRight="@dimen/fragment_home_main_padding"
     android:layout_height="match_parent"
     android:orientation="vertical">
 
@@ -12,21 +10,9 @@
         android:orientation="vertical">
         <!--这是VP的布局-->
         <include layout="@layout/fragment_home_viewpager"></include>
-        <!--这是热门标签的布局-->
-        <LinearLayout
-            android:layout_marginTop="@dimen/y10"
-            android:paddingTop="@dimen/y10"
-            android:paddingBottom="@dimen/y10"
-            android:background="@color/fragment_home_view_bgcolor"
-            android:layout_width="match_parent"
-            android:layout_height="match_parent">
-            <TextView
-                android:textStyle="bold"
-                android:textSize="@dimen/fragment_home_view_hot_categories_wordsecond"
-                android:text="@string/fragment_home_hot_catagroies"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content" />
-        </LinearLayout>
+        <!--这是热门标签的标题布局-->
+        <include layout="@layout/fragment_home_hotcategries_itlle"></include>
+        <!--这是热门标签的图片布局-->
         <include layout="@layout/fragment_home_hotcategories"></include>
         <!--这是sweet甜食的布局-->
         <include layout="@layout/fragment_home_sweet"></include>

@@ -1,0 +1,17 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:layout_marginTop="@dimen/y10"
+    android:background="@color/fragment_home_view_bgcolor"
+    android:orientation="vertical"
+    android:paddingBottom="@dimen/y10"
+    android:paddingTop="@dimen/y10">
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="@string/fragment_home_hot_catagroies"
+        android:textSize="@dimen/fragment_home_view_hot_categories_wordsecond"
+        android:textStyle="bold" />
+</LinearLayout>
