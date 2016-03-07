@@ -14,10 +14,12 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content">
             <com.facebook.drawee.view.SimpleDraweeView
+                android:id="@+id/fragment_home_hotcategries_mostPopularOfWeek_sdv"
                 fresco:viewAspectRatio="1"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content" />
+                android:layout_width="wrap_content"
+                android:layout_height="100dp" />
             <TextView
+                android:id="@+id/fragment_home_hotcategries_mostPopularOfWeek_tv"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content" />
         </FrameLayout>
@@ -30,10 +32,12 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content">
             <com.facebook.drawee.view.SimpleDraweeView
+                android:id="@+id/fragment_home_hotcategries_newCookbook_sdv"
                 fresco:viewAspectRatio="1"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content" />
+                android:layout_width="wrap_content"
+                android:layout_height="100dp" />
             <TextView
+                android:id="@+id/fragment_home_hotcategries_newCookbook_tv"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content" />
         </FrameLayout>
@@ -46,10 +50,12 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content">
             <com.facebook.drawee.view.SimpleDraweeView
+                android:id="@+id/fragment_home_hotcategries_newWorks_sdv"
                 fresco:viewAspectRatio="1"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content" />
+                android:layout_width="wrap_content"
+                android:layout_height="100dp" />
             <TextView
+                android:id="@+id/fragment_home_hotcategries_newWorks_tv"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content" />
         </FrameLayout>
@@ -62,10 +68,12 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content">
             <com.facebook.drawee.view.SimpleDraweeView
+                android:id="@+id/fragment_home_hotcategries_newPai_sdv"
                 fresco:viewAspectRatio="1"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content" />
+                android:layout_width="wrap_content"
+                android:layout_height="100dp" />
             <TextView
+                android:id="@+id/fragment_home_hotcategries_newPai_tv"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content" />
         </FrameLayout>

@@ -40,6 +40,12 @@ import me.codeboy.android.cycleviewpager.CycleViewPager;
 public class FragmentHome extends BaseFragment implements OkHttpUtil.OnDownLoadListener, SlideAndDragListView.OnListItemClickListener, SlideAndDragListView.OnSlideListener, SlideAndDragListView.OnMenuItemClickListener {
     //ViewPager
     private CycleViewPager cycleViewPager;
+    //这是热门标签的子控件ID
+    @Bind({R.id.fragment_home_hotcategries_mostPopularOfWeek_tv,R.id.fragment_home_hotcategries_newCookbook_tv,R.id.fragment_home_hotcategries_newWorks_tv,R.id.fragment_home_hotcategries_newPai_tv})
+    public List<TextView> hotCategoriestv;
+    @Bind({R.id.fragment_home_hotcategries_mostPopularOfWeek_sdv,R.id.fragment_home_hotcategries_newCookbook_sdv,R.id.fragment_home_hotcategries_newWorks_sdv,R.id.fragment_home_hotcategries_newPai_sdv})
+    public List<SimpleDraweeView> hotCategoriessdv;
+
     //这是sweet的View
     //这是推荐的甜点美食的数据
     private MoreCookBooksEntity.DataEntity.RecommendEntity recommend;
@@ -118,39 +124,14 @@ public class FragmentHome extends BaseFragment implements OkHttpUtil.OnDownLoadL
         if(moreCookbooks!=null&&moreCookBooksEntityByJson!=null){
             fragmentHomeLVAdapter = new FragmentHomeLVAdapter(getContext(),moreCookbooks);
             //ViewPager
-            List<View> views = new ArrayList<View>();
-            int size=adverts.size();
-            Log.e(TAG, "init: "+size);
-            if(adverts!=null){
-                views.add(ViewFactory.getSimpleDreeView(getContext(), adverts.get(size-1).getImageUrl()));
-                for (int i = 0; i < size; i++) {
-                    views.add(ViewFactory.getSimpleDreeView(getContext(), adverts.get(i).getImageUrl()));
-                }
-                views.add(ViewFactory.getSimpleDreeView(getContext(),adverts.get(0).getImageUrl()));
-            }
-            // 设置循环，在调用setData方法前调用
-            cycleViewPager.setCycle(true);
-            // 在加载数据前设置是否循环
-            cycleViewPager.setData(views);
-            BaseViewPager viewPager = cycleViewPager.getViewPager();
-//            viewPager.addOnPageChangeListener(this);
-            //设置轮播
-            cycleViewPager.setWheel(true);
-            cycleViewPager .setIndicatorCenter();
-            // 设置轮播时间，默认5000ms
-            cycleViewPager.setTime(1000);
+            BindViewPager();
+            //热门标签的操作
+            BindViewHotCategrories();
 
             //绑定sweet的Id
             BindSweetId();
-            //
-            newUser = moreCookBooksEntityByJson.getData().getNewUser();
-            newUsertextView.setText(getResources().getString(R.string.fragment_home_newuser));
-//            //recycleView的adapter
-            FragmentHomeNewuserLVAdapter fragmentHomeNewuserLVAdapter=new FragmentHomeNewuserLVAdapter(getContext(),newUser);
-//            //线性布局管理器
-            newUserrecyclerView.setLayoutManager(new LinearLayoutManager(getContext(), LinearLayout.HORIZONTAL,false));
-            newUserrecyclerView.setAdapter(fragmentHomeNewuserLVAdapter);
-
+            //加载视图西顿厨友的操作
+            BindNewUser();
             Log.e(TAG, "initUiAndListener: " + "this method");
             mListView.setMenu(menu);
             mListView.setAdapter(fragmentHomeLVAdapter);
@@ -158,6 +139,60 @@ public class FragmentHome extends BaseFragment implements OkHttpUtil.OnDownLoadL
             mListView.setOnSlideListener(this);
             mListView.setOnMenuItemClickListener(this);
         }
+    }
+
+    /**
+     * 加载视图西顿厨友的操作
+     */
+    private void BindNewUser() {
+        newUser = moreCookBooksEntityByJson.getData().getNewUser();
+        newUsertextView.setText(getResources().getString(R.string.fragment_home_newuser));
+//            //recycleView的adapter
+        FragmentHomeNewuserLVAdapter fragmentHomeNewuserLVAdapter=new FragmentHomeNewuserLVAdapter(getContext(),newUser);
+//            //线性布局管理器
+        newUserrecyclerView.setLayoutManager(new LinearLayoutManager(getContext(), LinearLayout.HORIZONTAL,false));
+        newUserrecyclerView.setAdapter(fragmentHomeNewuserLVAdapter);
+    }
+
+    /**
+     *    //热门标签的操作
+     */
+    private void BindViewHotCategrories() {
+        hotCategoriestv.get(0).setText(moreCookBooksEntityByJson.getData().getMostPopularOfWeek().getDescription());
+        hotCategoriestv.get(1).setText(moreCookBooksEntityByJson.getData().getNewCookbook().getDescription());
+        hotCategoriestv.get(2).setText(moreCookBooksEntityByJson.getData().getNewWorks().getDescription());
+        hotCategoriestv.get(3).setText(moreCookBooksEntityByJson.getData().getNewPai().getDescription());
+        FrescoUtil.imageViewBind(moreCookBooksEntityByJson.getData().getMostPopularOfWeek().getImageUrl(), hotCategoriessdv.get(0));
+        FrescoUtil.imageViewBind(moreCookBooksEntityByJson.getData().getNewCookbook().getImageUrl(), hotCategoriessdv.get(1));
+        FrescoUtil.imageViewBind(moreCookBooksEntityByJson.getData().getNewWorks().getImageUrl(), hotCategoriessdv.get(2));
+        FrescoUtil.imageViewBind(moreCookBooksEntityByJson.getData().getNewPai().getImageUrl(), hotCategoriessdv.get(3));
+    }
+
+    /**
+     * 加载ViewPager的操作。
+     */
+    private void BindViewPager() {
+        List<View> views = new ArrayList<View>();
+        int size=adverts.size();
+        Log.e(TAG, "init: "+size);
+        if(adverts!=null){
+            views.add(ViewFactory.getSimpleDreeView(getContext(), adverts.get(size-1).getImageUrl()));
+            for (int i = 0; i < size; i++) {
+                views.add(ViewFactory.getSimpleDreeView(getContext(), adverts.get(i).getImageUrl()));
+            }
+            views.add(ViewFactory.getSimpleDreeView(getContext(),adverts.get(0).getImageUrl()));
+        }
+        // 设置循环，在调用setData方法前调用
+        cycleViewPager.setCycle(true);
+        // 在加载数据前设置是否循环
+        cycleViewPager.setData(views);
+        BaseViewPager viewPager = cycleViewPager.getViewPager();
+//            viewPager.addOnPageChangeListener(this);
+        //设置轮播
+        cycleViewPager.setWheel(true);
+        cycleViewPager .setIndicatorCenter();
+        // 设置轮播时间，默认5000ms
+        cycleViewPager.setTime(1000);
     }
 
     /**
@@ -193,11 +228,9 @@ public class FragmentHome extends BaseFragment implements OkHttpUtil.OnDownLoadL
             moreCookBooksEntityByJson = JsonUtil.getMoreCookBooksEntityByJson(json);
             //这是ViewPager的数据
             adverts=moreCookBooksEntityByJson.getData().getAdverts();
-//            Log.e(TAG, "onResponse: "+moreCookBooksEntityByJson );
+
 //            home的ListView数据
             moreCookbooks = moreCookBooksEntityByJson.getData().getMoreCookbooks();
-            //这是主页的ViewPager的下载数据
-            adverts = moreCookBooksEntityByJson.getData().getAdverts();
         }
         initMenu();
         initUiAndListener();
