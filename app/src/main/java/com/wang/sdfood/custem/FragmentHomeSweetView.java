@@ -55,7 +55,6 @@ public class FragmentHomeSweetView extends LinearLayout {
     }
 
     private void init() {
-
        LayoutInflater.from(getContext()).inflate(R.layout.fragment_home_sweet, this, true);
         //表示绑定当前的SweetView
         ButterKnife.bind(this);
