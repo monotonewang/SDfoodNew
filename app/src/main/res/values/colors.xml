@@ -1,0 +1,11 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <color name="colorPrimary">#3F51B5</color>
+    <color name="colorPrimaryDark">#303F9F</color>
+    <color name="colorAccent">#FF4081</color>
+    <color name="activityBottomTextCheckColor">#FF8800</color>
+    <color name="activityBottomTextUnCheckColor">#2A2A2A</color>
+    <color name="activityLVFirstBgColor">#65DB9E</color>
+    <color name="activityLVSecondBgColor">#FE8800</color>
+    <color name="activityLVMenuWordColor">#C9FFEB</color>
+</resources>
