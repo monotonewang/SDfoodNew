@@ -1,15 +1,28 @@
 <?xml version="1.0" encoding="utf-8"?>
-<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
-    android:orientation="vertical" android:layout_width="match_parent"
+<ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
     android:layout_height="match_parent"
-    >
-    <TextView
-        android:text="home"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content" />
-    <com.wang.sdfood.menucustem.SlideAndDragListView
-        android:id="@+id/fragment_home_sadlView"
+    android:orientation="vertical">
+
+    <LinearLayout
         android:layout_width="match_parent"
-        android:layout_height="match_parent">
-    </com.wang.sdfood.menucustem.SlideAndDragListView>
-</LinearLayout>
+        android:layout_height="match_parent"
+        android:orientation="vertical">
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="home" />
+        <!--这是VP的布局-->
+        <include layout="@layout/fragment_home_viewpager"></include>
+        <!--这是sweet甜食的布局-->
+        <include layout="@layout/fragment_home_sweet"></include>
+        <!--这是西顿厨友的布局-->
+        <include layout="@layout/fragment_home_newuser"></include>
+        <!--这是猜你喜欢的布局-->
+        <include layout="@layout/fragment_home_guesslike"></include>
+        <com.wang.sdfood.menucustem.SlideAndDragListView
+            android:id="@+id/fragment_home_sadlView"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"></com.wang.sdfood.menucustem.SlideAndDragListView>
+    </LinearLayout>
+</ScrollView>

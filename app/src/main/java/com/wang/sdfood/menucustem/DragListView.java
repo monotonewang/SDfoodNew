@@ -44,8 +44,19 @@ public class DragListView<T> extends ListView implements View.OnDragListener {
             super.setOnDragListener(this);
         }
 
+    /**
+     * 重写ListView的测量方法
+     * @param widthMeasureSpec
+     * @param heightMeasureSpec
+     */
         @Override
-        public boolean onDrag(View v, DragEvent event) {
+        protected void onMeasure(int widthMeasureSpec, int heightMeasureSpec) {
+           int height=MeasureSpec.makeMeasureSpec(Integer.MAX_VALUE>>2,MeasureSpec.AT_MOST);
+            super.onMeasure(widthMeasureSpec, height);
+        }
+
+         @Override
+          public boolean onDrag(View v, DragEvent event) {
             final int action = event.getAction();
             switch (action) {
                 case DragEvent.ACTION_DRAG_STARTED:

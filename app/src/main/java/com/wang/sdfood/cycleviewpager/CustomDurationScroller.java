@@ -6,7 +6,7 @@ import android.widget.Scroller;
 
 /**
  * CustomDurationScroller
- * 
+ *
  * @author <a href="http://www.trinea.cn" target="_blank">Trinea</a> 2014-3-2
  */
 public class CustomDurationScroller extends Scroller {
@@ -23,7 +23,7 @@ public class CustomDurationScroller extends Scroller {
 
     /**
      * not exist in android 2.3
-     * 
+     *
      * @param context
      * @param interpolator
      * @param flywheel

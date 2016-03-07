@@ -16,7 +16,7 @@ import java.util.List;
 
 /**
  * Created by user on 2016/3/5.
- * 这是主页的FragmentHome的ListView
+ * 这是主页的FragmentHome的ListView的适配器
  */
 public class FragmentHomeLVAdapter extends BaseAdapter {
     private Context context;

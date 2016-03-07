@@ -18,11 +18,11 @@
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
-        <!--收藏-->
+        <!--收藏Activity-->
         <activity android:name=".ActivityHomeCollect">
 
         </activity>
-        <!--评论-->
+        <!--评论Activity-->
         <activity android:name=".ActivityHomeDiscuss">
 
         </activity>
