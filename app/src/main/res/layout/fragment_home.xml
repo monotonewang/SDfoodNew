@@ -14,9 +14,15 @@
         <include layout="@layout/fragment_home_viewpager"></include>
         <!--这是热门标签的布局-->
         <LinearLayout
+            android:layout_marginTop="@dimen/y10"
+            android:paddingTop="@dimen/y10"
+            android:paddingBottom="@dimen/y10"
+            android:background="@color/fragment_home_view_bgcolor"
             android:layout_width="match_parent"
             android:layout_height="match_parent">
             <TextView
+                android:textStyle="bold"
+                android:textSize="@dimen/fragment_home_view_hot_categories_wordsecond"
                 android:text="@string/fragment_home_hot_catagroies"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content" />
