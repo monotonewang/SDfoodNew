@@ -11,6 +11,7 @@ import android.widget.Toast;
 import com.wang.sdfood.R;
 import com.wang.sdfood.adapter.FragmentHomeLVAdapter;
 import com.wang.sdfood.base.BaseFragment;
+import com.wang.sdfood.custem.FragmentHomeSweetView;
 import com.wang.sdfood.menucustem.Menu;
 import com.wang.sdfood.menucustem.MenuItem;
 import com.wang.sdfood.menucustem.SlideAndDragListView;
@@ -22,15 +23,20 @@ import com.wang.sdfood.util.OkHttpUtil;
 import java.util.List;
 
 /**
+ * 整个主页上的内容，也是用户看到的
  * Created by user on 2016/3/4.
  */
 public class FragmentHome extends BaseFragment implements OkHttpUtil.OnDownLoadListener, SlideAndDragListView.OnListItemClickListener, SlideAndDragListView.OnSlideListener, SlideAndDragListView.OnMenuItemClickListener {
     private static final String TAG = "WrapperAdapter";
     private SlideAndDragListView mListView;
     private Menu menu;
+    private MoreCookBooksEntity moreCookBooksEntityByJson;
     private List<MoreCookBooksEntity.DataEntity.MoreCookbooksEntity> moreCookbooks;
     private List<MoreCookBooksEntity.DataEntity.AdvertsEntity> adverts;
+
     private FragmentHomeLVAdapter fragmentHomeLVAdapter;
+
+
 
     @Override
     protected int getViewResId() {
@@ -50,7 +56,9 @@ public class FragmentHome extends BaseFragment implements OkHttpUtil.OnDownLoadL
         OkHttpUtil.asyncDownJSON(Constants.URL.HOMEURL, this);
     }
 
-
+    /**
+     * 这是添加的ListView的Menu
+     */
     private void initMenu() {
         menu = new Menu(new ColorDrawable(Color.WHITE), false, 0);
         menu.addItem(new MenuItem.Builder().setWidth(300)//单个菜单button的宽度
@@ -71,13 +79,15 @@ public class FragmentHome extends BaseFragment implements OkHttpUtil.OnDownLoadL
     }
 
     private void initUiAndListener() {
-        if(moreCookbooks!=null&&adverts!=null){
-//            AutoScrollViewPager autoScrollViewPager=new AutoScrollViewPager(getContext());
+        Log.e(TAG, "initUiAndListener: "+"this metho1d" );
+        if(moreCookbooks!=null&&moreCookBooksEntityByJson!=null){
+            FragmentHomeSweetView fragmentHomeSweetView=new FragmentHomeSweetView(getContext(),moreCookBooksEntityByJson);
             //猜你喜欢头部控件
             fragmentHomeLVAdapter = new FragmentHomeLVAdapter(getContext(),moreCookbooks);
-            View guessLike = LayoutInflater.from(getContext()).inflate(R.layout.fragment_home_guesslike, null);
+            View guessLike = LayoutInflater.from(getContext()).inflate(R.layout.fragment_home_guesslike,null);
+            mListView.addHeaderView(fragmentHomeSweetView);
             mListView.addHeaderView(guessLike);
-//            Log.e(TAG, "initUiAndListener: "+"this method" );
+            Log.e(TAG, "initUiAndListener: " + "this method");
             mListView.setMenu(menu);
             mListView.setAdapter(fragmentHomeLVAdapter);
             mListView.setOnListItemClickListener(this);
@@ -89,11 +99,14 @@ public class FragmentHome extends BaseFragment implements OkHttpUtil.OnDownLoadL
     @Override
     public void onResponse(String url, String json) {
         if (json != null && url.equals(Constants.URL.HOMEURL)) {
-            MoreCookBooksEntity moreCookBooksEntityByJson = JsonUtil.getMoreCookBooksEntityByJson(json);
+            moreCookBooksEntityByJson = JsonUtil.getMoreCookBooksEntityByJson(json);
 //            Log.e(TAG, "onResponse: "+moreCookBooksEntityByJson );
 //            home的ListView数据
             moreCookbooks = moreCookBooksEntityByJson.getData().getMoreCookbooks();
+            //这是主页的ViewPager的下载数据
             adverts = moreCookBooksEntityByJson.getData().getAdverts();
+
+
         }
         initMenu();
         initUiAndListener();

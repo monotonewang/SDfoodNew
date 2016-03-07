@@ -10,6 +10,7 @@
     <string name="fragment_home_staple">糕点主食</string>
     <string name="fragment_home_staple_style">甜点扑向</string>
     <string name="fragment_home_porridge">汤粥</string>
+    <string name="fragment_home_porridge_style">七宝美味</string>
     <string name="fragment_home_hotfood">热菜</string>
     <string name="fragment_home_hotfood_style">冷拼热炒</string>
     <string name="fragment_home_snacks">小吃</string>
