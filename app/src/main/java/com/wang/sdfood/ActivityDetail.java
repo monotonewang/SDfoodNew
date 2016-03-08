@@ -16,6 +16,7 @@ import com.wang.sdfood.util.OkHttpUtil;
 import butterknife.Bind;
 
 /**
+ * 这是菜系的Activity
  * 菜系的详情页
  * Created by Administrator on 2016/3/7.
  */

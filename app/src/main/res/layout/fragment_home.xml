@@ -4,27 +4,34 @@
     android:layout_height="match_parent"
     android:orientation="vertical">
 
-    <LinearLayout
+    <FrameLayout
         android:layout_width="match_parent"
-        android:layout_height="match_parent"
-        android:orientation="vertical">
-        <!--这是VP的布局-->
-        <include layout="@layout/fragment_home_viewpager"></include>
-        <include layout="@layout/fragment_home_caixi"></include>
-        <!--这是热门标签的标题布局-->
-        <include layout="@layout/fragment_home_hotcategries_itlle"></include>
-        <!--这是热门标签的图片布局-->
-        <include layout="@layout/fragment_home_hotcategories"></include>
-        <!--这是sweet甜食的布局-->
-        <include layout="@layout/fragment_home_sweet"></include>
-        <!--这是西顿厨友的布局-->
-        <include layout="@layout/fragment_home_newuser"></include>
-        <!--这是猜你喜欢的布局-->
-        <include layout="@layout/fragment_home_guesslike"></include>
+        android:layout_height="match_parent">
 
-        <com.wang.sdfood.menucustem.SlideAndDragListView
-            android:id="@+id/fragment_home_sadlView"
+
+        <LinearLayout
             android:layout_width="match_parent"
-            android:layout_height="match_parent"></com.wang.sdfood.menucustem.SlideAndDragListView>
-    </LinearLayout>
+            android:layout_height="match_parent"
+            android:orientation="vertical">
+            <!--这是VP的布局-->
+            <include layout="@layout/fragment_home_viewpager"></include>
+            <!--这是菜系的布局-->
+            <include layout="@layout/fragment_home_caixi"></include>
+            <!--这是热门标签的标题布局-->
+            <include layout="@layout/fragment_home_hotcategries_itlle"></include>
+            <!--这是热门标签的图片布局-->
+            <include layout="@layout/fragment_home_hotcategories"></include>
+            <!--这是sweet甜食的布局-->
+            <include layout="@layout/fragment_home_sweet"></include>
+            <!--这是西顿厨友的布局-->
+            <include layout="@layout/fragment_home_newuser"></include>
+            <!--这是猜你喜欢的布局-->
+            <include layout="@layout/fragment_home_guesslike"></include>
+
+            <com.wang.sdfood.menucustem.SlideAndDragListView
+                android:id="@+id/fragment_home_sadlView"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"></com.wang.sdfood.menucustem.SlideAndDragListView>
+        </LinearLayout>
+    </FrameLayout>
 </ScrollView>

@@ -210,7 +210,7 @@ public class FragmentHome extends BaseFragment implements OkHttpUtil.OnDownLoadL
         cycleViewPager.setWheel(true);
         cycleViewPager .setIndicatorCenter();
         // 设置轮播时间，默认5000ms
-        cycleViewPager.setTime(1000);
+        cycleViewPager.setTime(10000);
     }
     /**
      * 绑定sweet的Id
