@@ -29,6 +29,9 @@
         <!--菜系详情Activity-->
         <activity android:name=".ActivityDetail">
         </activity>
+        <!--FOODActivity-->
+        <activity android:name=".FoodDetailActvity">
+        </activity>
     </application>
 
 </manifest>

@@ -18,6 +18,7 @@ import com.wang.sdfood.R;
 import com.wang.sdfood.adapter.FragmentHomeLVAdapter;
 import com.wang.sdfood.adapter.FragmentHomeNewuserLVAdapter;
 import com.wang.sdfood.base.BaseFragment;
+import com.wang.sdfood.listenter.ViewPagerListener;
 import com.wang.sdfood.menucustem.Menu;
 import com.wang.sdfood.menucustem.MenuItem;
 import com.wang.sdfood.menucustem.SlideAndDragListView;
@@ -193,12 +194,21 @@ public class FragmentHome extends BaseFragment implements OkHttpUtil.OnDownLoadL
         List<View> views = new ArrayList<View>();
         int size=adverts.size();
         Log.e(TAG, "init: "+size);
+        View view,view1,view2;
         if(adverts!=null){
-            views.add(ViewFactory.getSimpleDreeView(getContext(), adverts.get(size-1).getImageUrl()));
+            view = new View(getActivity());
+            view = ViewFactory.getSimpleDreeView(getContext(), adverts.get(size-1).getImageUrl());
+
+            views.add(view);
             for (int i = 0; i < size; i++) {
-                views.add(ViewFactory.getSimpleDreeView(getContext(), adverts.get(i).getImageUrl()));
+                view1 = new View(getActivity());
+                view1 = ViewFactory.getSimpleDreeView(getContext(), adverts.get(i).getImageUrl());
+                views.add(view1);
+                view1.setOnClickListener(new ViewPagerListener(getActivity(),moreCookBooksEntityByJson.getData().getAdverts().get(i).getId()));
             }
-            views.add(ViewFactory.getSimpleDreeView(getContext(),adverts.get(0).getImageUrl()));
+            view2 =new View(getActivity());
+            view2 = ViewFactory.getSimpleDreeView(getContext(),adverts.get(0).getImageUrl());
+            views.add(view2);
         }
         // 设置循环，在调用setData方法前调用
         cycleViewPager.setCycle(true);

@@ -27,5 +27,7 @@ public interface Constants {
     interface KEY {
         //菜系的传递的关键字
         String CAIXI_KEY = "caixi";
+        //菜系的传递的关键字
+        String FOODNAME_ID_KEY = "foodnameid";
     }
 }
