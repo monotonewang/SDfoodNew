@@ -123,7 +123,10 @@ public class FragmentHome extends BaseFragment implements OkHttpUtil.OnDownLoadL
         /**
          * LinearLayout的监听
          */
-        linearLayouts.get(0).setOnClickListener(new FragmentHomeLLSweetListener(getActivity(),1));
+        linearLayouts.get(0).setOnClickListener(new FragmentHomeLLSweetListener(getActivity(),moreCookBooksEntityByJson.getData().getRecommend().getId()));
+        linearLayouts.get(1).setOnClickListener(new FragmentHomeLLSweetListener(getActivity(),moreCookBooksEntityByJson.getData().getBreakfast().getId()));
+        linearLayouts.get(2).setOnClickListener(new FragmentHomeLLSweetListener(getActivity(),moreCookBooksEntityByJson.getData().getLunch().getId()));
+        linearLayouts.get(3).setOnClickListener(new FragmentHomeLLSweetListener(getActivity(),moreCookBooksEntityByJson.getData().getDinner().getId()));
     }
 
     @Override

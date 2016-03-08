@@ -9,10 +9,10 @@ import android.view.View;
 public class FragmentHomeLLSweetListener implements View.OnClickListener  {
     private  String TAG="print";
     private Context context;
-    private int id;
-    public FragmentHomeLLSweetListener(Context c,int i) {
+    private String str;
+    public FragmentHomeLLSweetListener(Context c,String str) {
         super();
-        id = i;
+        this.str = str;
         context=c;
 
     }
