@@ -1,7 +1,7 @@
 package com.wang.sdfood.util;
 
 import com.google.gson.Gson;
-import com.wang.sdfood.model.DiscoverEntity;
+import com.wang.sdfood.model.DiscoverEntitys;
 import com.wang.sdfood.model.MoreCookBooksEntity;
 
 /**
@@ -22,7 +22,7 @@ public class JsonUtil {
      * @param json
      * @return
      */
-    public static DiscoverEntity getDiscoverEntityByJson(String json){
-        return new Gson().fromJson(json,DiscoverEntity.class);
+    public static DiscoverEntitys getDiscoverEntityByJson(String json){
+        return new Gson().fromJson(json,DiscoverEntitys.class);
     }
 }

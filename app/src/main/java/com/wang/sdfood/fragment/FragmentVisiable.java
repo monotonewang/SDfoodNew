@@ -9,7 +9,7 @@ import android.widget.TextView;
 import com.facebook.drawee.view.SimpleDraweeView;
 import com.wang.sdfood.R;
 import com.wang.sdfood.base.BaseFragment;
-import com.wang.sdfood.model.DiscoverEntity;
+import com.wang.sdfood.model.DiscoverEntitys;
 import com.wang.sdfood.util.Constants;
 import com.wang.sdfood.util.FrescoUtil;
 import com.wang.sdfood.util.JsonUtil;
@@ -34,7 +34,7 @@ public class FragmentVisiable extends BaseFragment implements OkHttpUtil.OnDownL
     public SimpleDraweeView simpleDraweeView;
     @Bind({R.id.fragment_visiable_goodsName,R.id.fragment_visiable_briefinfo,R.id.fragment_visiable_price,R.id.fragment_visiable_salesCount})
     public List<TextView> textViews;
-    private DiscoverEntity discoverEntityByJson;
+    private DiscoverEntitys discoverEntityByJson;
 
     @Override
     protected int getViewResId() {
