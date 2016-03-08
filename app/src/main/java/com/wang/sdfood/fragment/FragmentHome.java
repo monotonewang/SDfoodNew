@@ -1,6 +1,7 @@
 package com.wang.sdfood.fragment;
 
 
+import android.content.Intent;
 import android.graphics.Color;
 import android.graphics.drawable.ColorDrawable;
 import android.support.v7.widget.LinearLayoutManager;
@@ -12,6 +13,7 @@ import android.widget.TextView;
 import android.widget.Toast;
 
 import com.facebook.drawee.view.SimpleDraweeView;
+import com.wang.sdfood.ActivityDetail;
 import com.wang.sdfood.R;
 import com.wang.sdfood.adapter.FragmentHomeLVAdapter;
 import com.wang.sdfood.adapter.FragmentHomeNewuserLVAdapter;
@@ -37,9 +39,21 @@ import me.codeboy.android.cycleviewpager.CycleViewPager;
  * 整个主页上的内容，也是用户看到的
  * Created by user on 2016/3/4.
  */
-public class FragmentHome extends BaseFragment implements OkHttpUtil.OnDownLoadListener, SlideAndDragListView.OnListItemClickListener, SlideAndDragListView.OnSlideListener, SlideAndDragListView.OnMenuItemClickListener {
+public class FragmentHome extends BaseFragment implements OkHttpUtil.OnDownLoadListener, SlideAndDragListView.OnListItemClickListener, SlideAndDragListView.OnSlideListener, SlideAndDragListView.OnMenuItemClickListener, View.OnClickListener {
     //ViewPager
     private CycleViewPager cycleViewPager;
+    //川菜
+    @Bind(R.id.btn_chuancai)
+    public TextView chuancai;
+    //鲁菜
+    @Bind(R.id.btn_lucai)
+    public TextView lucai;
+    //苏菜
+    @Bind(R.id.btn_sucai)
+    public TextView sucai;
+    //浙菜
+    @Bind(R.id.btn_zhecai)
+    public TextView zhecai;
     //这是热门标签的子控件ID
     @Bind({R.id.fragment_home_hotcategries_mostPopularOfWeek_tv,R.id.fragment_home_hotcategries_newCookbook_tv,R.id.fragment_home_hotcategries_newWorks_tv,R.id.fragment_home_hotcategries_newPai_tv})
     public List<TextView> hotCategoriestv;
@@ -89,6 +103,10 @@ public class FragmentHome extends BaseFragment implements OkHttpUtil.OnDownLoadL
         super.init(view);
         mListView = (SlideAndDragListView) view.findViewById(R.id.fragment_home_sadlView);
         cycleViewPager = (CycleViewPager) getActivity().getFragmentManager().findFragmentById(R.id.cycleViewPager);
+        chuancai.setOnClickListener(this);
+        lucai.setOnClickListener(this);
+        sucai.setOnClickListener(this);
+        zhecai.setOnClickListener(this);
     }
 
     @Override
@@ -271,5 +289,27 @@ public class FragmentHome extends BaseFragment implements OkHttpUtil.OnDownLoadL
                 }
         }
         return Menu.ITEM_NOTHING;
+    }
+
+    @Override
+    public void onClick(View view) {
+        String caixi_key=null;
+        switch (view.getId()){
+            case R.id.btn_chuancai:
+                caixi_key= moreCookBooksEntityByJson.getData().getHotCategories().get(0).getName();
+                break;
+            case R.id.btn_lucai:
+                caixi_key= moreCookBooksEntityByJson.getData().getHotCategories().get(1).getName();
+                break;
+            case R.id.btn_sucai:
+                caixi_key= moreCookBooksEntityByJson.getData().getHotCategories().get(2).getName();
+                break;
+            case R.id.btn_zhecai:
+                caixi_key= moreCookBooksEntityByJson.getData().getHotCategories().get(3).getName();
+                break;
+        }
+        Intent intent = new Intent(getActivity(), ActivityDetail.class);
+        intent.putExtra(Constants.KEY.CAIXI_KEY,caixi_key);
+        startActivity(intent);
     }
 }

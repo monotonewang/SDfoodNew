@@ -26,6 +26,9 @@
         <activity android:name=".ActivityHomeDiscuss">
 
         </activity>
+        <!--菜系详情Activity-->
+        <activity android:name=".ActivityDetail">
+        </activity>
     </application>
 
 </manifest>

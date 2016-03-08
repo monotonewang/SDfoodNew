@@ -1,0 +1,43 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:orientation="horizontal"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:padding="10dp"
+    android:background="#ffff">
+    <TextView
+        android:layout_marginLeft="20dp"
+        android:drawableLeft="@drawable/dot_a"
+        android:id="@+id/btn_chuancai"
+        android:layout_width="0dp"
+        android:layout_weight="1"
+        android:layout_height="wrap_content"
+        android:text="川菜"
+        android:onClick="btnClick"/>
+    <TextView
+        android:drawableLeft="@drawable/dot_b"
+        android:id="@+id/btn_lucai"
+        android:layout_width="0dp"
+        android:layout_weight="1"
+        android:layout_height="wrap_content"
+        android:text="鲁菜"
+        android:onClick="btnClick"/>
+    <TextView
+        android:drawableLeft="@drawable/dot_c"
+        android:id="@+id/btn_sucai"
+        android:layout_width="0dp"
+        android:layout_weight="1"
+        android:layout_height="wrap_content"
+        android:text="苏菜"
+        android:onClick="btnClick"/>
+    <TextView
+        android:drawableLeft="@drawable/dot_d"
+        android:id="@+id/btn_zhecai"
+        android:layout_width="0dp"
+        android:layout_weight="1"
+        android:layout_height="wrap_content"
+        android:text="浙菜"
+        android:onClick="btnClick"/>
+
+
+</LinearLayout>

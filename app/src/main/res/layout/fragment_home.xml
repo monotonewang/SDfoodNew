@@ -10,6 +10,7 @@
         android:orientation="vertical">
         <!--这是VP的布局-->
         <include layout="@layout/fragment_home_viewpager"></include>
+        <include layout="@layout/fragment_home_caixi"></include>
         <!--这是热门标签的标题布局-->
         <include layout="@layout/fragment_home_hotcategries_itlle"></include>
         <!--这是热门标签的图片布局-->
