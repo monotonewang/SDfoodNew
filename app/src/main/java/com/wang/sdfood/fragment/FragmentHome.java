@@ -13,7 +13,7 @@ import android.widget.TextView;
 import android.widget.Toast;
 
 import com.facebook.drawee.view.SimpleDraweeView;
-import com.wang.sdfood.ActivityMCBooks;
+import com.wang.sdfood.ActivityMCBooksList;
 import com.wang.sdfood.R;
 import com.wang.sdfood.adapter.FragmentHomeLVAdapter;
 import com.wang.sdfood.adapter.FragmentHomeNewuserLVAdapter;
@@ -111,6 +111,7 @@ public class FragmentHome extends BaseFragment implements OkHttpUtil.OnDownLoadL
         mTvIndex.setFocusableInTouchMode(true);
         mListView = (SlideAndDragListView) view.findViewById(R.id.fragment_home_sadlView);
         cycleViewPager = (CycleViewPager) getActivity().getFragmentManager().findFragmentById(R.id.cycleViewPager);
+        //这是不同菜系的点击事件
         chuancai.setOnClickListener(this);
         lucai.setOnClickListener(this);
         sucai.setOnClickListener(this);
@@ -308,6 +309,10 @@ public class FragmentHome extends BaseFragment implements OkHttpUtil.OnDownLoadL
         return Menu.ITEM_NOTHING;
     }
 
+    /**
+     * 不同菜系的点击相应
+     * @param view
+     */
     @Override
     public void onClick(View view) {
         String caixi_key=null;
@@ -325,7 +330,7 @@ public class FragmentHome extends BaseFragment implements OkHttpUtil.OnDownLoadL
                 caixi_key= moreCookBooksEntityByJson.getData().getHotCategories().get(3).getName();
                 break;
         }
-        Intent intent = new Intent(getActivity(), ActivityMCBooks.class);
+        Intent intent = new Intent(getActivity(), ActivityMCBooksList.class);
         intent.putExtra(Constants.KEY.CAIXI_KEY, caixi_key);
         startActivity(intent);
     }

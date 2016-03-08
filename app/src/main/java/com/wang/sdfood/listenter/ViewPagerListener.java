@@ -2,10 +2,10 @@ package com.wang.sdfood.listenter;
 
 import android.content.Context;
 import android.content.Intent;
-import android.util.Log;
 import android.view.View;
 
-import com.wang.sdfood.FoodDetailActvity;
+import com.wang.sdfood.ActivityMcBookDetail;
+import com.wang.sdfood.ActvityMegcook;
 import com.wang.sdfood.util.Constants;
 
 /**
@@ -24,9 +24,22 @@ public class ViewPagerListener implements View.OnClickListener {
 
     @Override
     public void onClick(View view) {
-        Log.e(TAG, "ViewPagerListener: " + id);
-        Intent intent = new Intent(context, FoodDetailActvity.class);
-        intent.putExtra(Constants.KEY.FOODNAME_ID_KEY,id);
-        context.startActivity(intent);
+//        Log.e(TAG, "ViewPagerListener: " + id);
+        if(id==1){
+            /**
+             * 跳转到MegCook
+             */
+            Intent intent = new Intent(context, ActvityMegcook.class);
+            intent.putExtra(Constants.KEY.FOODNAME_ID_KEY,id);
+            context.startActivity(intent);
+        }else{
+            /**
+             * 跳转到菜系的详情
+             */
+            Intent intent = new Intent(context, ActivityMcBookDetail.class);
+            intent.putExtra(Constants.KEY.FOODNAME_ID_KEY,id);
+            context.startActivity(intent);
+        }
+
     }
 }
