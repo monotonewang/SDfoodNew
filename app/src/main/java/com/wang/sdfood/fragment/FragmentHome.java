@@ -120,13 +120,7 @@ public class FragmentHome extends BaseFragment implements OkHttpUtil.OnDownLoadL
         lucai.setOnClickListener(this);
         sucai.setOnClickListener(this);
         zhecai.setOnClickListener(this);
-        /**
-         * LinearLayout的监听
-         */
-        linearLayouts.get(0).setOnClickListener(new FragmentHomeLLSweetListener(getActivity(),moreCookBooksEntityByJson.getData().getRecommend().getId()));
-        linearLayouts.get(1).setOnClickListener(new FragmentHomeLLSweetListener(getActivity(),moreCookBooksEntityByJson.getData().getBreakfast().getId()));
-        linearLayouts.get(2).setOnClickListener(new FragmentHomeLLSweetListener(getActivity(),moreCookBooksEntityByJson.getData().getLunch().getId()));
-        linearLayouts.get(3).setOnClickListener(new FragmentHomeLLSweetListener(getActivity(),moreCookBooksEntityByJson.getData().getDinner().getId()));
+
     }
 
     @Override
@@ -274,7 +268,13 @@ public class FragmentHome extends BaseFragment implements OkHttpUtil.OnDownLoadL
             moreCookBooksEntityByJson = JsonUtil.getMoreCookBooksEntityByJson(json);
             //这是ViewPager的数据
             adverts=moreCookBooksEntityByJson.getData().getAdverts();
-
+            /**
+             * LinearLayout的监听
+             */
+            linearLayouts.get(0).setOnClickListener(new FragmentHomeLLSweetListener(getActivity(),moreCookBooksEntityByJson.getData().getRecommend().getId()));
+            linearLayouts.get(1).setOnClickListener(new FragmentHomeLLSweetListener(getActivity(),moreCookBooksEntityByJson.getData().getBreakfast().getId()));
+            linearLayouts.get(2).setOnClickListener(new FragmentHomeLLSweetListener(getActivity(),moreCookBooksEntityByJson.getData().getLunch().getId()));
+            linearLayouts.get(3).setOnClickListener(new FragmentHomeLLSweetListener(getActivity(),moreCookBooksEntityByJson.getData().getDinner().getId()));
 //            home的ListView数据
             moreCookbooks = moreCookBooksEntityByJson.getData().getMoreCookbooks();
         }
