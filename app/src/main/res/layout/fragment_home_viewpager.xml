@@ -6,6 +6,6 @@
         android:id="@+id/cycleViewPager"
         android:name="me.codeboy.android.cycleviewpager.CycleViewPager"
         android:layout_width="match_parent"
-        android:layout_height="@dimen/y250" >
+        android:layout_height="@dimen/y130" >
         </fragment>
 </FrameLayout>

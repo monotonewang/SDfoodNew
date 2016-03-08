@@ -4,6 +4,8 @@
     android:layout_height="match_parent"
     android:paddingTop="@dimen/activity_lv_margin_top_bottom"
     android:paddingBottom="@dimen/activity_lv_margin_top_bottom"
+    android:paddingLeft="@dimen/x10"
+    android:paddingRight="@dimen/x10"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:fresco="http://schemas.android.com/apk/res-auto"
     android:orientation="horizontal">
@@ -24,11 +26,21 @@
         android:orientation="vertical"
         android:layout_width="match_parent"
         android:layout_height="wrap_content">
+        <RelativeLayout
+            android:orientation="horizontal"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content">
+            <TextView
+                android:id="@+id/fragment_home_morecb_lv_name"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content" />
+            <ImageView
+                android:layout_alignParentRight="true"
+                android:src="@drawable/yun"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content" />
+        </RelativeLayout>
 
-        <TextView
-            android:id="@+id/fragment_home_morecb_lv_name"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content" />
 
         <TextView
             android:id="@+id/fragment_home_morecb_lv_nickName"

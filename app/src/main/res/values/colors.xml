@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
     <color name="colorPrimary">#FF8800</color>
-    <color name="colorPrimaryDark">#303F9F</color>
+    <color name="colorPrimaryDark">#FF8800</color>
     <color name="colorAccent">#FF4081</color>
     <color name="activityBottomTextCheckColor">#FF8800</color>
     <color name="activityBottomTextUnCheckColor">#2A2A2A</color>
@@ -11,4 +11,7 @@
     <!--FragmentHome的view的背景颜色-->
     <color name="fragment_home_view_bgcolor">#FFFFFF</color>
     <color name="fragment_home_hot_catagories_view_bgclor">#c4c4c4</color>
+    <!--Fragmentmsg的view的背景颜色-->
+    <color name="fragment_msg_line_color">#837e7e</color>
+    <color name="fragment_msg_hot_catagories_view_bgclor">#c4c4c4</color>
 </resources>

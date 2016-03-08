@@ -4,9 +4,12 @@
     android:orientation="vertical"
     android:background="@color/fragment_home_view_bgcolor"
     android:layout_marginTop="@dimen/y10"
+    android:paddingLeft="@dimen/x10"
+    android:paddingRight="@dimen/x10"
     android:layout_width="match_parent"
     android:layout_height="match_parent">
     <TextView
+        android:textSize="@dimen/fragment_home_view_head_word"
         android:id="@+id/fragment_home_newuser_user"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
@@ -14,6 +17,6 @@
     <android.support.v7.widget.RecyclerView
         android:id="@+id/fragment_home_newuser_recyclerview"
         android:layout_width="match_parent"
-        android:layout_height="@dimen/y100">
+        android:layout_height="@dimen/y80">
     </android.support.v7.widget.RecyclerView>
 </LinearLayout>

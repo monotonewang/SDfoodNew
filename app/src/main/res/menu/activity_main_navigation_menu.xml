@@ -2,10 +2,13 @@
 <menu xmlns:android="http://schemas.android.com/apk/res/android">
     <!--表示单选的意思-->
     <group android:checkableBehavior="single">
+        <!--没有显示分组线-->
         <item android:id="@+id/activity_dl_menu_document"  android:icon="@drawable/ic_menu_document" android:title="@string/activity_main_dl_menu_doucument"></item>
         <item android:id="@+id/activity_dl_menu_star" android:icon="@drawable/ic_menu_star" android:title="@string/activity_main_dl_menu_star"></item>
         <item android:id="@+id/activity_dl_menu_private" android:icon="@drawable/ic_menu_private" android:title="@string/activity_main_dl_menu_private"></item>
         <item android:id="@+id/activity_dl_menu_sensor" android:icon="@drawable/ic_menu_sensor" android:title="@string/activity_main_dl_menu_sensor"></item>
         <item android:id="@+id/activity_dl_menu_setting" android:icon="@drawable/ic_menu_settings" android:title="@string/activity_main_dl_menu_settings"></item>
+
+
     </group>
 </menu>

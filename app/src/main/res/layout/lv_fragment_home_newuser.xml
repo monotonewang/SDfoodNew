@@ -10,7 +10,7 @@
     <com.facebook.drawee.view.SimpleDraweeView
         android:id="@+id/fragment_home_newuser_user_sdv"
         fresco:roundAsCircle="true"
-        android:layout_width="@dimen/x70"
+        android:layout_width="@dimen/x60"
         fresco:viewAspectRatio="1"
         android:layout_height="wrap_content" />
 
