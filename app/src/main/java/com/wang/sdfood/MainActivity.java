@@ -1,36 +1,44 @@
 package com.wang.sdfood;
 
 
+import android.graphics.Bitmap;
+import android.graphics.BitmapFactory;
 import android.support.design.widget.FloatingActionButton;
 import android.support.design.widget.NavigationView;
 import android.support.v4.app.Fragment;
 import android.support.v4.app.FragmentManager;
 import android.support.v4.app.FragmentTransaction;
-import android.view.MenuItem;
+import android.util.Log;
+import android.view.View;
+import android.widget.AdapterView;
+import android.widget.ListView;
 import android.widget.RadioButton;
 import android.widget.RadioGroup;
-import android.widget.TextView;
 
+import com.wang.sdfood.adapter.FragmentMsgLVAdapter;
 import com.wang.sdfood.base.BaseActivity;
 import com.wang.sdfood.fragment.FragmentHome;
 import com.wang.sdfood.fragment.FragmentMine;
 import com.wang.sdfood.fragment.FragmentMsg;
 import com.wang.sdfood.fragment.FragmentVisiable;
+import com.wang.sdfood.model.FragmentMsgEntity;
 
+import java.util.ArrayList;
 import java.util.List;
 
 import butterknife.Bind;
 
-public class MainActivity extends BaseActivity implements RadioGroup.OnCheckedChangeListener, NavigationView.OnNavigationItemSelectedListener {
+public class MainActivity extends BaseActivity implements RadioGroup.OnCheckedChangeListener,AdapterView.OnItemClickListener {
+    private static final String TAG ="MainActivity" ;
     @Bind(R.id.activiy_home_radiogp)
     public RadioGroup radioGroup;
     @Bind({R.id.activiy_radiobtn_home, R.id.activiy_radiobtn_visible, R.id.activiy_radiobtn_msg, R.id.activiy_radiobtn_mine})
     public List<RadioButton> radioButtonList;
-    @Bind(R.id.tv_index)
-    public TextView mTvIndex;
     //找到NavView的ID
     @Bind(R.id.activity_main_dl_nav)
     public NavigationView navigationView;
+    @Bind(R.id.activity_main_dl_nav_lv)
+    public ListView listView;
     //找到Nfab的ID
     @Bind(R.id.activty_main_fab)
     public FloatingActionButton floatingActionButton;
@@ -59,18 +67,46 @@ public class MainActivity extends BaseActivity implements RadioGroup.OnCheckedCh
         beginTransaction.add(R.id.activity_main_fl, fragmentMsg);
         beginTransaction.add(R.id.activity_main_fl, fragmentMine);
         beginTransaction.commit();
-        /**
-         * 使TextView获取焦点，
-         */
-        mTvIndex.setFocusable(true);
-        mTvIndex.setFocusableInTouchMode(true);
-        //设置Nav的监听
-        navigationView.setNavigationItemSelectedListener(this);
+        //设置ListView的监听
+        listView.setOnItemClickListener(this);
     }
 
     @Override
     protected void loadDatas() {
         super.loadDatas();
+        List<FragmentMsgEntity> list = getListByResource();
+        FragmentMsgLVAdapter fragmentMsgLVAdapter=new FragmentMsgLVAdapter(this,list);
+        listView.setAdapter(fragmentMsgLVAdapter);
+    }
+
+    /**
+     * 这是抽屉布局的List菜单
+     * @return
+     */
+    private List<FragmentMsgEntity> getListByResource() {
+        List<FragmentMsgEntity> list=new ArrayList<>();
+        Bitmap bitmap = BitmapFactory.decodeResource(getResources(), R.drawable.ic_menu_document);
+        Bitmap bitmap1 = BitmapFactory.decodeResource(getResources(), R.drawable.ic_menu_star);
+        Bitmap bitmap2 = BitmapFactory.decodeResource(getResources(), R.drawable.ic_menu_private);
+        Bitmap bitmap3 = BitmapFactory.decodeResource(getResources(), R.drawable.ic_menu_sensor);
+        Bitmap bitmap4 = BitmapFactory.decodeResource(getResources(), R.drawable.ic_menu_settings);
+        Bitmap bitmap5 = BitmapFactory.decodeResource(getResources(), R.drawable.icon_arrow);
+        String string = getResources().getString(R.string.activity_main_dl_menu_doucument);
+        String string1 = getResources().getString(R.string.activity_main_dl_menu_star);
+        String string2 = getResources().getString(R.string.activity_main_dl_menu_private);
+        String string3 = getResources().getString(R.string.activity_main_dl_menu_sensor);
+        String string4 = getResources().getString(R.string.activity_main_dl_menu_settings);
+        FragmentMsgEntity fragmentMsgEntity=new FragmentMsgEntity(bitmap,string,bitmap5);
+        FragmentMsgEntity fragmentMsgEntity1=new FragmentMsgEntity(bitmap1,string1,bitmap5);
+        FragmentMsgEntity fragmentMsgEntity2=new FragmentMsgEntity(bitmap2,string2,bitmap5);
+        FragmentMsgEntity fragmentMsgEntity3=new FragmentMsgEntity(bitmap3,string3,bitmap5);
+        FragmentMsgEntity fragmentMsgEntity4=new FragmentMsgEntity(bitmap4,string4,bitmap5);
+        list.add(fragmentMsgEntity);
+        list.add(fragmentMsgEntity1);
+        list.add(fragmentMsgEntity2);
+        list.add(fragmentMsgEntity3);
+        list.add(fragmentMsgEntity4);
+        return list;
     }
 
     @Override
@@ -115,32 +151,17 @@ public class MainActivity extends BaseActivity implements RadioGroup.OnCheckedCh
 
         }
     }
-
     /**
-     * 抽屉布局Menu的回调方法
-     * @param item
-     * @return
+     * 抽屉布局的ListView的监听事件处理
+     * @param parent
+     * @param view
+     * @param position
+     * @param id
      */
     @Override
-    public boolean onNavigationItemSelected(MenuItem item) {
-        switch(item.getItemId()){
-            case R.id.activity_dl_menu_document:
-
-                break;
-            case R.id.activity_dl_menu_star:
-
-                break;
-            case R.id.activity_dl_menu_private:
-
-                break;
-            case R.id.activity_dl_menu_sensor:
-
-                break;
-            case R.id.activity_dl_menu_setting:
-
-                break;
+    public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
+        if(parent.equals(listView)){
+            Log.e(TAG, "onItemClick: "+position );
         }
-        return false;
-
     }
 }

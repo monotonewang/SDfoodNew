@@ -1,7 +1,7 @@
 package com.wang.sdfood.util;
 
 import com.google.gson.Gson;
-import com.wang.sdfood.model.CaiXi;
+import com.wang.sdfood.model.CaiXiEntity;
 import com.wang.sdfood.model.DiscoverEntitys;
 import com.wang.sdfood.model.MoreCookBooksEntity;
 
@@ -17,8 +17,8 @@ public class JsonUtil {
     public static MoreCookBooksEntity getMoreCookBooksEntityByJson(String json) {
         return new Gson().fromJson(json, MoreCookBooksEntity.class);
     }
-    public static CaiXi getCaiXIByJson(String json) {
-        return new Gson().fromJson(json, CaiXi.class);
+    public static CaiXiEntity getCaiXIByJson(String json) {
+        return new Gson().fromJson(json, CaiXiEntity.class);
     }
 
     /**

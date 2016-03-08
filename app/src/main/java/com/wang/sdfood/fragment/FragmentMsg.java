@@ -4,6 +4,7 @@ import android.graphics.Bitmap;
 import android.graphics.BitmapFactory;
 import android.support.annotation.Nullable;
 import android.view.View;
+import android.widget.ImageView;
 import android.widget.ListView;
 import android.widget.TextView;
 
@@ -27,6 +28,8 @@ public class FragmentMsg extends BaseFragment {
     @Nullable
     @Bind(R.id.fragment_msg_headview_tv)
     public TextView textView;
+    @Bind({R.id.fragment_common_headview_back,R.id.fragment_common_headview_share})
+    public List<ImageView> imageViews;
     @Bind(R.id.fragment_msg_lv)
     public ListView listView;
     @Override
@@ -39,7 +42,8 @@ public class FragmentMsg extends BaseFragment {
         super.init(view);
         //设置头部的字体
         textView.setText(getResources().getString(R.string.fragment_msg_head_text));
-
+        imageViews.get(0).setVisibility(View.GONE);
+        imageViews.get(1).setVisibility(View.GONE);
         List<FragmentMsgEntity> list = getListByResource();
         FragmentMsgLVAdapter  fragmentMsgLVAdapter=new FragmentMsgLVAdapter(getContext(),list);
         listView.setAdapter(fragmentMsgLVAdapter);

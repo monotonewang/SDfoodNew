@@ -5,23 +5,24 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.BaseAdapter;
+import android.widget.ImageView;
 import android.widget.TextView;
 
 import com.facebook.drawee.view.SimpleDraweeView;
 import com.wang.sdfood.R;
-import com.wang.sdfood.model.CaiXi;
+import com.wang.sdfood.model.CaiXiEntity;
 import com.wang.sdfood.util.FrescoUtil;
 
 import java.util.List;
 
 /**
- * 菜名详情页的适配器
+ * Activity菜名详情页的适配器
  * Created by Administrator on 2016/3/8.
  */
-public class ActivityDetailLVAdapter extends BaseAdapter {
+public class ActivityMCBookLVAdapter extends BaseAdapter {
     private Context context;
-    private List<CaiXi.DataEntity> dataEntities;
-    public ActivityDetailLVAdapter(Context context,List<CaiXi.DataEntity> dataEntities) {
+    private List<CaiXiEntity.DataEntity> dataEntities;
+    public ActivityMCBookLVAdapter(Context context, List<CaiXiEntity.DataEntity> dataEntities) {
         this.context=context;
         this.dataEntities=dataEntities;
     }
@@ -47,6 +48,7 @@ public class ActivityDetailLVAdapter extends BaseAdapter {
         if(convertView==null){
             myViewHolder=new MyViewHolder();
             convertView = LayoutInflater.from(context).inflate(R.layout.lv_fragment_home_morecb,null);
+            myViewHolder.imageView= (ImageView) convertView.findViewById(R.id.lv_fragment_home_morecb_iv_yun);
             myViewHolder.simpleDraweeView= (SimpleDraweeView) convertView.findViewById(R.id.fragment_home_morecb_lv_sdv);
             myViewHolder.tvName= (TextView) convertView.findViewById(R.id.fragment_home_morecb_lv_name);
             myViewHolder.tvNickName= (TextView) convertView.findViewById(R.id.fragment_home_morecb_lv_nickName);
@@ -61,11 +63,13 @@ public class ActivityDetailLVAdapter extends BaseAdapter {
         myViewHolder.tvName.setText(dataEntities.get(position).getName());
         myViewHolder.tvNickName.setText(dataEntities.get(position).getReferrer().getNickname());
         myViewHolder.tvInfredients.setText(dataEntities.get(position).getIngredients());
-        myViewHolder.tvLikeCount.setText(dataEntities.get(position).getCollectCount()+"个收藏");
-        myViewHolder.tvCommentCount.setText(dataEntities.get(position).getHitscount()+"次阅读");
+        myViewHolder.tvLikeCount.setText(dataEntities.get(position).getCollectCount()+context.getResources().getString(R.string.activity_caixi_detail_collectcount));
+        myViewHolder.tvCommentCount.setText(dataEntities.get(position).getHitscount() + context.getResources().getString(R.string.activity_caixi_detail_hitscount));
+        myViewHolder.imageView.setVisibility(View.GONE);
         return convertView;
     }
     class MyViewHolder{
+        ImageView imageView;
         SimpleDraweeView simpleDraweeView;
         TextView tvName;
         TextView tvNickName;

@@ -25,6 +25,10 @@
     <string name="fragment_home_hotfood_style">冷拼热炒</string>
     <string name="fragment_home_snacks">小吃</string>
     <string name="fragment_home_snacks_style">唇齿留香</string>
+    <!--菜系的activity的文字-->
+    <string name="activity_caixi_detail_collectcount">个收藏</string>
+    <string name="activity_caixi_detail_hitscount">次阅读</string>
+    <string name="activity_caixi_detail_empty_text">空</string>
     <!--发现的fragment的文字-->
     <string name="fragment_discover_price">￥</string>
     <string name="fragment_discover_salecount">人购买</string>
@@ -36,4 +40,11 @@
     <string name="fragment_msg_comm">新的评论</string>
     <string name="fragment_msg_poke">新的戳</string>
     <string name="fragment_msg_mess">通知</string>
+    <!--我的fragment的文字-->
+    <string name="fragment_mine_head_login">点击登录</string>
+    <string name="fragment_mine_head_count">0</string>
+    <string name="fragment_mine_head_focus">关注</string>
+    <string name="fragment_mine_head_fan">粉丝</string>
+    <string name="fragment_mine_head_parise">被赞</string>
+    <string name="fragment_mine_head_visit">访客</string>
 </resources>

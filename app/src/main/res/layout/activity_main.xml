@@ -6,13 +6,7 @@
     android:layout_height="match_parent"
     android:orientation="vertical"
     tools:context="com.wang.sdfood.MainActivity">
-    <!--这是为了聚集焦点的view-->
-    <TextView
-        android:id="@+id/tv_index"
-        android:layout_width="1dp"
-        android:text="@string/activity_bottom_rgb_home"
-        android:textColor="@color/colorPrimary"
-        android:layout_height="1dp"></TextView>
+
     <!--这是抽屉布局的view-->
     <android.support.v4.widget.DrawerLayout
         android:layout_width="match_parent"
@@ -48,12 +42,19 @@
             android:layout_height="match_parent"
             android:layout_gravity="left"
             app:headerLayout="@layout/activity_main_dl_headview"
-            app:menu="@menu/activity_main_navigation_menu">
+           >
+            <ListView
+                android:layout_gravity="center"
+                android:id="@+id/activity_main_dl_nav_lv"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content">
 
+            </ListView>
             <ImageView
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:src="@drawable/icon_msg_like"
+                android:src="@drawable/menu_advert2"
+                android:layout_marginBottom="@dimen/y1"
                 android:layout_gravity="bottom|center_horizontal"/>
 
         </android.support.design.widget.NavigationView>

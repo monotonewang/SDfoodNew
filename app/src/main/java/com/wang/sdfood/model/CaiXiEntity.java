@@ -5,7 +5,7 @@ import java.util.List;
 /**
  * Created by Administrator on 2016/3/8.
  */
-public class CaiXi {
+public class CaiXiEntity {
 
     /**
      * result : ok

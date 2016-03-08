@@ -4,6 +4,7 @@ package com.wang.sdfood.fragment;
 import android.support.annotation.Nullable;
 import android.util.Log;
 import android.view.View;
+import android.widget.ImageView;
 import android.widget.TextView;
 
 import com.facebook.drawee.view.SimpleDraweeView;
@@ -30,6 +31,8 @@ public class FragmentVisiable extends BaseFragment implements OkHttpUtil.OnDownL
     @Nullable
     @Bind(R.id.fragment_msg_headview_tv)
     public TextView textView;
+    @Bind({R.id.fragment_common_headview_back,R.id.fragment_common_headview_share})
+    public List<ImageView> imageViews;
     @Bind(R.id.fragment_visiable_sdv)
     public SimpleDraweeView simpleDraweeView;
     @Bind({R.id.fragment_visiable_goodsName,R.id.fragment_visiable_briefinfo,R.id.fragment_visiable_price,R.id.fragment_visiable_salesCount})
@@ -45,6 +48,8 @@ public class FragmentVisiable extends BaseFragment implements OkHttpUtil.OnDownL
     protected void init(View view) {
         super.init(view);
         textView.setText(getResources().getString(R.string.fragment_discover_head_text));
+        imageViews.get(0).setVisibility(View.GONE);
+        imageViews.get(1).setVisibility(View.GONE);
     }
 
     @Override

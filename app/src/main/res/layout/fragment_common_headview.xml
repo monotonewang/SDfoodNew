@@ -1,7 +1,12 @@
 <?xml version="1.0" encoding="utf-8"?>
-<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
     android:orientation="vertical" android:layout_width="match_parent"
     android:layout_height="@dimen/y35">
+    <ImageView
+        android:id="@+id/fragment_common_headview_back"
+        android:src="@drawable/ic_ab_back_mtrl_am_alpha"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content" />
     <TextView
         android:id="@+id/fragment_msg_headview_tv"
         android:background="@color/colorPrimary"
@@ -10,4 +15,9 @@
         android:text="@string/fragment_hoem_gueesLike"
         android:layout_width="match_parent"
         android:layout_height="@dimen/y35" />
-</LinearLayout>
+    <ImageView
+        android:id="@+id/fragment_common_headview_share"
+        android:src="@drawable/ic_menu_share_mtrl_alpha"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content" />
+</RelativeLayout>

@@ -13,7 +13,7 @@ import android.widget.TextView;
 import android.widget.Toast;
 
 import com.facebook.drawee.view.SimpleDraweeView;
-import com.wang.sdfood.ActivityDetail;
+import com.wang.sdfood.ActivityMCBooks;
 import com.wang.sdfood.R;
 import com.wang.sdfood.adapter.FragmentHomeLVAdapter;
 import com.wang.sdfood.adapter.FragmentHomeNewuserLVAdapter;
@@ -40,6 +40,8 @@ import me.codeboy.android.cycleviewpager.CycleViewPager;
  * Created by user on 2016/3/4.
  */
 public class FragmentHome extends BaseFragment implements OkHttpUtil.OnDownLoadListener, SlideAndDragListView.OnListItemClickListener, SlideAndDragListView.OnSlideListener, SlideAndDragListView.OnMenuItemClickListener, View.OnClickListener {
+    @Bind(R.id.tv_index)
+    public TextView mTvIndex;
     //ViewPager
     private CycleViewPager cycleViewPager;
     //川菜
@@ -101,6 +103,11 @@ public class FragmentHome extends BaseFragment implements OkHttpUtil.OnDownLoadL
     @Override
     protected void init(View view) {
         super.init(view);
+        /**
+         * 使TextView获取焦点，
+         */
+        mTvIndex.setFocusable(true);
+        mTvIndex.setFocusableInTouchMode(true);
         mListView = (SlideAndDragListView) view.findViewById(R.id.fragment_home_sadlView);
         cycleViewPager = (CycleViewPager) getActivity().getFragmentManager().findFragmentById(R.id.cycleViewPager);
         chuancai.setOnClickListener(this);
@@ -234,9 +241,9 @@ public class FragmentHome extends BaseFragment implements OkHttpUtil.OnDownLoadL
         textViews.get(6).setText(dinner.getName());
         textViews.get(7).setText(dinner.getDescription());
         FrescoUtil.imageViewBind(recommend.getImageUrl(), simpleDraweeViews.get(0));
-        FrescoUtil.imageViewBind(breakfast.getImageUrl(),simpleDraweeViews.get(1));
-        FrescoUtil.imageViewBind(lunch.getImageUrl(),simpleDraweeViews.get(2));
-        FrescoUtil.imageViewBind(dinner.getImageUrl(),simpleDraweeViews.get(3));
+        FrescoUtil.imageViewBind(breakfast.getImageUrl(), simpleDraweeViews.get(1));
+        FrescoUtil.imageViewBind(lunch.getImageUrl(), simpleDraweeViews.get(2));
+        FrescoUtil.imageViewBind(dinner.getImageUrl(), simpleDraweeViews.get(3));
     }
 
     @Override
@@ -308,8 +315,8 @@ public class FragmentHome extends BaseFragment implements OkHttpUtil.OnDownLoadL
                 caixi_key= moreCookBooksEntityByJson.getData().getHotCategories().get(3).getName();
                 break;
         }
-        Intent intent = new Intent(getActivity(), ActivityDetail.class);
-        intent.putExtra(Constants.KEY.CAIXI_KEY,caixi_key);
+        Intent intent = new Intent(getActivity(), ActivityMCBooks.class);
+        intent.putExtra(Constants.KEY.CAIXI_KEY, caixi_key);
         startActivity(intent);
     }
 }
