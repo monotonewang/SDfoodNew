@@ -21,7 +21,7 @@ import butterknife.Bind;
  * 菜系的详情页
  * Created by Administrator on 2016/3/7.
  */
-public class ActivityMCBooks extends BaseActivity implements OkHttpUtil.OnDownLoadListener, AdapterView.OnItemClickListener {
+public class ActivityMCBooksList extends BaseActivity implements OkHttpUtil.OnDownLoadListener, AdapterView.OnItemClickListener {
     private String TAG = "print";
     private ActivityMCBookLVAdapter activityMoreCookBookLVAdapter;
     //菜系的URL
@@ -75,13 +75,19 @@ public class ActivityMCBooks extends BaseActivity implements OkHttpUtil.OnDownLo
 
     }
 
-
+    /**
+     *
+     * @param parent
+     * @param view
+     * @param position
+     * @param id
+     */
     @Override
     public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
         if(parent.equals(listView)){
-            String MoreCookBookUrl = String.format(Constants.URL.MoreCookBooks, data.get(position).getId());
+            String MoreCookBookUrl = String.format(Constants.URL.MORECOOKBOOKS, Integer.valueOf(data.get(position).getId()));
                 Intent intent=new Intent(this,ActivityMcBookDetail.class);
-                intent.putExtra(Constants.KEY.MORE_BOOK_DETAIL,MoreCookBookUrl);
+                intent.putExtra(Constants.KEY.MORE_BOOK_DETAIL, MoreCookBookUrl);
                 startActivity(intent);
         }
     }

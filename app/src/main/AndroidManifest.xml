@@ -29,13 +29,13 @@
 
         </activity>
         <!--菜系列表Activity-->
-        <activity android:name=".ActivityMCBooks">
+        <activity android:name=".ActivityMCBooksList">
         </activity>
         <!--菜系详情Activity-->
         <activity android:name=".ActivityMcBookDetail">
         </activity>
         <!--FOODActivity-->
-        <activity android:name=".FoodDetailActvity">
+        <activity android:name=".ActvityMegcook">
         </activity>
     </application>
 

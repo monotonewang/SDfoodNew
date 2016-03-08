@@ -9,7 +9,7 @@ import com.wang.sdfood.util.Constants;
 /**
  * Created by Administrator on 2016/3/8.
  */
-public class FoodDetailActvity extends BaseActivity {
+public class ActvityMegcook extends BaseActivity {
     private String TAG = "print";
     @Override
     protected int getViewResId() {

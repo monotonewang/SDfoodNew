@@ -19,7 +19,7 @@ public interface Constants {
         //川菜lv keyWord ="川菜"
         String CAIXIURL = "http://www.xdmeishi.com/index.php?m=mobile&c=index&a=getCookbooksByKeyword&keyword=%s&pageNum=1&pageSize=20";
         //菜系点击下面的内容
-        String MoreCookBooks ="http://www.xdmeishi.com/index.php?m=mobile&c=index&a=getCookbookDetails&id=%s";
+        String MORECOOKBOOKS ="http://www.xdmeishi.com/index.php?m=mobile&c=index&a=getCookbookDetails&id=%d";
         /**
          * fragment发现Url
          */

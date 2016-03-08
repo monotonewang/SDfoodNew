@@ -3,6 +3,7 @@ package com.wang.sdfood;
 import com.wang.sdfood.base.BaseActivity;
 
 /**
+ * 这是收藏的Activity
  * Created by user on 2016/3/6.
  */
 public class ActivityHomeCollect extends BaseActivity {
