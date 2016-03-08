@@ -17,6 +17,7 @@ public interface Constants {
         //川菜lv keyWord ="川菜"
         String CAIXIURL= "http://www.xdmeishi.com/index.php?m=mobile&c=index&a=getCookbooksByKeyword&keyword=%S&pageNum=1&pageSize=20";
 
+        String DISCOVER ="http://www.xdmeishi.com/index.php?m=mobile&c=index&a=getGoodsList&pageNum=1&pageSize=10";
 
     }
 

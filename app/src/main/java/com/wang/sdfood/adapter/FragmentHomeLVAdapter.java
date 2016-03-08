@@ -46,7 +46,7 @@ public class FragmentHomeLVAdapter extends BaseAdapter {
         MyViewHolder myViewHolder=null;
         if(convertView==null){
             myViewHolder=new MyViewHolder();
-            convertView = LayoutInflater.from(context).inflate(R.layout.fragment_home_morecb_lv,null);
+            convertView = LayoutInflater.from(context).inflate(R.layout.lv_fragment_home_morecb,null);
             myViewHolder.simpleDraweeView= (SimpleDraweeView) convertView.findViewById(R.id.fragment_home_morecb_lv_sdv);
             myViewHolder.tvName= (TextView) convertView.findViewById(R.id.fragment_home_morecb_lv_name);
             myViewHolder.tvNickName= (TextView) convertView.findViewById(R.id.fragment_home_morecb_lv_nickName);

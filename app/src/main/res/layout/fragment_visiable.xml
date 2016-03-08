@@ -1,10 +1,49 @@
 <?xml version="1.0" encoding="utf-8"?>
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
-    android:orientation="vertical" android:layout_width="match_parent"
-    android:layout_height="match_parent">
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical">
+    <!--这是fragment头部的控件-->
+    <include layout="@layout/fragment_common_headview"></include>
+
+    <com.facebook.drawee.view.SimpleDraweeView
+        android:id="@+id/fragment_visiable_sdv"
+        android:layout_width="match_parent"
+        android:layout_height="@dimen/y130" />
+
     <TextView
-        android:text="visiable"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content" />
+        android:id="@+id/fragment_visiable_goodsName"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:paddingLeft="@dimen/x10"
+        android:paddingRight="@dimen/x10"
+        android:textStyle="bold" />
+
+    <TextView
+        android:id="@+id/fragment_visiable_briefinfo"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:paddingLeft="@dimen/x10"
+        android:paddingRight="@dimen/x10"
+        android:textSize="@dimen/fragment_dicover_small_textsize" />
+
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content">
+
+        <TextView
+            android:id="@+id/fragment_visiable_price"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:paddingLeft="@dimen/x10" />
+
+        <TextView
+            android:id="@+id/fragment_visiable_salesCount"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignParentRight="true"
+            android:paddingRight="@dimen/x10" />
+
+    </RelativeLayout>
 
 </LinearLayout>
