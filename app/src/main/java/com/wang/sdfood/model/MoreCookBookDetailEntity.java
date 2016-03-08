@@ -5,7 +5,7 @@ import java.util.List;
 /**
  * Created by user on 2016/3/8.
  */
-public class MoreCookBookEntity {
+public class MoreCookBookDetailEntity {
 
     /**
      * result : ok
@@ -430,6 +430,18 @@ public class MoreCookBookEntity {
         }
 
         public static class MakingStepsEntity {
+            @Override
+            public String toString() {
+                return "MakingStepsEntity{" +
+                        "stepNumber=" + stepNumber +
+                        ", imageUrl='" + imageUrl + '\'' +
+                        ", description='" + description + '\'' +
+                        ", temp=" + temp +
+                        ", times=" + times +
+                        ", pause=" + pause +
+                        '}';
+            }
+
             private int stepNumber;
             private String imageUrl;
             private String description;

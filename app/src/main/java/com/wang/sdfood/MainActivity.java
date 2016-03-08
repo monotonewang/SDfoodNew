@@ -3,11 +3,13 @@ package com.wang.sdfood;
 
 import android.graphics.Bitmap;
 import android.graphics.BitmapFactory;
+import android.os.Handler;
 import android.support.design.widget.FloatingActionButton;
 import android.support.design.widget.NavigationView;
 import android.support.v4.app.Fragment;
 import android.support.v4.app.FragmentManager;
 import android.support.v4.app.FragmentTransaction;
+import android.support.v4.widget.SwipeRefreshLayout;
 import android.util.Log;
 import android.view.View;
 import android.widget.AdapterView;
@@ -30,6 +32,9 @@ import butterknife.Bind;
 
 public class MainActivity extends BaseActivity implements RadioGroup.OnCheckedChangeListener,AdapterView.OnItemClickListener {
     private static final String TAG ="MainActivity" ;
+    @Bind(R.id.activity_main_srl)
+    public SwipeRefreshLayout swipeRefreshLayout;
+    public Handler handler=new Handler();
     @Bind(R.id.activiy_home_radiogp)
     public RadioGroup radioGroup;
     @Bind({R.id.activiy_radiobtn_home, R.id.activiy_radiobtn_visible, R.id.activiy_radiobtn_msg, R.id.activiy_radiobtn_mine})
@@ -67,6 +72,24 @@ public class MainActivity extends BaseActivity implements RadioGroup.OnCheckedCh
         beginTransaction.add(R.id.activity_main_fl, fragmentMsg);
         beginTransaction.add(R.id.activity_main_fl, fragmentMine);
         beginTransaction.commit();
+        /**
+         * 刷新控件的监听方法
+         */
+//        if()
+        swipeRefreshLayout.setOnRefreshListener(new SwipeRefreshLayout.OnRefreshListener() {
+            @Override
+            public void onRefresh() {
+                //重新加载一次数据
+                loadDatas();
+                //过一秒自动关闭
+                handler.postDelayed(new Runnable() {
+                    @Override
+                    public void run() {
+                        swipeRefreshLayout.setRefreshing(false);
+                    }
+                },1000);
+            }
+        });
         //设置ListView的监听
         listView.setOnItemClickListener(this);
     }

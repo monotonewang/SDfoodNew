@@ -29,6 +29,17 @@
     <string name="activity_caixi_detail_collectcount">个收藏</string>
     <string name="activity_caixi_detail_hitscount">次阅读</string>
     <string name="activity_caixi_detail_empty_text">空</string>
+    <!--菜系详情的activity的文字-->
+    <string name="activity_megbook_head_focus">关注</string>
+    <string name="activity_megbook_head_taste">口味</string>
+    <string name="activity_megbook_head_kitchen">厨具</string>
+    <string name="activity_megbook_head_time">用时</string>
+    <string name="activity_megbook_head_partice">做法</string>
+    <string name="activity_megbook_head_diff">难度</string>
+    <string name="activity_megbook_detail_steps_temp">温度:0℃</string>
+    <string name="activity_megbook_detail_steps_time">时间:0秒</string>
+    <string name="activity_megbook_detail_steps_production_steps">制作步骤</string>
+    <string name="activity_megbook_detail_steps_production_steps_big">点击步骤可以看大图哦</string>
     <!--发现的fragment的文字-->
     <string name="fragment_discover_price">￥</string>
     <string name="fragment_discover_salecount">人购买</string>

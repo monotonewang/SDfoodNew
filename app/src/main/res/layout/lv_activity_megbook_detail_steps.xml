@@ -1,0 +1,55 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!--这是制作菜步骤的ListView-->
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:fresco="http://schemas.android.com/apk/res-auto"
+    android:layout_width="match_parent"
+    android:paddingLeft="@dimen/x10"
+    android:paddingRight="@dimen/x10"
+    android:paddingBottom="@dimen/y10"
+    android:paddingTop="@dimen/y10"
+    android:background="@color/fragment_home_view_bgcolor"
+    android:layout_height="@dimen/y130"
+    android:orientation="horizontal">
+
+    <LinearLayout
+        android:layout_width="@dimen/x170"
+        android:layout_height="wrap_content"
+        android:orientation="vertical">
+
+        <com.facebook.drawee.view.SimpleDraweeView
+            android:id="@+id/activity_megbook_detail_steps_image"
+            android:layout_width="@dimen/x170"
+            android:layout_height="wrap_content"
+            fresco:viewAspectRatio="1.33" />
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal">
+
+            <TextView
+                android:textStyle="bold"
+                android:textSize="@dimen/fragment_home_view_head_word"
+                android:id="@+id/activity_megbook_detail_steps_temp"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="@string/activity_megbook_detail_steps_temp" />
+
+            <TextView
+                android:id="@+id/activity_megbook_detail_steps_time"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="@string/activity_megbook_detail_steps_time" />
+        </LinearLayout>
+    </LinearLayout>
+    <LinearLayout
+        android:layout_width="@dimen/x150"
+        android:layout_height="wrap_content"
+        android:orientation="vertical">
+    <TextView
+        android:id="@+id/activity_megbook_detail_steps_description"
+        android:text="@string/activity_megbook_detail_steps_time"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content" />
+    </LinearLayout>
+</LinearLayout>

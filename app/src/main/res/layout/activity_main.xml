@@ -12,50 +12,57 @@
         android:layout_width="match_parent"
         android:layout_height="match_parent">
 
-        <android.support.design.widget.CoordinatorLayout
+        <android.support.v4.widget.SwipeRefreshLayout
+            android:id="@+id/activity_main_srl"
             android:layout_width="match_parent"
-            android:layout_height="match_parent"
-            android:orientation="vertical">
-            <!--Fragment帧布局占位-->
-            <FrameLayout
+            android:layout_height="match_parent">
 
-                android:id="@+id/activity_main_fl"
+            <android.support.design.widget.CoordinatorLayout
                 android:layout_width="match_parent"
-                android:layout_height="@dimen/y432"></FrameLayout>
+                android:layout_height="match_parent"
+                android:orientation="vertical">
+                <!--Fragment帧布局占位-->
+                <FrameLayout
 
-            <android.support.design.widget.FloatingActionButton
-                android:id="@+id/activty_main_fab"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_gravity="bottom|right"
-                android:layout_marginBottom="@dimen/x20"
-                android:layout_marginRight="@dimen/x20"
-                app:backgroundTint="@color/activityBottomTextCheckColor"
-                android:src="@drawable/menu_icon_upload_recipe" />
-            <!--添加radioGroup的布局-->
-            <include layout="@layout/activity_main_radiogroup"></include>
-        </android.support.design.widget.CoordinatorLayout>
+                    android:id="@+id/activity_main_fl"
+                    android:layout_width="match_parent"
+                    android:layout_height="@dimen/y432"></FrameLayout>
+
+                <android.support.design.widget.FloatingActionButton
+                    android:id="@+id/activty_main_fab"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_gravity="bottom|right"
+                    android:layout_marginBottom="@dimen/x20"
+                    android:layout_marginRight="@dimen/x20"
+                    android:src="@drawable/menu_icon_upload_recipe"
+                    app:backgroundTint="@color/activityBottomTextCheckColor" />
+                <!--添加radioGroup的布局-->
+                <include layout="@layout/activity_main_radiogroup"></include>
+            </android.support.design.widget.CoordinatorLayout>
+        </android.support.v4.widget.SwipeRefreshLayout>
 
         <android.support.design.widget.NavigationView
             android:id="@+id/activity_main_dl_nav"
             android:layout_width="match_parent"
             android:layout_height="match_parent"
             android:layout_gravity="left"
-            app:headerLayout="@layout/activity_main_dl_headview"
-           >
+            app:headerLayout="@layout/activity_main_dl_headview">
+
             <ListView
-                android:layout_gravity="center"
                 android:id="@+id/activity_main_dl_nav_lv"
                 android:layout_width="match_parent"
-                android:layout_height="wrap_content">
+                android:layout_height="wrap_content"
+                android:layout_gravity="center">
 
             </ListView>
+
             <ImageView
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:src="@drawable/menu_advert2"
+                android:layout_gravity="bottom|center_horizontal"
                 android:layout_marginBottom="@dimen/y1"
-                android:layout_gravity="bottom|center_horizontal"/>
+                android:src="@drawable/menu_advert2" />
 
         </android.support.design.widget.NavigationView>
     </android.support.v4.widget.DrawerLayout>
