@@ -18,6 +18,7 @@ import com.wang.sdfood.R;
 import com.wang.sdfood.adapter.FragmentHomeLVAdapter;
 import com.wang.sdfood.adapter.FragmentHomeNewuserLVAdapter;
 import com.wang.sdfood.base.BaseFragment;
+import com.wang.sdfood.listenter.FragmentHomeLLSweetListener;
 import com.wang.sdfood.listenter.ViewPagerListener;
 import com.wang.sdfood.menucustem.Menu;
 import com.wang.sdfood.menucustem.MenuItem;
@@ -64,6 +65,9 @@ public class FragmentHome extends BaseFragment implements OkHttpUtil.OnDownLoadL
     public List<SimpleDraweeView> hotCategoriessdv;
 
     //这是sweet的View
+    //LinearLayout的布局id
+    @Bind({R.id.fragment_home_sweet_sweets,R.id.fragment_home_sweet_porridge,R.id.fragment_home_sweet_hotfood,R.id.fragment_home_sweet_snacks})
+    public List<LinearLayout> linearLayouts;
     //这是推荐的甜点美食的数据
     private MoreCookBooksEntity.DataEntity.RecommendEntity recommend;
     //这是推荐的breakfast的LinearLayout
@@ -116,6 +120,10 @@ public class FragmentHome extends BaseFragment implements OkHttpUtil.OnDownLoadL
         lucai.setOnClickListener(this);
         sucai.setOnClickListener(this);
         zhecai.setOnClickListener(this);
+        /**
+         * LinearLayout的监听
+         */
+        linearLayouts.get(0).setOnClickListener(new FragmentHomeLLSweetListener(getActivity(),1));
     }
 
     @Override

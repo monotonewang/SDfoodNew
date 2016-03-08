@@ -12,14 +12,27 @@ public interface Constants {
          * 西顿首页Fragment
          */
         String HOMEURL = "http://www.xdmeishi.com/index.php?m=mobile&c=index&a=getHomeEntity";
-        //                --正在热卖
-        String HOTSALE = " http://www.mogujie.com/xmapi/system/v1/brand/index?_atype=android&_channel=NAFmiui&_saveMode=0&_msys=4.4.2&_app=go&_at=297d34113511861e&tab=1&_network=2&_fs=NAFmiui102&_av=102&_newdid=1c4963f6db1dd0bfe4b231770f55c820&_version=1.0.2.1021&marketType=market_go&_swidth=600&_sdklevel=19&_did2=4aa6794c-548e-4fb6-9f11-b3e10e9eea65&_did=352284045638644&minfo=NoxW&_t=1457093981";
-        //                --即将上线
-        String ONLINE = "  http://www.mogujie.com/xmapi/system/v1/brand/index?_atype=android&_channel=NAFmiui&_saveMode=0&_msys=4.4.2&_app=go&_at=696a45c32b0b30c4&tab=3&_network=2&_fs=NAFmiui102&_av=102&_newdid=1c4963f6db1dd0bfe4b231770f55c820&_version=1.0.2.1021&marketType=market_go&_swidth=600&_sdklevel=19&_did2=4aa6794c-548e-4fb6-9f11-b3e10e9eea65&_did=352284045638644&minfo=NoxW&_t=1457094361";
         //川菜lv keyWord ="川菜"
         String CAIXIURL = "http://www.xdmeishi.com/index.php?m=mobile&c=index&a=getCookbooksByKeyword&keyword=%s&pageNum=1&pageSize=20";
+
         //菜系点击下面的内容
-        String MORECOOKBOOKS ="http://www.xdmeishi.com/index.php?m=mobile&c=index&a=getCookbookDetails&id=%d";
+        String MORECOOKBOOKS = "http://www.xdmeishi.com/index.php?m=mobile&c=index&a=getCookbookDetails&id=%d";
+
+        //本周最热---最新菜谱
+        String WEKK_HOT = "http://www.xdmeishi.com/index.php?m=mobile&c=index&a=getRecipeTheme&id=%d&pageNum=1&pageSize=20";
+        //最新作品
+        String NEW_WORKS = "http://www.xdmeishi.com/index.php?m=mobile&c=index&a=getNewWork&type=0&id=%d&pageNum=1&pageSize=20";
+        //最新评论
+        String NEW_DISCUSS = " http://www.xdmeishi.com/index.php?m=mobile&c=index&a=getNewWork&type=1&pageNum=1&pageSize=20";
+        /**
+         * 甜食的url
+         */
+        String SWEET_FOOD = "http://www.xdmeishi.com/index.php?m=mobile&c=index&a=getRecipeTheme&id=%d&pageNum=1&pageSize=20";
+        /**
+         * 西顿网友的Url
+         */
+        String NEW_USER="http://www.xdmeishi.com/index.php?m=mobile&c=index&a=getUserPublicInfo&id=%d";
+        String NEW_USER_FOOD="http://www.xdmeishi.com/index.php?m=mobile&c=index&a=getMyDynamics&id=%d&pageNum=1&pageSize=20";
         /**
          * fragment发现Url
          */
