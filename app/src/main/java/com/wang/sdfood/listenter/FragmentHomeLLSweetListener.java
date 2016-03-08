@@ -1,6 +1,7 @@
 package com.wang.sdfood.listenter;
 
 import android.content.Context;
+import android.util.Log;
 import android.view.View;
 
 /**
@@ -13,11 +14,12 @@ public class FragmentHomeLLSweetListener implements View.OnClickListener  {
     public FragmentHomeLLSweetListener(Context c,String str) {
         super();
         this.str = str;
+
         context=c;
 
     }
     @Override
     public void onClick(View v) {
-
+        Log.e(TAG, "FragmentHomeLLSweetListener: "+str);
     }
 }
