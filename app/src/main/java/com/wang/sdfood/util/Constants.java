@@ -25,7 +25,6 @@ public interface Constants {
          */
         String DISCOVER = "http://www.xdmeishi.com/index.php?m=mobile&c=index&a=getGoodsList&pageNum=1&pageSize=10";
 
-        String DISCOVER ="http://www.xdmeishi.com/index.php?m=mobile&c=index&a=getGoodsList&pageNum=1&pageSize=10";
 
     }
 
