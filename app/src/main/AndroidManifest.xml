@@ -34,6 +34,9 @@
         <!--菜系详情Activity-->
         <activity android:name=".ActivityMcBookDetail">
         </activity>
+        <!--FOODActivity-->
+        <activity android:name=".FoodDetailActvity">
+        </activity>
     </application>
 
 </manifest>

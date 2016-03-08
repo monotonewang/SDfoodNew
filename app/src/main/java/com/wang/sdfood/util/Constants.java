@@ -25,6 +25,8 @@ public interface Constants {
          */
         String DISCOVER = "http://www.xdmeishi.com/index.php?m=mobile&c=index&a=getGoodsList&pageNum=1&pageSize=10";
 
+        String DISCOVER ="http://www.xdmeishi.com/index.php?m=mobile&c=index&a=getGoodsList&pageNum=1&pageSize=10";
+
     }
 
     /**
@@ -34,5 +36,7 @@ public interface Constants {
         //菜系的列表传递的关键字
         String CAIXI_KEY = "caixi";
         String MORE_BOOK_DETAIL = "more_book_detail";
+        //菜系的传递的关键字
+        String FOODNAME_ID_KEY = "foodnameid";
     }
 }
