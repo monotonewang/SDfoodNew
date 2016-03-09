@@ -46,6 +46,7 @@
 
         <!--甜食Activity-->
         <activity android:name=".activity.ActivityCommendFood">
+
         </activity>
     </application>
 

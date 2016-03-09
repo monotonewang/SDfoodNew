@@ -9,10 +9,11 @@ import android.widget.TextView;
 
 import com.facebook.drawee.view.SimpleDraweeView;
 import com.wang.sdfood.R;
-import com.wang.sdfood.model.StapleFoodEntity;
+import com.wang.sdfood.model.StapleFoodEntitys;
 import com.wang.sdfood.util.FrescoUtil;
 
 import java.util.List;
+
 
 /**
  * 这是主食的listview的适配器
@@ -21,8 +22,8 @@ import java.util.List;
 public class ActivityCommendFoodLVAdapter extends BaseAdapter {
     //构造方法
     private Context mContext;
-    private List<StapleFoodEntity.DataEntity> mStapleFood;
-    public ActivityCommendFoodLVAdapter(Context context, List<StapleFoodEntity.DataEntity> mStapleFood) {
+    private List<StapleFoodEntitys.DataEntity> mStapleFood;
+    public ActivityCommendFoodLVAdapter(Context context, List<StapleFoodEntitys.DataEntity> mStapleFood) {
         this.mContext=context;
         this.mStapleFood=mStapleFood;
     }

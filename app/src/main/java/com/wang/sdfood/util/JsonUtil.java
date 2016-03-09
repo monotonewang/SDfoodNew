@@ -5,7 +5,7 @@ import com.wang.sdfood.model.CaiXiEntity;
 import com.wang.sdfood.model.DiscoverEntitys;
 import com.wang.sdfood.model.MoreCookBookDetailEntity;
 import com.wang.sdfood.model.MoreCookBooksEntity;
-import com.wang.sdfood.model.StapleFoodEntity;
+import com.wang.sdfood.model.StapleFoodEntitys;
 
 /**
  * 解析Json数据的工具类
@@ -25,8 +25,8 @@ public class JsonUtil {
      * @param json
      * @return
      */
-    public static StapleFoodEntity getStapleFoodByJson(String json) {
-        return new Gson().fromJson(json, StapleFoodEntity.class);
+    public static StapleFoodEntitys getStapleFoodByJson(String json) {
+        return new Gson().fromJson(json, StapleFoodEntitys.class);
     }
     /**
      * 解析Fragment不同菜系的数据

@@ -6,7 +6,7 @@ import android.widget.ListView;
 import com.wang.sdfood.R;
 import com.wang.sdfood.adapter.ActivityCommendFoodLVAdapter;
 import com.wang.sdfood.base.BaseActivity;
-import com.wang.sdfood.model.StapleFoodEntity;
+import com.wang.sdfood.model.StapleFoodEntitys;
 import com.wang.sdfood.util.Constants;
 import com.wang.sdfood.util.JsonUtil;
 import com.wang.sdfood.util.OkHttpUtil;
@@ -25,7 +25,7 @@ public class ActivityCommendFood extends BaseActivity implements OkHttpUtil.OnDo
 //传递过来的url
     private String url_sweetfood;
     //数据的list集合
-    private List<StapleFoodEntity.DataEntity> mList_stapleFood;
+    private List<StapleFoodEntitys.DataEntity> mList_stapleFood;
     //适配器
    private ActivityCommendFoodLVAdapter activityCommendFoodLVAdapter;
     @Override
@@ -53,7 +53,7 @@ public class ActivityCommendFood extends BaseActivity implements OkHttpUtil.OnDo
         if (url!=null&&url.equals(url_sweetfood)){
             mList_stapleFood  =  JsonUtil.getStapleFoodByJson(json).getData();
         }
-        activityCommendFoodLVAdapter = new ActivityCommendFoodLVAdapter(this,mList_stapleFood);
+        activityCommendFoodLVAdapter = new ActivityCommendFoodLVAdapter(getApplicationContext(),mList_stapleFood);
         listView.setAdapter(activityCommendFoodLVAdapter);
     }
 
