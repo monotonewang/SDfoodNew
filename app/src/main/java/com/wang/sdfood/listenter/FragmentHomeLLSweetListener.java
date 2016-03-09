@@ -2,10 +2,9 @@ package com.wang.sdfood.listenter;
 
 import android.content.Context;
 import android.content.Intent;
-import android.util.Log;
 import android.view.View;
 
-import com.wang.sdfood.ActivityCommendFood;
+import com.wang.sdfood.activity.ActivityCommendFood;
 import com.wang.sdfood.util.Constants;
 
 /**
