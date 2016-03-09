@@ -2,7 +2,8 @@
 <resources>
     <color name="colorPrimary">#FF8800</color>
     <color name="colorPrimaryDark">#FF8800</color>
-    <color name="colorAccent">#FF4081</color>
+    <!--这是光标的EditText的xxx-->
+    <color name="colorAccent">#FF8800</color>
     <color name="activityBottomTextCheckColor">#FF8800</color>
     <color name="activityBottomTextUnCheckColor">#2A2A2A</color>
     <color name="activityLVFirstBgColor">#65DB9E</color>

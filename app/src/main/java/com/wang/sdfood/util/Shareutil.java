@@ -9,12 +9,22 @@ import android.content.SharedPreferences;
 public class Shareutil {
     private static SharedPreferences sharedPreferences;
     private static SharedPreferences.Editor editor;
-    private static String CityFileName = "FoodStreetConfig";
+    private static String CityFileName = "SDfood";
 
     //初始化共享参数
     public static void initShared(Context context) {
         sharedPreferences = context.getSharedPreferences(CityFileName, Context.MODE_PRIVATE);
         editor = sharedPreferences.edit();
+    }
+    //写入boolean类型的值
+    public static void putWelcomeBoolean(String key, boolean value) {
+        editor.putBoolean(key, value);
+        editor.commit();
+    }
+
+    //获取boolean类型的值
+    public static boolean getWelocomeBoolean(String key) {
+        return sharedPreferences.getBoolean(key, false);
     }
 
     //保存城市的名称
@@ -39,14 +49,5 @@ public class Shareutil {
         return sharedPreferences.getInt(key, -1);
     }
 
-    //写入boolean类型的值
-    public static void putWelcomeBoolean(String key, boolean value) {
-        editor.putBoolean(key, value);
-        editor.commit();
-    }
 
-    //获取boolean类型的值
-    public static boolean getWelocomeBoolean(String key) {
-        return sharedPreferences.getBoolean(key, false);
-    }
 }

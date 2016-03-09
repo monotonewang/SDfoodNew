@@ -31,4 +31,5 @@ dependencies {
     compile 'org.greenrobot:eventbus:3.0.0'
     compile 'com.jakewharton:butterknife:7.0.1'
     compile 'me.codeboy.android:cycle-view-pager:1.0.0'
+    compile 'com.nostra13.universalimageloader:universal-image-loader:1.9.5'
 }

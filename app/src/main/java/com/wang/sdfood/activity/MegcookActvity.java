@@ -1,15 +1,16 @@
-package com.wang.sdfood;
+package com.wang.sdfood.activity;
 
 import android.content.Intent;
 import android.util.Log;
 
+import com.wang.sdfood.R;
 import com.wang.sdfood.base.BaseActivity;
 import com.wang.sdfood.util.Constants;
 
 /**
  * Created by Administrator on 2016/3/8.
  */
-public class ActvityMegcook extends BaseActivity {
+public class MegcookActvity extends BaseActivity {
     private String TAG = "print";
     @Override
     protected int getViewResId() {

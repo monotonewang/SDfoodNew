@@ -1,10 +1,11 @@
-package com.wang.sdfood;
+package com.wang.sdfood.activity;
 
 import android.content.Intent;
 import android.view.View;
 import android.widget.AdapterView;
 import android.widget.ListView;
 
+import com.wang.sdfood.R;
 import com.wang.sdfood.adapter.ActivityMCBookLVAdapter;
 import com.wang.sdfood.base.BaseActivity;
 import com.wang.sdfood.model.CaiXiEntity;
@@ -86,7 +87,7 @@ public class ActivityMCBooksList extends BaseActivity implements OkHttpUtil.OnDo
     public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
         if(parent.equals(listView)){
             String MoreCookBookUrl = String.format(Constants.URL.MORECOOKBOOKS, Integer.valueOf(data.get(position).getId()));
-                Intent intent=new Intent(this,ActivityMcBookDetail.class);
+                Intent intent=new Intent(this,McBookDetailActivity.class);
                 intent.putExtra(Constants.KEY.MORE_BOOK_DETAIL, MoreCookBookUrl);
                 startActivity(intent);
         }

@@ -6,6 +6,7 @@
         android:gravity="center"
         android:orientation="vertical"
         android:paddingTop="@dimen/y40"
+        android:background="@drawable/fragment_home_head_bg_shape"
         android:layout_width="match_parent"
         android:layout_height="wrap_content">
         <ImageView

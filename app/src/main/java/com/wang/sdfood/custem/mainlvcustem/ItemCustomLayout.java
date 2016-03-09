@@ -1,4 +1,4 @@
-package com.wang.sdfood.menucustem;
+package com.wang.sdfood.custem.mainlvcustem;
 
 import android.content.Context;
 import android.graphics.Color;
@@ -44,19 +44,19 @@ public class ItemCustomLayout extends FrameLayout {
 
         public void hideBackground() {
             mBGImage.setVisibility(GONE);
-            com.wang.sdfood.menucustem.Compat.setBackgroundDrawable(this, mTransparentDrawable);
+            Compat.setBackgroundDrawable(this, mTransparentDrawable);
 
         }
 
         public void showBackground() {
             mBGImage.setVisibility(VISIBLE);
-            com.wang.sdfood.menucustem.Compat.setBackgroundDrawable(this, mDrawable);
+            Compat.setBackgroundDrawable(this, mDrawable);
 
         }
 
         public void saveBackground(Drawable drawable) {
             mDrawable = drawable;
-            com.wang.sdfood.menucustem.Compat.setBackgroundDrawable(this, mDrawable);
+            Compat.setBackgroundDrawable(this, mDrawable);
             mBGImage.setImageDrawable(mDrawable);
             showBackground();
         }

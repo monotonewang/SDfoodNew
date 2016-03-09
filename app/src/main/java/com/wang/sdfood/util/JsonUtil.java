@@ -8,6 +8,7 @@ import com.wang.sdfood.model.MoreCookBooksEntity;
 import com.wang.sdfood.model.StapleFoodEntity;
 
 /**
+ * 解析Json数据的工具类
  * Created by user on 2016/3/3.
  */
 public class JsonUtil {

@@ -24,9 +24,9 @@ import butterknife.Bind;
  * 这是发现的Fragment
  * Created by user on 2016/3/4.
  */
-public class FragmentVisiable extends BaseFragment implements OkHttpUtil.OnDownLoadListener {
+public class VisiableFragment extends BaseFragment implements OkHttpUtil.OnDownLoadListener {
 
-    private static final String TAG ="FragmentVisiable" ;
+    private static final String TAG ="print" ;
     //绑定头部的TextView
     @Nullable
     @Bind(R.id.fragment_msg_headview_tv)

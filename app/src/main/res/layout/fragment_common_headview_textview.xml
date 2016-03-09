@@ -1,0 +1,33 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="@dimen/y35"
+    android:background="@color/colorPrimary"
+    android:orientation="horizontal">
+
+    <ImageView
+        android:id="@+id/fragment_common_headview_back"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_centerVertical="true"
+        android:src="@drawable/ic_ab_back_mtrl_am_alpha" />
+
+    <TextView
+        android:id="@+id/fragment_login_headview_tv1"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_centerInParent="true"
+        android:text="@string/fragment_hoem_gueesLike"
+        android:textSize="@dimen/fragment_msg_big_textsize" />
+
+    <TextView
+        android:id="@+id/activity_login_region_textView"
+        android:layout_width="@dimen/x40"
+        android:layout_height="@dimen/y35"
+        android:layout_alignParentRight="true"
+        android:gravity="center"
+        android:layout_centerVertical="true"
+        android:layout_gravity="center_horizontal"
+        android:text="@string/activity_login_region_tv"
+        android:textSize="@dimen/fragment_msg_big_textsize" />
+</RelativeLayout>

@@ -1,0 +1,65 @@
+<?xml version="1.0" encoding="utf-8"?>
+
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical">
+    <!--添加头部的控件-->
+    <include layout="@layout/fragment_common_headview_textview"></include>
+    <!--添加ET的控件-->
+    <include layout="@layout/lv_activiy_login"></include>
+
+   <!-- <com.wang.sdfood.custem.ActivityMegbookLVView
+        android:id="@+id/activity_login"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent">
+
+    </com.wang.sdfood.custem.ActivityMegbookLVView>-->
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="@dimen/y33"
+        android:orientation="horizontal">
+
+        <TextView
+            android:visibility="invisible"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:text="@string/activity_caixi_detail_empty_text" />
+
+        <LinearLayout
+            android:layout_width="0dp"
+            android:layout_weight="8"
+            android:layout_height="@dimen/y33"
+            android:orientation="horizontal">
+            <!--立即登录-->
+            <TextView
+                android:gravity="center"
+                android:textSize="@dimen/fragment_home_view_head_word"
+                android:id="@+id/tv_activity_login_now"
+                android:layout_width="match_parent"
+                android:layout_height="@dimen/y33"
+                android:background="@color/colorPrimary"
+                android:text="@string/activity_login_now_login" />
+
+        </LinearLayout>
+        <TextView
+            android:visibility="invisible"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:text="@string/activity_caixi_detail_empty_text" />
+    </LinearLayout>
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content">
+        <TextView
+            android:id="@+id/activity_login_forget_pwd"
+            android:layout_alignParentRight="true"
+            android:textSize="@dimen/activity_login_forget_pwd"
+            android:text="@string/activity_login_forget_pwd"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content" />
+    </RelativeLayout>
+</LinearLayout>

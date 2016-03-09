@@ -1,8 +1,9 @@
-package com.wang.sdfood;
+package com.wang.sdfood.activity;
 
 import android.content.Intent;
 import android.widget.TextView;
 
+import com.wang.sdfood.R;
 import com.wang.sdfood.adapter.ActivityMegcookIngredientsLVAdapter;
 import com.wang.sdfood.adapter.ActivitymegcookDetailAdapter;
 import com.wang.sdfood.base.BaseActivity;
@@ -21,9 +22,9 @@ import butterknife.Bind;
  * Created by user on 2016/3/8.
  *     http://www.xdmeishi.com/index.php?m=mobile&c=index&a=getCookbookDetails&id=1506
  */
-public class ActivityMcBookDetail extends BaseActivity implements OkHttpUtil.OnDownLoadListener {
+public class McBookDetailActivity extends BaseActivity implements OkHttpUtil.OnDownLoadListener {
 
-    private static final String TAG = "ActivityMcBookDetail";
+    private static final String TAG = "print";
     @Bind({R.id.activity_mcbook_detail_steps_foot_detail_lv,R.id.activity_mcbook_detail_steps_lv})
     public List<ActivityMegbookLVView> activityMegbookLVView;
     /**

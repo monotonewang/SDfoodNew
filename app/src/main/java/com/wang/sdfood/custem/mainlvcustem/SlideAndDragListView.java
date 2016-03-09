@@ -1,4 +1,4 @@
-package com.wang.sdfood.menucustem;
+package com.wang.sdfood.custem.mainlvcustem;
 
 import android.content.Context;
 import android.os.Handler;
@@ -19,7 +19,7 @@ import java.util.Map;
 /**
  * Created by user on 2016/3/6.
  */
-public class SlideAndDragListView<T> extends com.wang.sdfood.menucustem.DragListView<T> implements WrapperAdapter.OnAdapterSlideListenerProxy,
+public class SlideAndDragListView<T> extends DragListView<T> implements WrapperAdapter.OnAdapterSlideListenerProxy,
             WrapperAdapter.OnAdapterMenuClickListenerProxy, Handler.Callback {
         /* Handler 的 Message 信息 */
         private static final int MSG_WHAT_LONG_CLICK = 1;
@@ -95,7 +95,7 @@ public class SlideAndDragListView<T> extends com.wang.sdfood.menucustem.DragList
                             mOnListItemLongClickListener.onListItemLongClick(view, position);
                         }
                         boolean canDrag = scrollBackByDrag(position);
-                        if (canDrag && view instanceof com.wang.sdfood.menucustem.ItemMainLayout) {
+                        if (canDrag && view instanceof ItemMainLayout) {
                             setDragPosition(position);
                         }
                     }
@@ -131,18 +131,18 @@ public class SlideAndDragListView<T> extends com.wang.sdfood.menucustem.DragList
                         int position = pointToPosition(mXDown, mYDown);
                         if (position != AdapterView.INVALID_POSITION) {
                             View view = getChildAt(position - getFirstVisiblePosition());
-                            if (view instanceof com.wang.sdfood.menucustem.ItemMainLayout) {
-                                com.wang.sdfood.menucustem.ItemMainLayout itemMainLayout = (com.wang.sdfood.menucustem.ItemMainLayout) view;
+                            if (view instanceof ItemMainLayout) {
+                                ItemMainLayout itemMainLayout = (ItemMainLayout) view;
                                 if (isFingerMoving2Right(ev)) {//如果想向右滑动
                                     if (itemMainLayout.getItemLeftBackGroundLayout().getBtnViews().size() == 0 &&
-                                            itemMainLayout.getScrollState() == com.wang.sdfood.menucustem.ItemMainLayout.SCROLL_STATE_CLOSE) {//但是又没有Left的Menu
+                                            itemMainLayout.getScrollState() == ItemMainLayout.SCROLL_STATE_CLOSE) {//但是又没有Left的Menu
                                         mState = STATE_NOTHING;
                                         //消耗事件
                                         return true;
                                     }
                                 } else if (isFingerMoving2Left(ev)) {//如果想向左滑动
                                     if (itemMainLayout.getItemRightBackGroundLayout().getBtnViews().size() == 0 &&
-                                            itemMainLayout.getScrollState() == com.wang.sdfood.menucustem.ItemMainLayout.SCROLL_STATE_CLOSE) {//但是又没有Right的Menu
+                                            itemMainLayout.getScrollState() == ItemMainLayout.SCROLL_STATE_CLOSE) {//但是又没有Right的Menu
                                         mState = STATE_NOTHING;
                                         //消耗事件
                                         return true;
@@ -205,11 +205,11 @@ public class SlideAndDragListView<T> extends com.wang.sdfood.menucustem.DragList
             if (mWrapperAdapter.getSlideItemPosition() == position) {
                 int scrollBackSituation = mWrapperAdapter.returnSlideItemPosition(x);
                 switch (scrollBackSituation) {
-                    case com.wang.sdfood.menucustem.ItemMainLayout.SCROLL_BACK_CLICK_OWN:
+                    case ItemMainLayout.SCROLL_BACK_CLICK_OWN:
                         return RETURN_SCROLL_BACK_OWN;
-                    case com.wang.sdfood.menucustem.ItemMainLayout.SCROLL_BACK_ALREADY_CLOSED:
+                    case ItemMainLayout.SCROLL_BACK_ALREADY_CLOSED:
                         return RETURN_SCROLL_BACK_NOTHING;
-                    case com.wang.sdfood.menucustem.ItemMainLayout.SCROLL_BACK_CLICK_MENU_BUTTON:
+                    case ItemMainLayout.SCROLL_BACK_CLICK_MENU_BUTTON:
                         return RETURN_SCROLL_BACK_CLICK_MENU_BUTTON;
                 }
             } else if (mWrapperAdapter.getSlideItemPosition() != -1) {

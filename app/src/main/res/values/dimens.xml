@@ -16,4 +16,6 @@
     <dimen name="fragment_dicover_small_textsize">12sp</dimen>
     <!--fragment发现的头部字体大小-->
     <dimen name="fragment_msg_big_textsize">18sp</dimen>
+    <!--activitylogin-forget-pwd字体大小-->
+    <dimen name="activity_login_forget_pwd">14sp</dimen>
 </resources>

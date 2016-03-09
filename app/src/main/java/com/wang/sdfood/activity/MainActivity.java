@@ -1,15 +1,13 @@
-package com.wang.sdfood;
+package com.wang.sdfood.activity;
 
 
 import android.graphics.Bitmap;
 import android.graphics.BitmapFactory;
-import android.os.Handler;
 import android.support.design.widget.FloatingActionButton;
 import android.support.design.widget.NavigationView;
 import android.support.v4.app.Fragment;
 import android.support.v4.app.FragmentManager;
 import android.support.v4.app.FragmentTransaction;
-import android.support.v4.widget.SwipeRefreshLayout;
 import android.util.Log;
 import android.view.View;
 import android.widget.AdapterView;
@@ -17,12 +15,13 @@ import android.widget.ListView;
 import android.widget.RadioButton;
 import android.widget.RadioGroup;
 
+import com.wang.sdfood.R;
 import com.wang.sdfood.adapter.FragmentMsgLVAdapter;
 import com.wang.sdfood.base.BaseActivity;
-import com.wang.sdfood.fragment.FragmentHome;
-import com.wang.sdfood.fragment.FragmentMine;
-import com.wang.sdfood.fragment.FragmentMsg;
-import com.wang.sdfood.fragment.FragmentVisiable;
+import com.wang.sdfood.fragment.HomeFragment;
+import com.wang.sdfood.fragment.MineFragment;
+import com.wang.sdfood.fragment.MsgFragment;
+import com.wang.sdfood.fragment.VisiableFragment;
 import com.wang.sdfood.model.FragmentMsgEntity;
 
 import java.util.ArrayList;
@@ -32,9 +31,7 @@ import butterknife.Bind;
 
 public class MainActivity extends BaseActivity implements RadioGroup.OnCheckedChangeListener,AdapterView.OnItemClickListener {
     private static final String TAG ="MainActivity" ;
-    @Bind(R.id.activity_main_srl)
-    public SwipeRefreshLayout swipeRefreshLayout;
-    public Handler handler=new Handler();
+
     @Bind(R.id.activiy_home_radiogp)
     public RadioGroup radioGroup;
     @Bind({R.id.activiy_radiobtn_home, R.id.activiy_radiobtn_visible, R.id.activiy_radiobtn_msg, R.id.activiy_radiobtn_mine})
@@ -61,10 +58,10 @@ public class MainActivity extends BaseActivity implements RadioGroup.OnCheckedCh
         super.init();
         radioGroup.setOnCheckedChangeListener(this);
         fragmentManager = getSupportFragmentManager();
-        fragmentHome = new FragmentHome();
-        fragmentVisible = new FragmentVisiable();
-        fragmentMsg = new FragmentMsg();
-        fragmentMine = new FragmentMine();
+        fragmentHome = new HomeFragment();
+        fragmentVisible = new VisiableFragment();
+        fragmentMsg = new MsgFragment();
+        fragmentMine = new MineFragment();
         radioButtonList.get(0).setChecked(true);
         beginTransaction = fragmentManager.beginTransaction();
         beginTransaction.add(R.id.activity_main_fl, fragmentHome);
@@ -75,21 +72,7 @@ public class MainActivity extends BaseActivity implements RadioGroup.OnCheckedCh
         /**
          * 刷新控件的监听方法
          */
-//        if()
-        swipeRefreshLayout.setOnRefreshListener(new SwipeRefreshLayout.OnRefreshListener() {
-            @Override
-            public void onRefresh() {
-                //重新加载一次数据
-                loadDatas();
-                //过一秒自动关闭
-                handler.postDelayed(new Runnable() {
-                    @Override
-                    public void run() {
-                        swipeRefreshLayout.setRefreshing(false);
-                    }
-                },1000);
-            }
-        });
+//
         //设置ListView的监听
         listView.setOnItemClickListener(this);
     }

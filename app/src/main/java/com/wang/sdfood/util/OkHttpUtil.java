@@ -16,11 +16,15 @@ import okhttp3.RequestBody;
 import okhttp3.Response;
 
 /**
+ * 请求网络的工具类
  * Created by user on 2016/3/3.
  * OkHttp的工具类
  */
 public class OkHttpUtil {
     private static OkHttpClient okHttpClient;
+    /**
+     * 这样写会引起内存泄漏
+     */
     private static Handler handler = new Handler();
     public static void initOkHttp(){
         //设置OkHttp超时的初始化

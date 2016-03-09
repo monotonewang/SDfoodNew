@@ -1,0 +1,29 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:id="@+id/fragment_search"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:background="@drawable/checkswitch_frame"
+    android:orientation="horizontal"
+    android:paddingLeft="@dimen/x10"
+    android:paddingRight="@dimen/y10">
+
+    <ImageView
+        android:layout_width="0dp"
+        android:layout_weight="1"
+        android:layout_height="wrap_content"
+        android:src="@drawable/common_icon_list_def" />
+
+    <EditText
+        android:background="@drawable/checkswitch_frame"
+        android:layout_width="0dp"
+        android:layout_weight="8"
+        android:layout_height="wrap_content"
+        android:drawableLeft="@drawable/search_icon" />
+
+    <ImageView
+        android:layout_width="0dp"
+        android:layout_weight="1"
+        android:layout_height="wrap_content"
+        android:src="@drawable/common_scan_normal" />
+</LinearLayout>

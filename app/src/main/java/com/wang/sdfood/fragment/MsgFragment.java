@@ -22,7 +22,7 @@ import butterknife.Bind;
  * 消息的Fragment
  * Created by user on 2016/3/4.
  */
-public class FragmentMsg extends BaseFragment {
+public class MsgFragment extends BaseFragment {
 
     //绑定头部的TextView
     @Nullable

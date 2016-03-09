@@ -1,4 +1,4 @@
-package com.wang.sdfood.menucustem;
+package com.wang.sdfood.custem.mainlvcustem;
 
 import android.content.Context;
 import android.content.Intent;
@@ -9,16 +9,16 @@ import android.widget.AbsListView;
 import android.widget.ListAdapter;
 import android.widget.WrapperListAdapter;
 
-import com.wang.sdfood.ActivityHomeCollect;
-import com.wang.sdfood.ActivityHomeDiscuss;
+import com.wang.sdfood.activity.HomeCollectActivity;
+import com.wang.sdfood.activity.HomeDiscussActivity;
 
 import java.util.Map;
 
 /**
  * Created by user on 2016/3/6.
  */
-public abstract class WrapperAdapter implements WrapperListAdapter, com.wang.sdfood.menucustem.ItemMainLayout.OnItemSlideListenerProxy, View.OnClickListener,
-        AbsListView.OnScrollListener, com.wang.sdfood.menucustem.ItemMainLayout.OnItemDeleteListenerProxy {
+public abstract class WrapperAdapter implements WrapperListAdapter, ItemMainLayout.OnItemSlideListenerProxy, View.OnClickListener,
+        AbsListView.OnScrollListener, ItemMainLayout.OnItemDeleteListenerProxy {
     private static final int TAG_LEFT = 3 << 24;
     private static final int TAG_RIGHT = 4 << 24;
     private static final String TAG ="WrapperAdapter" ;
@@ -29,7 +29,7 @@ public abstract class WrapperAdapter implements WrapperListAdapter, com.wang.sdf
     /* 用户自定义参数 */
     private Map<Integer, Menu> mMenuMap;
     /* SDLV */
-    private com.wang.sdfood.menucustem.SlideAndDragListView mListView;
+    private SlideAndDragListView mListView;
     /* 当前滑动的item的位置 */
     private int mSlideItemPosition = -1;
     /* 监听器 */
@@ -37,7 +37,7 @@ public abstract class WrapperAdapter implements WrapperListAdapter, com.wang.sdf
     private OnAdapterMenuClickListenerProxy mOnAdapterMenuClickListenerProxy;
 //     OnMenuStartActivityListener onMenuStartActivityListener;
 //     OnMenuStartActivityListener2 onMenuStartActivityListener2;
-    public WrapperAdapter(Context context, com.wang.sdfood.menucustem.SlideAndDragListView listView, ListAdapter adapter, Map<Integer, Menu> map) {
+    public WrapperAdapter(Context context, SlideAndDragListView listView, ListAdapter adapter, Map<Integer, Menu> map) {
         mContext = context;
         mListView = listView;
         mListView.setOnScrollListener(this);
@@ -92,10 +92,10 @@ public abstract class WrapperAdapter implements WrapperListAdapter, com.wang.sdf
 
     @Override
     public View getView(int position, View convertView, ViewGroup parent) {
-        com.wang.sdfood.menucustem.ItemMainLayout itemMainLayout = null;
+        ItemMainLayout itemMainLayout = null;
         if (convertView == null) {
             View contentView = mAdapter.getView(position, convertView, parent);
-            itemMainLayout = new com.wang.sdfood.menucustem.ItemMainLayout(mContext);
+            itemMainLayout = new ItemMainLayout(mContext);
             int type = mAdapter.getItemViewType(position);
             Menu menu = mMenuMap.get(type);
             if (menu == null) {
@@ -108,7 +108,7 @@ public abstract class WrapperAdapter implements WrapperListAdapter, com.wang.sdf
             itemMainLayout.setOnItemSlideListenerProxy(this);
             itemMainLayout.getItemCustomLayout().addCustomView(contentView);
         } else {
-            itemMainLayout = (com.wang.sdfood.menucustem.ItemMainLayout) convertView;
+            itemMainLayout = (ItemMainLayout) convertView;
             mAdapter.getView(position, itemMainLayout.getItemCustomLayout().getCustomView(), parent);
         }
         return itemMainLayout;
@@ -119,9 +119,9 @@ public abstract class WrapperAdapter implements WrapperListAdapter, com.wang.sdf
      *
      * @param itemMainLayout
      */
-    private void createMenu(Menu menu, com.wang.sdfood.menucustem.ItemMainLayout itemMainLayout) {
+    private void createMenu(Menu menu, ItemMainLayout itemMainLayout) {
         if (menu.getTotalBtnLength(MenuItem.DIRECTION_LEFT) > 0) {
-            com.wang.sdfood.menucustem.Compat.setBackgroundDrawable(itemMainLayout.getItemLeftBackGroundLayout().getBackGroundImage(), menu.getItemBackGroundDrawable());
+            Compat.setBackgroundDrawable(itemMainLayout.getItemLeftBackGroundLayout().getBackGroundImage(), menu.getItemBackGroundDrawable());
             for (int i = 0; i < menu.getMenuItems(MenuItem.DIRECTION_LEFT).size(); i++) {
                 View v = itemMainLayout.getItemLeftBackGroundLayout().addMenuItem(menu.getMenuItems(MenuItem.DIRECTION_LEFT).get(i));
                 v.setOnClickListener(this);
@@ -132,7 +132,7 @@ public abstract class WrapperAdapter implements WrapperListAdapter, com.wang.sdf
             itemMainLayout.getItemLeftBackGroundLayout().setVisibility(View.GONE);
         }
         if (menu.getTotalBtnLength(MenuItem.DIRECTION_RIGHT) > 0) {
-            com.wang.sdfood.menucustem.Compat.setBackgroundDrawable(itemMainLayout.getItemRightBackGroundLayout().getBackGroundImage(), menu.getItemBackGroundDrawable());
+            Compat.setBackgroundDrawable(itemMainLayout.getItemRightBackGroundLayout().getBackGroundImage(), menu.getItemBackGroundDrawable());
             for (int i = 0; i < menu.getMenuItems(MenuItem.DIRECTION_RIGHT).size(); i++) {
                 View v = itemMainLayout.getItemRightBackGroundLayout().addMenuItem(menu.getMenuItems(MenuItem.DIRECTION_RIGHT).get(i));
                 v.setOnClickListener(this);
@@ -172,7 +172,7 @@ public abstract class WrapperAdapter implements WrapperListAdapter, com.wang.sdf
             return;
         }
         mSlideItemPosition = position;
-        com.wang.sdfood.menucustem.ItemMainLayout itemMainLayout = (com.wang.sdfood.menucustem.ItemMainLayout) mListView.getChildAt(mSlideItemPosition - mListView.getFirstVisiblePosition());
+        ItemMainLayout itemMainLayout = (ItemMainLayout) mListView.getChildAt(mSlideItemPosition - mListView.getFirstVisiblePosition());
         for (View v : itemMainLayout.getItemLeftBackGroundLayout().getBtnViews()) {
             v.setClickable(true);
         }
@@ -195,7 +195,7 @@ public abstract class WrapperAdapter implements WrapperListAdapter, com.wang.sdf
      */
     public void returnSlideItemPosition() {
         if (mSlideItemPosition != -1) {
-            com.wang.sdfood.menucustem.ItemMainLayout itemMainLayout = (com.wang.sdfood.menucustem.ItemMainLayout) mListView.getChildAt(mSlideItemPosition - mListView.getFirstVisiblePosition());
+            ItemMainLayout itemMainLayout = (ItemMainLayout) mListView.getChildAt(mSlideItemPosition - mListView.getFirstVisiblePosition());
             if (itemMainLayout != null) {
                 itemMainLayout.scrollBack();
                 for (View v : itemMainLayout.getItemLeftBackGroundLayout().getBtnViews()) {
@@ -215,12 +215,12 @@ public abstract class WrapperAdapter implements WrapperListAdapter, com.wang.sdf
      */
     public int returnSlideItemPosition(float x) {
         if (mSlideItemPosition != -1) {
-            com.wang.sdfood.menucustem.ItemMainLayout itemMainLayout = (com.wang.sdfood.menucustem.ItemMainLayout) mListView.getChildAt(mSlideItemPosition - mListView.getFirstVisiblePosition());
+            ItemMainLayout itemMainLayout = (ItemMainLayout) mListView.getChildAt(mSlideItemPosition - mListView.getFirstVisiblePosition());
             if (itemMainLayout != null) {
                 int scrollBackSituation = itemMainLayout.scrollBack(x);
                 switch (scrollBackSituation) {
-                    case com.wang.sdfood.menucustem.ItemMainLayout.SCROLL_BACK_ALREADY_CLOSED:
-                    case com.wang.sdfood.menucustem.ItemMainLayout.SCROLL_BACK_CLICK_OWN:
+                    case ItemMainLayout.SCROLL_BACK_ALREADY_CLOSED:
+                    case ItemMainLayout.SCROLL_BACK_CLICK_OWN:
                         for (View v : itemMainLayout.getItemLeftBackGroundLayout().getBtnViews()) {
                             v.setClickable(false);
                         }
@@ -228,15 +228,15 @@ public abstract class WrapperAdapter implements WrapperListAdapter, com.wang.sdf
                             v.setClickable(false);
                         }
                         break;
-                    case com.wang.sdfood.menucustem.ItemMainLayout.SCROLL_BACK_CLICK_MENU_BUTTON:
+                    case ItemMainLayout.SCROLL_BACK_CLICK_MENU_BUTTON:
                         break;
                 }
                 return scrollBackSituation;
             }
             mSlideItemPosition = -1;
-            return com.wang.sdfood.menucustem.ItemMainLayout.SCROLL_BACK_CLICK_NOTHING;
+            return ItemMainLayout.SCROLL_BACK_CLICK_NOTHING;
         }
-        return com.wang.sdfood.menucustem.ItemMainLayout.SCROLL_BACK_CLICK_NOTHING;
+        return ItemMainLayout.SCROLL_BACK_CLICK_NOTHING;
     }
 
     /**
@@ -288,7 +288,7 @@ public abstract class WrapperAdapter implements WrapperListAdapter, com.wang.sdf
                     break;
                 case Menu.ITEM_DELETE_FROM_BOTTOM_TO_TOP:
                     if (mSlideItemPosition != -1) {
-                        com.wang.sdfood.menucustem.ItemMainLayout itemMainLayout = (com.wang.sdfood.menucustem.ItemMainLayout) mListView.getChildAt(mSlideItemPosition - mListView.getFirstVisiblePosition());
+                        ItemMainLayout itemMainLayout = (ItemMainLayout) mListView.getChildAt(mSlideItemPosition - mListView.getFirstVisiblePosition());
                         if (itemMainLayout != null) {
                             for (View v1 : itemMainLayout.getItemLeftBackGroundLayout().getBtnViews()) {
                                 v1.setClickable(false);
@@ -301,11 +301,11 @@ public abstract class WrapperAdapter implements WrapperListAdapter, com.wang.sdf
                     }
                     break;
                 case Menu.ITEM_START_ACTIVITY:
-                    Intent intent=new Intent(mContext, ActivityHomeDiscuss.class);
+                    Intent intent=new Intent(mContext, HomeDiscussActivity.class);
                     mContext.startActivity(intent);
                     break;
                 case Menu.ITEM_START_ACTIVITY2:
-                       Intent intent1=new Intent(mContext,ActivityHomeCollect.class);
+                       Intent intent1=new Intent(mContext,HomeCollectActivity.class);
                     mContext.startActivity(intent1);
                     break;
                 default:

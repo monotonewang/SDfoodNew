@@ -4,6 +4,8 @@ package com.wang.sdfood.fragment;
 import android.content.Intent;
 import android.graphics.Color;
 import android.graphics.drawable.ColorDrawable;
+import android.os.Handler;
+import android.support.v4.widget.SwipeRefreshLayout;
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
 import android.util.Log;
@@ -13,16 +15,16 @@ import android.widget.TextView;
 import android.widget.Toast;
 
 import com.facebook.drawee.view.SimpleDraweeView;
-import com.wang.sdfood.ActivityMCBooksList;
+import com.wang.sdfood.activity.ActivityMCBooksList;
 import com.wang.sdfood.R;
 import com.wang.sdfood.adapter.FragmentHomeLVAdapter;
 import com.wang.sdfood.adapter.FragmentHomeNewuserLVAdapter;
 import com.wang.sdfood.base.BaseFragment;
 import com.wang.sdfood.listenter.FragmentHomeLLSweetListener;
 import com.wang.sdfood.listenter.ViewPagerListener;
-import com.wang.sdfood.menucustem.Menu;
-import com.wang.sdfood.menucustem.MenuItem;
-import com.wang.sdfood.menucustem.SlideAndDragListView;
+import com.wang.sdfood.custem.mainlvcustem.Menu;
+import com.wang.sdfood.custem.mainlvcustem.MenuItem;
+import com.wang.sdfood.custem.mainlvcustem.SlideAndDragListView;
 import com.wang.sdfood.model.MoreCookBooksEntity;
 import com.wang.sdfood.util.Constants;
 import com.wang.sdfood.util.FrescoUtil;
@@ -41,7 +43,11 @@ import me.codeboy.android.cycleviewpager.CycleViewPager;
  * 整个主页上的内容，也是用户看到的
  * Created by user on 2016/3/4.
  */
-public class FragmentHome extends BaseFragment implements OkHttpUtil.OnDownLoadListener, SlideAndDragListView.OnListItemClickListener, SlideAndDragListView.OnSlideListener, SlideAndDragListView.OnMenuItemClickListener, View.OnClickListener {
+public class HomeFragment extends BaseFragment implements OkHttpUtil.OnDownLoadListener, SlideAndDragListView.OnListItemClickListener, SlideAndDragListView.OnSlideListener, SlideAndDragListView.OnMenuItemClickListener, View.OnClickListener {
+    //刷新的控件
+    @Bind(R.id.fragment_home_srl)
+    public SwipeRefreshLayout swipeRefreshLayout;
+    public Handler handler=new Handler();
     @Bind(R.id.tv_index)
     public TextView mTvIndex;
     //ViewPager
@@ -108,6 +114,21 @@ public class FragmentHome extends BaseFragment implements OkHttpUtil.OnDownLoadL
     @Override
     protected void init(View view) {
         super.init(view);
+//        下拉刷新的监听事件
+        swipeRefreshLayout.setOnRefreshListener(new SwipeRefreshLayout.OnRefreshListener() {
+            @Override
+            public void onRefresh() {
+                //重新加载一次数据
+                loadDatas();
+                //过一秒自动关闭
+                handler.postDelayed(new Runnable() {
+                    @Override
+                    public void run() {
+                        swipeRefreshLayout.setRefreshing(false);
+                    }
+                }, 1000);
+            }
+        });
         /**
          * 使TextView获取焦点，
          */
