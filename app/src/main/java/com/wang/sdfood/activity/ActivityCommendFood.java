@@ -1,8 +1,9 @@
-package com.wang.sdfood;
+package com.wang.sdfood.activity;
 
 import android.content.Intent;
 import android.widget.ListView;
 
+import com.wang.sdfood.R;
 import com.wang.sdfood.adapter.ActivityCommendFoodLVAdapter;
 import com.wang.sdfood.base.BaseActivity;
 import com.wang.sdfood.model.StapleFoodEntity;
