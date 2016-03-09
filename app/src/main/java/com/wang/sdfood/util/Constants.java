@@ -27,7 +27,7 @@ public interface Constants {
         /**
          * 甜食的url
          */
-        String SWEET_FOOD = "http://www.xdmeishi.com/index.php?m=mobile&c=index&a=getRecipeTheme&id=%d&pageNum=1&pageSize=20";
+        String SWEET_FOOD = "http://www.xdmeishi.com/index.php?m=mobile&c=index&a=getRecipeTheme&id=%s&pageNum=1&pageSize=20";
         /**
          * 西顿网友的Url
          */
@@ -50,5 +50,7 @@ public interface Constants {
         String MORE_BOOK_DETAIL = "more_book_detail";
         //菜系的传递的关键字
         String FOODNAME_ID_KEY = "foodnameid";
+        //甜食的传递的关键字
+        String SWEETFOOD_KEY = "foodnameid";
     }
 }

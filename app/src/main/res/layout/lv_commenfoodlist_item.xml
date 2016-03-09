@@ -1,0 +1,146 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:fresco="http://schemas.android.com/apk/res-auto"
+    android:orientation="vertical"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent">
+    <LinearLayout
+        android:layout_width="wrap_content"
+        android:layout_height="@dimen/x40"
+        android:orientation="horizontal">
+        <com.facebook.drawee.view.SimpleDraweeView
+            android:id="@+id/im_profileImage"
+            fresco:roundAsCircle="true"
+            android:layout_width="@dimen/x40"
+            android:layout_height="match_parent" />
+        <TextView
+            android:layout_marginTop="15px"
+            android:textStyle="bold"
+            android:textSize="14dp"
+            android:id="@+id/tv_nickname"
+            android:layout_width="@dimen/x200"
+            android:layout_height="match_parent" />
+        <Button
+            android:layout_width="@dimen/x60"
+            android:layout_height="match_parent"
+            android:text="关注"
+            />
+    </LinearLayout>
+    <com.facebook.drawee.view.SimpleDraweeView
+        android:id="@+id/im_foodimage"
+        android:layout_width="match_parent"
+        android:layout_height="@dimen/y200" />
+    <LinearLayout
+        android:orientation="horizontal"
+        android:layout_width="match_parent"
+        android:layout_height="@dimen/y30">
+        <TextView
+            android:textStyle="bold"
+            android:textSize="24dp"
+            android:id="@+id/tv_foodname"
+            android:layout_width="wrap_content"
+            android:layout_height="match_parent" />
+        <ImageView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:src="@drawable/yun"
+            android:layout_gravity="center" />
+    </LinearLayout>
+    <TextView
+        android:ellipsize="end"
+        android:singleLine="false"
+        android:id="@+id/tv_ingredients"
+        android:layout_width="match_parent"
+        android:layout_height="@dimen/y30" />
+    <LinearLayout
+        android:padding="40px"
+        android:layout_width="match_parent"
+        android:layout_height="1px"
+        android:background="@color/fragment_msg_line_color"/>
+    <LinearLayout
+
+        android:orientation="horizontal"
+        android:layout_width="match_parent"
+        android:layout_height="@dimen/y30">
+        <LinearLayout
+            android:gravity="center"
+            android:orientation="horizontal"
+            android:layout_width="0dp"
+            android:layout_weight="1"
+            android:layout_height="match_parent">
+            <ImageView
+                android:src="@drawable/icon_comment"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content" />
+            <TextView
+                android:layout_marginTop="8px"
+                android:textSize="14dp"
+                android:layout_width="wrap_content"
+                android:layout_height="match_parent"
+                android:text="评论:"/>
+            <TextView
+                android:layout_marginTop="8px"
+                android:textSize="14dp"
+                android:layout_width="wrap_content"
+                android:layout_height="match_parent"
+                android:id="@+id/tv_commentCount"/>
+        </LinearLayout>
+        <LinearLayout
+            android:layout_width="1px"
+            android:layout_height="match_parent"
+            android:padding="10px"
+            android:background="@color/fragment_msg_line_color"/>
+        <LinearLayout
+            android:gravity="center"
+            android:orientation="horizontal"
+            android:layout_width="0dp"
+            android:layout_weight="1"
+            android:layout_height="match_parent">
+            <ImageView
+                android:src="@drawable/icon_like"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content" />
+            <TextView
+                android:layout_marginTop="8px"
+                android:textSize="14dp"
+                android:layout_width="wrap_content"
+                android:layout_height="match_parent"
+                android:text="赞"/>
+            <TextView
+                android:layout_marginTop="8px"
+                android:textSize="14dp"
+                android:layout_width="wrap_content"
+                android:layout_height="match_parent"
+                android:id="@+id/tv_likeCount"/>
+
+        </LinearLayout>
+        <LinearLayout
+            android:layout_width="1px"
+            android:layout_height="match_parent"
+            android:padding="10px"
+            android:background="@color/fragment_msg_line_color"/>
+        <LinearLayout
+            android:gravity="center"
+            android:orientation="horizontal"
+            android:layout_width="0dp"
+            android:layout_weight="1"
+            android:layout_height="match_parent">
+            <ImageView
+                android:src="@drawable/icon_collect"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content" />
+            <TextView
+                android:layout_marginTop="8px"
+                android:textSize="14dp"
+                android:layout_width="wrap_content"
+                android:layout_height="match_parent"
+                android:text="收藏"/>
+
+
+        </LinearLayout>
+    </LinearLayout>
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="@dimen/x20"/>
+
+</LinearLayout>

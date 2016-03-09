@@ -60,10 +60,10 @@ public class ActivityMCBooksList extends BaseActivity implements OkHttpUtil.OnDo
     public void onResponse(String url, String json) {
 //        Log.e(TAG, "onResponse: "+url );
 //        Log.e(TAG, "onResponse: "+json );
-        // if (url.equals(url_caixi)){
+        if (url.equals(url_caixi)){
         data = JsonUtil.getCaiXIByJson(json).getData();
 //            Log.e(TAG, "onResponse: "+caixi );
-        //   }
+        }
         // 给listView设置适配器
         activityMoreCookBookLVAdapter = new ActivityMCBookLVAdapter(this, data);
         listView.setAdapter(activityMoreCookBookLVAdapter);

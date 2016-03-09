@@ -1,8 +1,12 @@
 package com.wang.sdfood.listenter;
 
 import android.content.Context;
+import android.content.Intent;
 import android.util.Log;
 import android.view.View;
+
+import com.wang.sdfood.ActivityCommendFood;
+import com.wang.sdfood.util.Constants;
 
 /**
  * Created by user on 2016/3/8.
@@ -11,6 +15,7 @@ public class FragmentHomeLLSweetListener implements View.OnClickListener  {
     private  String TAG="print";
     private Context context;
     private String str;
+    private String url_staplefood;
     public FragmentHomeLLSweetListener(Context c,String str) {
         super();
         this.str = str;
@@ -20,6 +25,10 @@ public class FragmentHomeLLSweetListener implements View.OnClickListener  {
     }
     @Override
     public void onClick(View v) {
-        Log.e(TAG, "FragmentHomeLLSweetListener: "+str);
+        url_staplefood=String.format(Constants.URL.SWEET_FOOD,str);
+        //Log.e(TAG, "onClick: "+url_staplefood );
+        Intent intent = new Intent(context, ActivityCommendFood.class);
+        intent.putExtra(Constants.KEY.SWEETFOOD_KEY,url_staplefood);
+        context.startActivity(intent);
     }
 }

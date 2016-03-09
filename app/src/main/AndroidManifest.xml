@@ -37,6 +37,9 @@
         <!--FOODActivity-->
         <activity android:name=".ActvityMegcook">
         </activity>
+        <!--甜食Activity-->
+        <activity android:name=".ActivityCommendFood">
+        </activity>
     </application>
 
 </manifest>
