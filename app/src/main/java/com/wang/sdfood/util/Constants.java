@@ -52,5 +52,10 @@ public interface Constants {
         String FOODNAME_ID_KEY = "foodnameid";
         //甜食的传递的关键字
         String SWEETFOOD_KEY = "foodnameid";
+        /**
+         * 这是注册界面完成的值传递
+         */
+        String ACTIVITY_REG_OK="activity_reg_ok";
+        Integer ACTIVITY_REG_OK_VALUE=3;
     }
 }

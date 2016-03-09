@@ -4,6 +4,7 @@ import android.app.Application;
 import android.graphics.Bitmap;
 import android.os.Environment;
 
+import com.activeandroid.ActiveAndroid;
 import com.nostra13.universalimageloader.cache.disc.impl.UnlimitedDiskCache;
 import com.nostra13.universalimageloader.core.DisplayImageOptions;
 import com.nostra13.universalimageloader.core.ImageLoader;
@@ -32,8 +33,8 @@ public class AppContext extends Application{
         OkHttpUtil.initOkHttp();
         FrescoUtil.initFresco(this);
         Shareutil.initShared(this);
+        ActiveAndroid.initialize(this);
     }
-
     /**
      * 获取当前的应用程序对象
      * @return
@@ -109,5 +110,9 @@ public class AppContext extends Application{
                         .build();
     }
 
-
+    @Override
+    public void onTerminate() {
+        super.onTerminate();
+        ActiveAndroid.dispose();
+    }
 }

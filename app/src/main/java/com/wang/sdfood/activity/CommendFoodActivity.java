@@ -19,7 +19,7 @@ import butterknife.Bind;
 /**
  * Created by Administrator on 2016/3/9.
  */
-public class ActivityCommendFood extends BaseActivity implements OkHttpUtil.OnDownLoadListener {
+public class CommendFoodActivity extends BaseActivity implements OkHttpUtil.OnDownLoadListener {
     @Bind(R.id.lv_commenfoodlist)
     public ListView listView;
 //传递过来的url

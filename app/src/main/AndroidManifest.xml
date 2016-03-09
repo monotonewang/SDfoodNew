@@ -29,7 +29,7 @@
 
         </activity>
         <!--菜系列表Activity-->
-        <activity android:name=".activity.ActivityMCBooksList">
+        <activity android:name=".activity.MCBooksListActivity">
         </activity>
         <!--菜系详情Activity-->
         <activity android:name=".activity.McBookDetailActivity">
@@ -45,9 +45,12 @@
         </activity>
 
         <!--甜食Activity-->
-        <activity android:name=".activity.ActivityCommendFood">
+        <activity android:name=".activity.CommendFoodActivity">
 
         </activity>
+        <!--数据库的操作-->
+        <meta-data android:name="AA_DB_NAME" android:value="SDfood.db" />
+        <meta-data android:name="AA_DB_VERSION" android:value="1" />
     </application>
 
 </manifest>

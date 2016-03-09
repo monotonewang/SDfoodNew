@@ -9,7 +9,6 @@ import android.widget.TextView;
 import com.wang.sdfood.R;
 import com.wang.sdfood.base.BaseActivity;
 import com.wang.sdfood.model.LoginETEntitys;
-import com.wang.sdfood.util.L;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -35,7 +34,6 @@ public class LoginActivity extends BaseActivity {
 
     @OnClick({R.id.tv_activity_login_now,R.id.activity_login_region_textView})
     public void  OnClick(View v){
-        L.e("click");
         /**
          * 如果EditText为空 ，设置立即登录 按钮不可以点击
          */
@@ -48,9 +46,9 @@ public class LoginActivity extends BaseActivity {
             }
             //如果点击的是注册--跳转到注册界面
         }else if(v.getId()==R.id.activity_login_region_textView){
-            L.e("reg");
             Intent intent =new Intent(getApplicationContext(),RegisterActivity.class);
             startActivity(intent);
+
         }
     }
     @Override

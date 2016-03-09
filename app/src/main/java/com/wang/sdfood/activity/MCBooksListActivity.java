@@ -22,7 +22,7 @@ import butterknife.Bind;
  * 菜系的详情页
  * Created by Administrator on 2016/3/7.
  */
-public class ActivityMCBooksList extends BaseActivity implements OkHttpUtil.OnDownLoadListener, AdapterView.OnItemClickListener {
+public class MCBooksListActivity extends BaseActivity implements OkHttpUtil.OnDownLoadListener, AdapterView.OnItemClickListener {
     private String TAG = "print";
     private ActivityMCBookLVAdapter activityMoreCookBookLVAdapter;
     //菜系的URL

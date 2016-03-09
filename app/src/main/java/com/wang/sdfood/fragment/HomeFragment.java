@@ -15,7 +15,7 @@ import android.widget.TextView;
 import android.widget.Toast;
 
 import com.facebook.drawee.view.SimpleDraweeView;
-import com.wang.sdfood.activity.ActivityMCBooksList;
+import com.wang.sdfood.activity.MCBooksListActivity;
 import com.wang.sdfood.R;
 import com.wang.sdfood.adapter.FragmentHomeLVAdapter;
 import com.wang.sdfood.adapter.FragmentHomeNewuserLVAdapter;
@@ -362,7 +362,7 @@ public class HomeFragment extends BaseFragment implements OkHttpUtil.OnDownLoadL
                 caixi_key= moreCookBooksEntityByJson.getData().getHotCategories().get(3).getName();
                 break;
         }
-        Intent intent = new Intent(getActivity(), ActivityMCBooksList.class);
+        Intent intent = new Intent(getActivity(), MCBooksListActivity.class);
         intent.putExtra(Constants.KEY.CAIXI_KEY, caixi_key);
         startActivity(intent);
     }

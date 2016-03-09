@@ -13,7 +13,7 @@
 
 
     <ImageView
-        android:id="@+id/activity_main_dl_headview_iv"
+        android:id="@+id/activity_main_dl_headview_iv1"
         android:layout_width="wrap_content"
         android:src="@drawable/common_bg_avatar_loadfail"
         android:layout_height="wrap_content" />

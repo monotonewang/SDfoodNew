@@ -82,4 +82,13 @@
     <string name="fragment_mine_head_fan">粉丝</string>
     <string name="fragment_mine_head_parise">被赞</string>
     <string name="fragment_mine_head_visit">访客</string>
+    <string name="fragment_mine_user_center_score">积分</string>
+    <string name="fragment_mine_user_center_score_mid">半途而费是最大的悲哀，赶紧签到吧</string>
+    <string name="fragment_mine_user_center_recipe">菜谱</string>
+    <string name="fragment_mine_user_center_works">作品</string>
+    <string name="fragment_mine_user_center_pat">随拍</string>
+    <string name="fragment_mine_user_center_draft">草稿箱</string>
+    <string name="fragment_mine_user_center_order">我的订单</string>
+    <string name="fragment_mine_user_center_coupons">优惠卷</string>
+    <string name="fragment_mine_user_center_address">收货地址</string>
 </resources>

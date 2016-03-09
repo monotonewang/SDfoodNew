@@ -1,0 +1,51 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!--这是Fragment Mine lv的布局-->
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical">
+
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:paddingBottom="@dimen/y10"
+        android:paddingTop="@dimen/y10">
+
+        <ImageView
+            android:id="@+id/lv_fragment_msg_main_iv1"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:paddingLeft="@dimen/x20"
+            android:src="@drawable/icon_msg_fan" />
+
+        <TextView
+            android:id="@+id/lv_fragment_msg_main_tv"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:paddingLeft="@dimen/x50"
+            android:text="@string/fragment_msg_fan" />
+
+        <TextView
+            android:id="@+id/tv_fragment_count"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignParentRight="true"
+            android:paddingRight="@dimen/x30">
+
+        </TextView>
+
+        <ImageView
+            android:id="@+id/lv_fragment_msg_main_iv2"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignParentRight="true"
+            android:paddingRight="@dimen/x15"
+            android:src="@drawable/icon_arrow" />
+        <!-- <View
+             android:paddingTop="@dimen/y40"
+             android:background="@color/fragment_msg_line_color"
+             android:layout_width="match_parent"
+             android:layout_height="1dp">
+         </View>-->
+    </RelativeLayout>
+</LinearLayout>

@@ -1,6 +1,7 @@
 package com.wang.sdfood.activity;
 
 
+import android.content.Intent;
 import android.graphics.Bitmap;
 import android.graphics.BitmapFactory;
 import android.support.design.widget.FloatingActionButton;
@@ -11,9 +12,11 @@ import android.support.v4.app.FragmentTransaction;
 import android.util.Log;
 import android.view.View;
 import android.widget.AdapterView;
+import android.widget.ImageView;
 import android.widget.ListView;
 import android.widget.RadioButton;
 import android.widget.RadioGroup;
+import android.widget.TextView;
 
 import com.wang.sdfood.R;
 import com.wang.sdfood.adapter.FragmentMsgLVAdapter;
@@ -22,7 +25,13 @@ import com.wang.sdfood.fragment.HomeFragment;
 import com.wang.sdfood.fragment.MineFragment;
 import com.wang.sdfood.fragment.MsgFragment;
 import com.wang.sdfood.fragment.VisiableFragment;
+import com.wang.sdfood.model.EBUserInfoEntity;
 import com.wang.sdfood.model.FragmentMsgEntity;
+import com.wang.sdfood.util.Constants;
+
+import org.greenrobot.eventbus.EventBus;
+import org.greenrobot.eventbus.Subscribe;
+import org.greenrobot.eventbus.ThreadMode;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -31,7 +40,10 @@ import butterknife.Bind;
 
 public class MainActivity extends BaseActivity implements RadioGroup.OnCheckedChangeListener,AdapterView.OnItemClickListener {
     private static final String TAG ="MainActivity" ;
-
+    //这是抽屉布局的用户头像
+    public ImageView mImageView;
+    //这是抽屉布局的用户名
+    public TextView mTextView;
     @Bind(R.id.activiy_home_radiogp)
     public RadioGroup radioGroup;
     @Bind({R.id.activiy_radiobtn_home, R.id.activiy_radiobtn_visible, R.id.activiy_radiobtn_msg, R.id.activiy_radiobtn_mine})
@@ -47,15 +59,47 @@ public class MainActivity extends BaseActivity implements RadioGroup.OnCheckedCh
     private Fragment fragmentHome,fragmentVisible,fragmentMsg,fragmentMine;
     private FragmentManager fragmentManager;
     private android.support.v4.app.FragmentTransaction beginTransaction;
+    //用户名
+    private String nickName;
 
     @Override
     protected int getViewResId() {
+
         return R.layout.activity_main;
+    }
+
+    /**
+     * 注册事件
+     */
+    @Override
+    protected void onStart() {
+        super.onStart();
+        EventBus.getDefault().register(this);
+        if(nickName!=null){
+            Log.e("a",nickName);
+//            mTextView.setText(nickName);
+//            mImageView.setImageResource(R.drawable.ic_social_share_120_qq);
+        }
+    }
+    @Subscribe(priority = 1,sticky = true,threadMode = ThreadMode.MAIN)
+    public void ab(EBUserInfoEntity ebUserInfoEntity){
+        nickName = ebUserInfoEntity.getNickName();
+    }
+
+    /**
+     *消除事件
+     */
+    @Override
+    protected void onStop() {
+        super.onStop();
+        EventBus.getDefault().unregister(this);
     }
 
     @Override
     protected void init() {
         super.init();
+        mImageView= (ImageView) findViewById(R.id.activity_main_dl_headview_iv1);
+        mTextView= (TextView) findViewById(R.id.activity_main_dl_headview_tv);
         radioGroup.setOnCheckedChangeListener(this);
         fragmentManager = getSupportFragmentManager();
         fragmentHome = new HomeFragment();
@@ -75,6 +119,14 @@ public class MainActivity extends BaseActivity implements RadioGroup.OnCheckedCh
 //
         //设置ListView的监听
         listView.setOnItemClickListener(this);
+        /**
+         * 接受注册成功界面返回的值/并且显示第三个页面
+         */
+        Intent intent = getIntent();
+        int registerOk = intent.getIntExtra(Constants.KEY.ACTIVITY_REG_OK, -1);
+        if(registerOk!=-1) {
+            radioButtonList.get(registerOk).setChecked(true);
+        }
     }
 
     @Override
