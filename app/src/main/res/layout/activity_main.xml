@@ -35,6 +35,8 @@
                     app:backgroundTint="@color/activityBottomTextCheckColor" />
                 <!--添加radioGroup的布局-->
                 <include layout="@layout/activity_main_radiogroup"></include>
+                <!--这是搜索框界面-->
+                <include layout="@layout/fragment_search"></include>
             </android.support.design.widget.CoordinatorLayout>
 
 

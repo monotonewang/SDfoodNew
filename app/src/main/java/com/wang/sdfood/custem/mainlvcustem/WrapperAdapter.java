@@ -9,8 +9,8 @@ import android.widget.AbsListView;
 import android.widget.ListAdapter;
 import android.widget.WrapperListAdapter;
 
-import com.wang.sdfood.activity.HomeCollectActivity;
-import com.wang.sdfood.activity.HomeDiscussActivity;
+import com.wang.sdfood.activity.CollectActivity;
+import com.wang.sdfood.activity.DiscussActivity;
 
 import java.util.Map;
 
@@ -301,11 +301,11 @@ public abstract class WrapperAdapter implements WrapperListAdapter, ItemMainLayo
                     }
                     break;
                 case Menu.ITEM_START_ACTIVITY:
-                    Intent intent=new Intent(mContext, HomeDiscussActivity.class);
+                    Intent intent=new Intent(mContext, DiscussActivity.class);
                     mContext.startActivity(intent);
                     break;
                 case Menu.ITEM_START_ACTIVITY2:
-                       Intent intent1=new Intent(mContext,HomeCollectActivity.class);
+                       Intent intent1=new Intent(mContext,CollectActivity.class);
                     mContext.startActivity(intent1);
                     break;
                 default:

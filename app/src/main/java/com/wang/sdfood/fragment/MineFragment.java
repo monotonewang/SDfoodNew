@@ -5,11 +5,13 @@ import android.content.Intent;
 import android.graphics.Bitmap;
 import android.graphics.BitmapFactory;
 import android.view.View;
+import android.widget.AdapterView;
 import android.widget.ImageView;
 import android.widget.TextView;
 
 import com.wang.sdfood.R;
 import com.wang.sdfood.activity.LoginActivity;
+import com.wang.sdfood.activity.UserRecipeActivity;
 import com.wang.sdfood.adapter.FragmentMineMainLVAdapter;
 import com.wang.sdfood.adapter.FragmentMsgLVAdapter;
 import com.wang.sdfood.base.BaseFragment;
@@ -31,7 +33,7 @@ import butterknife.Bind;
  * 这是用户中心的Fragment
  * Created by user on 2016/3/4.
  */
-public class MineFragment extends BaseFragment implements View.OnClickListener {
+public class MineFragment extends BaseFragment implements View.OnClickListener, AdapterView.OnItemClickListener {
     //这是头像的ImageView
     @Bind(R.id.fragment_mine_login_iv)
     public ImageView imageView;
@@ -43,10 +45,10 @@ public class MineFragment extends BaseFragment implements View.OnClickListener {
     public List<ActivityMegbookLVView> activityMegbookLVViewList;
     //用户名
     private String userName=null;
-
+    //判断用户是否登录
+    private boolean flag=false;
     @Override
     protected int getViewResId() {
-
         return R.layout.fragment_mine;
     }
 
@@ -54,6 +56,46 @@ public class MineFragment extends BaseFragment implements View.OnClickListener {
     protected void init(View view) {
         super.init(view);
         imageView.setOnClickListener(this);
+        activityMegbookLVViewList.get(0).setOnItemClickListener(this);
+        activityMegbookLVViewList.get(1).setOnItemClickListener(this);
+        activityMegbookLVViewList.get(2).setOnItemClickListener(this);
+    }
+
+    /**
+     * ListView的监听跳转
+     * @param parent
+     * @param view
+     * @param position
+     * @param id
+     */
+    @Override
+    public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
+        if(view.equals(activityMegbookLVViewList.get(0).getChildAt(0))){
+            if(flag==false){
+                Intent intent=new Intent(getContext(),LoginActivity.class);
+                startActivity(intent);
+            }else{
+                Intent intent=new Intent(getContext(), UserRecipeActivity.class);
+                startActivity(intent);
+            }
+        }else if(view.equals(activityMegbookLVViewList.get(1).getChildAt(position))){
+            if(flag==false){
+                Intent intent=new Intent(getContext(),LoginActivity.class);
+                startActivity(intent);
+            }else{
+                Intent intent=new Intent(getContext(), UserRecipeActivity.class);
+                startActivity(intent);
+            }
+        }else if(view.equals(activityMegbookLVViewList.get(2).getChildAt(position))){
+            if(flag==false){
+                Intent intent=new Intent(getContext(),LoginActivity.class);
+                startActivity(intent);
+            }else{
+                Intent intent=new Intent(getContext(), UserRecipeActivity.class);
+                startActivity(intent);
+            }
+        }
+
     }
 
     @Override
@@ -67,6 +109,7 @@ public class MineFragment extends BaseFragment implements View.OnClickListener {
         if(userName!=null){
             textView.setText(userName);
             imageView.setImageResource(R.drawable.ic_social_share_120_qq);
+            flag=true;
         }
     }
     /**
@@ -181,4 +224,6 @@ public class MineFragment extends BaseFragment implements View.OnClickListener {
             startActivity(intent);
         }
     }
+
+
 }

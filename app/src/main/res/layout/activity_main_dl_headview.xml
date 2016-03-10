@@ -1,26 +1,27 @@
-<?xml version="1.0" encoding="utf-8"?>
-<!--这是抽屉布局的头部的布局-->
+<?xml version="1.0" encoding="utf-8"?><!--这是抽屉布局的头部的布局-->
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
-    android:orientation="horizontal"
-    android:layout_marginTop="@dimen/y50"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     android:layout_width="match_parent"
-    android:layout_height="match_parent">
+    android:layout_height="match_parent"
+    android:layout_marginTop="@dimen/y50"
+    android:orientation="horizontal">
+
     <android.support.v7.widget.CardView
-        app:cardCornerRadius="@dimen/activity_dl_headview_text"
         android:layout_width="wrap_content"
-        android:layout_height="wrap_content">
+        android:layout_height="wrap_content"
+        app:cardCornerRadius="@dimen/activity_dl_headview_text">
 
 
-    <ImageView
-        android:id="@+id/activity_main_dl_headview_iv1"
-        android:layout_width="wrap_content"
-        android:src="@drawable/common_bg_avatar_loadfail"
-        android:layout_height="wrap_content" />
+        <ImageView
+            android:id="@+id/activity_main_dl_headview_iv1"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:src="@drawable/common_bg_avatar_loadfail" />
     </android.support.v7.widget.CardView>
+
     <TextView
         android:id="@+id/activity_main_dl_headview_tv"
-        android:text="@string/activity_main_dl_headview_login"
         android:layout_width="wrap_content"
-        android:layout_height="wrap_content" />
+        android:layout_height="wrap_content"
+        android:text="@string/activity_main_dl_headview_login" />
 </LinearLayout>

@@ -15,4 +15,7 @@
     <!--Fragmentmsg的view的背景颜色-->
     <color name="fragment_msg_line_color">#837e7e</color>
     <color name="fragment_msg_hot_catagories_view_bgclor">#c4c4c4</color>
+    <!--搜索的透明Activity-->
+    <color name="activity_main_et_background">#F4F4F4</color>
+    <color name="translucent_background">#80000000</color>
 </resources>

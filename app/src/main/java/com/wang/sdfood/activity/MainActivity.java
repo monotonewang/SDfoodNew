@@ -9,15 +9,18 @@ import android.support.design.widget.NavigationView;
 import android.support.v4.app.Fragment;
 import android.support.v4.app.FragmentManager;
 import android.support.v4.app.FragmentTransaction;
+import android.util.DisplayMetrics;
 import android.util.Log;
 import android.view.View;
 import android.widget.AdapterView;
 import android.widget.ImageView;
+import android.widget.LinearLayout;
 import android.widget.ListView;
 import android.widget.RadioButton;
 import android.widget.RadioGroup;
 import android.widget.TextView;
 
+import com.google.zxing.client.android.Intents;
 import com.wang.sdfood.R;
 import com.wang.sdfood.adapter.FragmentMsgLVAdapter;
 import com.wang.sdfood.base.BaseActivity;
@@ -38,8 +41,13 @@ import java.util.List;
 
 import butterknife.Bind;
 
-public class MainActivity extends BaseActivity implements RadioGroup.OnCheckedChangeListener,AdapterView.OnItemClickListener {
+public class MainActivity extends BaseActivity implements RadioGroup.OnCheckedChangeListener,AdapterView.OnItemClickListener, View.OnClickListener {
     private static final String TAG ="MainActivity" ;
+    //这是搜索框的父布局
+    @Bind(R.id.fragment_search)
+    public LinearLayout mLinearLayout;
+    @Bind(R.id.fragment_search_qrcode)
+    public ImageView mQRCode;
     //这是抽屉布局的用户头像
     public ImageView mImageView;
     //这是抽屉布局的用户名
@@ -113,6 +121,8 @@ public class MainActivity extends BaseActivity implements RadioGroup.OnCheckedCh
         beginTransaction.add(R.id.activity_main_fl, fragmentMsg);
         beginTransaction.add(R.id.activity_main_fl, fragmentMine);
         beginTransaction.commit();
+
+        mQRCode.setOnClickListener(this);
         /**
          * 刷新控件的监听方法
          */
@@ -167,11 +177,20 @@ public class MainActivity extends BaseActivity implements RadioGroup.OnCheckedCh
         return list;
     }
 
+    /**
+     * 这是跳转不同的Fragment的方法
+     * @param group
+     * @param checkedId
+     */
     @Override
     public void onCheckedChanged(RadioGroup group, int checkedId) {
 
         switch (checkedId) {
             case R.id.activiy_radiobtn_home:
+                /**
+                 * 显示搜索框
+                 */
+                mLinearLayout.setVisibility(View.VISIBLE);
                 FragmentTransaction fragmentTransactionHome = getSupportFragmentManager().beginTransaction();
                 fragmentTransactionHome .show(fragmentHome)
                         .hide(fragmentVisible)
@@ -180,7 +199,10 @@ public class MainActivity extends BaseActivity implements RadioGroup.OnCheckedCh
                         .commit();
                 break;
             case R.id.activiy_radiobtn_visible:
-
+                /**
+                 * 隐藏搜索框
+                 */
+                mLinearLayout.setVisibility(View.GONE);
                 FragmentTransaction fragmentTransactionMatch = getSupportFragmentManager().beginTransaction();
                 fragmentTransactionMatch.hide(fragmentHome)
                         .show(fragmentVisible)
@@ -189,7 +211,7 @@ public class MainActivity extends BaseActivity implements RadioGroup.OnCheckedCh
                         .commit();
                 break;
             case R.id.activiy_radiobtn_msg:
-
+                mLinearLayout.setVisibility(View.GONE);
                 FragmentTransaction fragmentTransactionItem = getSupportFragmentManager().beginTransaction();
                 fragmentTransactionItem.hide(fragmentHome)
                         .hide(fragmentVisible)
@@ -198,7 +220,7 @@ public class MainActivity extends BaseActivity implements RadioGroup.OnCheckedCh
                         .commit();
                 break;
             case R.id.activiy_radiobtn_mine:
-
+                mLinearLayout.setVisibility(View.GONE);
                 FragmentTransaction fragmentTransactionCart = getSupportFragmentManager().beginTransaction();
                 fragmentTransactionCart.hide(fragmentHome)
                         .hide(fragmentVisible)
@@ -220,6 +242,39 @@ public class MainActivity extends BaseActivity implements RadioGroup.OnCheckedCh
     public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
         if(parent.equals(listView)){
             Log.e(TAG, "onItemClick: "+position );
+        }
+    }
+
+    @Override
+    public void onClick(View v) {
+        //这里是跳转二维码的代码
+        if(v.getId()==R.id.fragment_search_qrcode){
+            Intent intent=new Intent(Intents.Scan.ACTION);
+            intent.putExtra(Intents.Scan.MODE,Intents.Scan.QR_CODE_MODE);
+            //设置扫描预览框的宽高，建议根据屏幕宽高来设置：
+            DisplayMetrics displayMetrics =
+                    getResources().getDisplayMetrics();
+
+            int w = displayMetrics.widthPixels;
+            int h = displayMetrics.heightPixels;
+            int size = h < w ? h : w;
+            size = size >> 1;
+            intent.putExtra(Intents.Scan.WIDTH, size);
+            intent.putExtra(Intents.Scan.HEIGHT, size);
+            intent.setFlags(Intent.FLAG_ACTIVITY_NO_ANIMATION);
+            startActivityForResult(intent, 0x001);
+        }
+    }
+
+    @Override
+    protected void onActivityResult(int requestCode, int resultCode, Intent data) {
+        super.onActivityResult(requestCode, resultCode, data);
+        if (requestCode == 0x001) {
+            // 0x001 代表的 startActivityForResule
+            if (resultCode == RESULT_OK && data != null) {
+                Bitmap bitmap= data.getParcelableExtra("data");
+//                String code = data.getStringExtra(Intents.Scan.RESULT);
+            }
         }
     }
 }

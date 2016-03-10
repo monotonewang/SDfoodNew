@@ -40,6 +40,11 @@
     <string name="activity_megbook_detail_steps_time">时间:0秒</string>
     <string name="activity_megbook_detail_steps_production_steps">制作步骤</string>
     <string name="activity_megbook_detail_steps_production_steps_big">点击步骤可以看大图哦</string>
+    <string name="activity_food_detail_down">下载</string>
+    <string name="activity_food_detail_disc">评论</string>
+    <string name="activity_food_detail_sure">赞</string>
+    <string name="activity_food_detail_restore">收藏</string>
+
     <!--登录的activity的文字-->
     <string name="activity_login_head_mid_text">登录</string>
     <string name="activity_login_region_tv">注册</string>
@@ -76,6 +81,7 @@
     <string name="fragment_msg_poke">新的戳</string>
     <string name="fragment_msg_mess">通知</string>
     <!--我的fragment的文字-->
+    <string name="fragment_mine_search_hint_text">菜谱,食材搜索</string>
     <string name="fragment_mine_head_login">点击登录</string>
     <string name="fragment_mine_head_count">0</string>
     <string name="fragment_mine_head_focus">关注</string>

@@ -2,28 +2,65 @@
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     android:id="@+id/fragment_search"
     android:layout_width="match_parent"
-    android:layout_height="wrap_content"
-    android:background="@drawable/checkswitch_frame"
+    android:layout_height="@dimen/x50"
+    android:layout_marginLeft="@dimen/x10"
+    android:layout_marginRight="@dimen/x10"
+    android:layout_marginTop="@dimen/y20"
+    android:background="@color/fragment_home_view_bgcolor"
     android:orientation="horizontal"
-    android:paddingLeft="@dimen/x10"
-    android:paddingRight="@dimen/y10">
+    android:paddingLeft="@dimen/x12"
+    android:paddingRight="@dimen/y12"
+    android:paddingBottom="@dimen/y5"
+    android:paddingTop="@dimen/y5">
 
     <ImageView
+        android:layout_gravity="center_vertical"
         android:layout_width="0dp"
-        android:layout_weight="1"
         android:layout_height="wrap_content"
+        android:layout_weight="1"
         android:src="@drawable/common_icon_list_def" />
 
-    <EditText
-        android:background="@drawable/checkswitch_frame"
+    <RelativeLayout
+        android:gravity="center"
         android:layout_width="0dp"
-        android:layout_weight="8"
-        android:layout_height="wrap_content"
-        android:drawableLeft="@drawable/search_icon" />
+        android:layout_height="match_parent"
+        android:layout_weight="8">
 
-    <ImageView
-        android:layout_width="0dp"
-        android:layout_weight="1"
-        android:layout_height="wrap_content"
-        android:src="@drawable/common_scan_normal" />
+        <LinearLayout
+            android:orientation="horizontal"
+            android:background="@drawable/activity_search_et_bg_shape"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent">
+
+            <ImageView
+                android:layout_marginLeft="@dimen/x20"
+                android:layout_width="wrap_content"
+                android:layout_height="match_parent"
+                android:layout_weight="1"
+                android:src="@drawable/search_icon" />
+
+            <EditText
+                android:background="@null"
+                android:id="@+id/fragment_search_et"
+                android:hint="@string/fragment_mine_search_hint_text"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:layout_weight="8"
+                android:textSize="@dimen/fragment_dicover_small_textsize"
+               />
+            <ImageView
+                android:id="@+id/fragment_search_qrcode"
+                android:gravity="center"
+                android:layout_width="wrap_content"
+                android:layout_height="match_parent"
+                android:layout_alignParentRight="true"
+                android:layout_gravity="center_vertical"
+                android:layout_marginRight="@dimen/x20"
+                android:layout_weight="1"
+                android:src="@drawable/common_scan_normal" />
+        </LinearLayout>
+
+
+
+    </RelativeLayout>
 </LinearLayout>

@@ -8,6 +8,7 @@ import com.wang.sdfood.activity.CommendFoodActivity;
 import com.wang.sdfood.util.Constants;
 
 /**
+ * 热门标签的跳转
  * Created by user on 2016/3/8.
  */
 public class FragmentHomeLLSweetListener implements View.OnClickListener  {

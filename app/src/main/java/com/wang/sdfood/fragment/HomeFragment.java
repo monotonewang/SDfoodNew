@@ -12,19 +12,19 @@ import android.util.Log;
 import android.view.View;
 import android.widget.LinearLayout;
 import android.widget.TextView;
-import android.widget.Toast;
 
 import com.facebook.drawee.view.SimpleDraweeView;
-import com.wang.sdfood.activity.MCBooksListActivity;
 import com.wang.sdfood.R;
+import com.wang.sdfood.activity.FoodListActivity;
+import com.wang.sdfood.activity.FoodDetailActivity;
 import com.wang.sdfood.adapter.FragmentHomeLVAdapter;
 import com.wang.sdfood.adapter.FragmentHomeNewuserLVAdapter;
 import com.wang.sdfood.base.BaseFragment;
-import com.wang.sdfood.listenter.FragmentHomeLLSweetListener;
-import com.wang.sdfood.listenter.ViewPagerListener;
 import com.wang.sdfood.custem.mainlvcustem.Menu;
 import com.wang.sdfood.custem.mainlvcustem.MenuItem;
 import com.wang.sdfood.custem.mainlvcustem.SlideAndDragListView;
+import com.wang.sdfood.listenter.FragmentHomeLLSweetListener;
+import com.wang.sdfood.listenter.ViewPagerListener;
 import com.wang.sdfood.model.MoreCookBooksEntity;
 import com.wang.sdfood.util.Constants;
 import com.wang.sdfood.util.FrescoUtil;
@@ -155,7 +155,7 @@ public class HomeFragment extends BaseFragment implements OkHttpUtil.OnDownLoadL
      */
     private void initMenu() {
         menu = new Menu(new ColorDrawable(Color.WHITE), false, 0);
-        menu.addItem(new MenuItem.Builder().setWidth(300)//单个菜单button的宽度
+        menu.addItem(new MenuItem.Builder().setWidth((int) getResources().getDimension(R.dimen.x70))//单个菜单button的宽度
                 .setBackground(new ColorDrawable(Color.parseColor("#65DB9E")))//设置菜单的背景
                 .setText("收藏")//set text string
                 .setTextColor(Color.GRAY)//set text color
@@ -163,7 +163,7 @@ public class HomeFragment extends BaseFragment implements OkHttpUtil.OnDownLoadL
                 .setTextSize(22)//set text size
                 .setTextColor(R.color.activityLVMenuWordColor)
                 .build());
-        menu.addItem(new MenuItem.Builder().setWidth(300)
+        menu.addItem(new MenuItem.Builder().setWidth((int) getResources().getDimension(R.dimen.x70))
                 .setBackground(new ColorDrawable(Color.parseColor("#FE8800")))
                 .setText("评论")//set text string
                 .setDirection(MenuItem.DIRECTION_RIGHT)//设置方向 (默认方向为DIRECTION_LEFT)
@@ -202,7 +202,7 @@ public class HomeFragment extends BaseFragment implements OkHttpUtil.OnDownLoadL
 //            //recycleView的adapter
         FragmentHomeNewuserLVAdapter fragmentHomeNewuserLVAdapter=new FragmentHomeNewuserLVAdapter(getContext(),newUser);
 //            //线性布局管理器
-        newUserrecyclerView.setLayoutManager(new LinearLayoutManager(getContext(), LinearLayout.HORIZONTAL,false));
+        newUserrecyclerView.setLayoutManager(new LinearLayoutManager(getContext(), LinearLayout.HORIZONTAL, false));
         newUserrecyclerView.setAdapter(fragmentHomeNewuserLVAdapter);
     }
 
@@ -290,7 +290,7 @@ public class HomeFragment extends BaseFragment implements OkHttpUtil.OnDownLoadL
             //这是ViewPager的数据
             adverts=moreCookBooksEntityByJson.getData().getAdverts();
             /**
-             * LinearLayout的监听
+             * LinearLayout的监听--热门标签
              */
             linearLayouts.get(0).setOnClickListener(new FragmentHomeLLSweetListener(getActivity(),moreCookBooksEntityByJson.getData().getRecommend().getId()));
             linearLayouts.get(1).setOnClickListener(new FragmentHomeLLSweetListener(getActivity(),moreCookBooksEntityByJson.getData().getBreakfast().getId()));
@@ -308,27 +308,44 @@ public class HomeFragment extends BaseFragment implements OkHttpUtil.OnDownLoadL
 
     }
 
+    /**
+     * 这是homeFragment的ListView的点击事件
+     * @param v
+     * @param position
+     */
     @Override
     public void onListItemClick(View v, int position) {
-        Toast.makeText(getContext(), "onItemClick   position--->" + position, Toast.LENGTH_SHORT).show();
-        Log.i(TAG, "onListItemClick   " + position);
+//        Toast.makeText(getContext(), "onItemClick   position--->" + position, Toast.LENGTH_SHORT).show();
+//        Log.i(TAG, "onListItemClick   " + position);
+        //跳到菜系的详情页
+        Intent intent=new Intent(getContext(), FoodDetailActivity.class);
+        intent.putExtra(Constants.KEY.HOME_FRAGMENT_LIST_MCBOOK_ID,moreCookBooksEntityByJson.getData().getMoreCookbooks().get(position).getId());
+        startActivity(intent);
     }
 
     @Override
     public void onSlideOpen(View view, View parentView, int position, int direction) {
-        Toast.makeText(getContext(), "onSlideOpen   position--->" + position + "  direction--->" + direction, Toast.LENGTH_SHORT).show();
+//        Toast.makeText(getContext(), "onSlideOpen   position--->" + position + "  direction--->" + direction, Toast.LENGTH_SHORT).show();
         Log.i(TAG, "onSlideOpen   " + position + "  direction--->" + direction);
     }
 
     @Override
     public void onSlideClose(View view, View parentView, int position, int direction) {
-        Toast.makeText(getContext(),  "onSlideClose   position--->" + position + "  direction--->" + direction, Toast.LENGTH_SHORT).show();
+//        Toast.makeText(getContext(),  "onSlideClose   position--->" + position + "  direction--->" + direction, Toast.LENGTH_SHORT).show();
         Log.i(TAG, "onSlideClose   " + position + "  direction--->" + direction);
     }
 
+    /**
+     * WrapperAdapter跳转
+     * @param v
+     * @param itemPosition   第几个item
+     * @param buttonPosition 第几个button
+     * @param direction      方向
+     * @return
+     */
     @Override
     public int onMenuItemClick(View v, int itemPosition, int buttonPosition, int direction) {
-        Log.i(TAG, "onMenuItemClick   " + itemPosition + "   " + buttonPosition + "   " + direction);
+//        Log.i(TAG, "onMenuItemClick   " + itemPosition + "   " + buttonPosition + "   " + direction);
         switch (direction) {
             case MenuItem.DIRECTION_RIGHT:
                 switch (buttonPosition) {
@@ -362,7 +379,7 @@ public class HomeFragment extends BaseFragment implements OkHttpUtil.OnDownLoadL
                 caixi_key= moreCookBooksEntityByJson.getData().getHotCategories().get(3).getName();
                 break;
         }
-        Intent intent = new Intent(getActivity(), MCBooksListActivity.class);
+        Intent intent = new Intent(getActivity(), FoodListActivity.class);
         intent.putExtra(Constants.KEY.CAIXI_KEY, caixi_key);
         startActivity(intent);
     }

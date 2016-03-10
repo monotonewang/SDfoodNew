@@ -1,49 +1,59 @@
-<?xml version="1.0" encoding="utf-8"?>
-<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<?xml version="1.0" encoding="utf-8"?><!--发现Fragment-->
+<com.handmark.pulltorefresh.library.PullToRefreshScrollView xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:ptr="http://schemas.android.com/apk/res-auto"
+    android:id="@+id/fragment_visible_ptrv"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:orientation="vertical">
-    <!--这是fragment头部的控件-->
-    <include layout="@layout/fragment_common_headview"></include>
+    android:orientation="vertical"
+   >
 
-    <com.facebook.drawee.view.SimpleDraweeView
-        android:id="@+id/fragment_visiable_sdv"
+    <LinearLayout
+        android:id="@+id/ll_fragment_visible"
         android:layout_width="match_parent"
-        android:layout_height="@dimen/y130" />
+        android:layout_height="match_parent"
+        android:orientation="vertical">
 
-    <TextView
-        android:id="@+id/fragment_visiable_goodsName"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:paddingLeft="@dimen/x10"
-        android:paddingRight="@dimen/x10"
-        android:textStyle="bold" />
+        <!--这是fragment头部的控件-->
+        <include layout="@layout/fragment_common_headview"></include>
 
-    <TextView
-        android:id="@+id/fragment_visiable_briefinfo"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:paddingLeft="@dimen/x10"
-        android:paddingRight="@dimen/x10"
-        android:textSize="@dimen/fragment_dicover_small_textsize" />
-
-    <RelativeLayout
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content">
+        <com.facebook.drawee.view.SimpleDraweeView
+            android:id="@+id/fragment_visiable_sdv"
+            android:layout_width="match_parent"
+            android:layout_height="@dimen/y130" />
 
         <TextView
-            android:id="@+id/fragment_visiable_price"
-            android:layout_width="wrap_content"
+            android:id="@+id/fragment_visiable_goodsName"
+            android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:paddingLeft="@dimen/x10" />
+            android:paddingLeft="@dimen/x10"
+            android:paddingRight="@dimen/x10"
+            android:textStyle="bold" />
 
         <TextView
-            android:id="@+id/fragment_visiable_salesCount"
-            android:layout_width="wrap_content"
+            android:id="@+id/fragment_visiable_briefinfo"
+            android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:layout_alignParentRight="true"
-            android:paddingRight="@dimen/x10" />
+            android:paddingLeft="@dimen/x10"
+            android:paddingRight="@dimen/x10"
+            android:textSize="@dimen/fragment_dicover_small_textsize" />
 
-    </RelativeLayout>
+        <RelativeLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content">
 
-</LinearLayout>
+            <TextView
+                android:id="@+id/fragment_visiable_price"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:paddingLeft="@dimen/x10" />
+
+            <TextView
+                android:id="@+id/fragment_visiable_salesCount"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_alignParentRight="true"
+                android:paddingRight="@dimen/x10" />
+
+        </RelativeLayout>
+    </LinearLayout>
+</com.handmark.pulltorefresh.library.PullToRefreshScrollView>

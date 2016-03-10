@@ -1,2 +1,2 @@
-include ':app', ':ActiveAndroid-master'
-include ':：library'
+include ':app', ':ActiveAndroid-master', ':ZXingAndroid'
+include ':library'

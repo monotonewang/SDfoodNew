@@ -4,7 +4,7 @@ import android.content.Context;
 import android.content.Intent;
 import android.view.View;
 
-import com.wang.sdfood.activity.McBookDetailActivity;
+import com.wang.sdfood.activity.FoodDetailActivity;
 import com.wang.sdfood.activity.MegcookActvity;
 import com.wang.sdfood.util.Constants;
 
@@ -36,7 +36,7 @@ public class ViewPagerListener implements View.OnClickListener {
             /**
              * 跳转到菜系的详情
              */
-            Intent intent = new Intent(context, McBookDetailActivity.class);
+            Intent intent = new Intent(context, FoodDetailActivity.class);
             intent.putExtra(Constants.KEY.FOODNAME_ID_KEY,id);
             context.startActivity(intent);
         }

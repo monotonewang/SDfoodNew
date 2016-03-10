@@ -1,14 +1,19 @@
 package com.wang.sdfood.fragment;
 
 
+import android.content.Intent;
 import android.support.annotation.Nullable;
 import android.util.Log;
 import android.view.View;
 import android.widget.ImageView;
+import android.widget.LinearLayout;
 import android.widget.TextView;
 
 import com.facebook.drawee.view.SimpleDraweeView;
+import com.handmark.pulltorefresh.library.PullToRefreshBase;
+import com.handmark.pulltorefresh.library.PullToRefreshScrollView;
 import com.wang.sdfood.R;
+import com.wang.sdfood.activity.MegCookDetailActivity;
 import com.wang.sdfood.base.BaseFragment;
 import com.wang.sdfood.model.DiscoverEntitys;
 import com.wang.sdfood.util.Constants;
@@ -24,8 +29,13 @@ import butterknife.Bind;
  * 这是发现的Fragment
  * Created by user on 2016/3/4.
  */
-public class VisiableFragment extends BaseFragment implements OkHttpUtil.OnDownLoadListener {
-
+public class VisiableFragment extends BaseFragment implements OkHttpUtil.OnDownLoadListener, View.OnClickListener {
+    //下拉刷新的ID
+    @Bind(R.id.fragment_visible_ptrv)
+    public PullToRefreshScrollView pullToRefreshScrollView;
+    //可视界面的容器的监听
+    @Bind(R.id.ll_fragment_visible)
+    public LinearLayout linearLayout;
     private static final String TAG ="print" ;
     //绑定头部的TextView
     @Nullable
@@ -50,6 +60,14 @@ public class VisiableFragment extends BaseFragment implements OkHttpUtil.OnDownL
         textView.setText(getResources().getString(R.string.fragment_discover_head_text));
         imageViews.get(0).setVisibility(View.GONE);
         imageViews.get(1).setVisibility(View.GONE);
+        //对下拉刷新的操作
+        pullToRefreshScrollView.getRefreshableView().setSmoothScrollingEnabled(true);
+        pullToRefreshScrollView.setMode(PullToRefreshBase.Mode.BOTH);
+//        ILoadingLayout loadingLayoutProxy = pullToRefreshScrollView.getLoadingLayoutProxy(true, false);
+//        loadingLayoutProxy.setPullLabel("下拉刷新。。。");
+//        loadingLayoutProxy.setRefreshingLabel("正在载入...");// 刷新时
+//        loadingLayoutProxy.setReleaseLabel("放开刷新...");// 下来达到一定距离时，显示的提示
+        linearLayout.setOnClickListener(this);
     }
 
     @Override
@@ -87,5 +105,16 @@ public class VisiableFragment extends BaseFragment implements OkHttpUtil.OnDownL
     @Override
     public void onFailure(String url, String json) {
 
+    }
+
+    /**
+     * LinearLayout 的点击监听
+     * @param v
+     */
+    @Override
+    public void onClick(View v) {
+        //跳转到厨具的详情销售页面
+        Intent intent=new Intent(getContext(), MegCookDetailActivity.class);
+        startActivity(intent);
     }
 }

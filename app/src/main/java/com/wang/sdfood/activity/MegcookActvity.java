@@ -8,13 +8,14 @@ import com.wang.sdfood.base.BaseActivity;
 import com.wang.sdfood.util.Constants;
 
 /**
+ * 这是ViewPager第一页的厨具
  * Created by Administrator on 2016/3/8.
  */
 public class MegcookActvity extends BaseActivity {
     private String TAG = "print";
     @Override
     protected int getViewResId() {
-        return R.layout.activity_fooddetail;
+        return R.layout.activity_megcook;
     }
 
     @Override

@@ -21,10 +21,10 @@ import butterknife.Bind;
 import butterknife.OnClick;
 
 /**
+ * 注册的Activity
  * Created by user on 2016/3/9.
  */
 public class RegisterActivity extends BaseActivity {
-    private static final String TAG ="RegisterActivity" ;
     @Bind({R.id.activity_register_phone, R.id.activity_register_nickname, R.id.activity_register_pwd, R.id.activity_register_invitecode})
     public List<TextInputLayout> textInputLayouts;
     private String pwd;
@@ -63,7 +63,12 @@ public class RegisterActivity extends BaseActivity {
                 /**
                  * 增加数据到数据库里面
                  */
-                SQLUtil.addUser(phoneNum,userName,pwd,askcode);
+                new Thread(new Runnable() {
+                    @Override
+                    public void run() {
+                        SQLUtil.addUser(phoneNum,userName,pwd,askcode);
+                    }
+                });
                 /**
                  * 发布数据到用户中心Fragment
                  */
