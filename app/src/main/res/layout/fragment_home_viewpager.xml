@@ -5,7 +5,7 @@
     android:layout_height="@dimen/y130">
     <fragment
         android:id="@+id/cycleViewPager"
-        android:name="com.wang.sdfood.custem.cycleviewpager.CycleViewPagerM"
+        android:name="me.codeboy.android.cycleviewpager.CycleViewPager"
         android:layout_width="match_parent"
         android:layout_height="@dimen/y130" >
         </fragment>
