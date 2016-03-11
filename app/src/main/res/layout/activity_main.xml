@@ -12,32 +12,31 @@
         android:layout_width="match_parent"
         android:layout_height="match_parent">
 
+        <android.support.design.widget.CoordinatorLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:orientation="vertical">
+            <!--Fragment帧布局占位-->
+            <FrameLayout
 
-            <android.support.design.widget.CoordinatorLayout
+                android:id="@+id/activity_main_fl"
                 android:layout_width="match_parent"
-                android:layout_height="match_parent"
-                android:orientation="vertical">
-                <!--Fragment帧布局占位-->
-                <FrameLayout
+                android:layout_height="@dimen/y432"></FrameLayout>
 
-                    android:id="@+id/activity_main_fl"
-                    android:layout_width="match_parent"
-                    android:layout_height="@dimen/y432"></FrameLayout>
-
-                <android.support.design.widget.FloatingActionButton
-                    android:id="@+id/activty_main_fab"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:layout_gravity="bottom|right"
-                    android:layout_marginBottom="@dimen/x20"
-                    android:layout_marginRight="@dimen/x20"
-                    android:src="@drawable/menu_icon_upload_recipe"
-                    app:backgroundTint="@color/activityBottomTextCheckColor" />
-                <!--添加radioGroup的布局-->
-                <include layout="@layout/activity_main_radiogroup"></include>
-                <!--这是搜索框界面-->
-                <include layout="@layout/fragment_search"></include>
-            </android.support.design.widget.CoordinatorLayout>
+            <android.support.design.widget.FloatingActionButton
+                android:id="@+id/activty_main_fab"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_gravity="bottom|right"
+                android:layout_marginBottom="@dimen/x20"
+                android:layout_marginRight="@dimen/x20"
+                android:src="@drawable/menu_icon_upload_recipe"
+                app:backgroundTint="@color/activityBottomTextCheckColor" />
+            <!--添加radioGroup的布局-->
+            <include layout="@layout/activity_main_radiogroup"></include>
+            <!--这是搜索框界面-->
+            <include layout="@layout/fragment_search"></include>
+        </android.support.design.widget.CoordinatorLayout>
 
 
         <android.support.design.widget.NavigationView

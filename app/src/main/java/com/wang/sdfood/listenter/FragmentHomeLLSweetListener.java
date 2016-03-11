@@ -4,7 +4,7 @@ import android.content.Context;
 import android.content.Intent;
 import android.view.View;
 
-import com.wang.sdfood.activity.CommendFoodActivity;
+import com.wang.sdfood.activity.FoodCommentActivity;
 import com.wang.sdfood.util.Constants;
 
 /**
@@ -27,7 +27,10 @@ public class FragmentHomeLLSweetListener implements View.OnClickListener  {
     public void onClick(View v) {
         url_staplefood=String.format(Constants.URL.SWEET_FOOD,str);
         //Log.e(TAG, "onClick: "+url_staplefood );
-        Intent intent = new Intent(context, CommendFoodActivity.class);
+        /**
+         * 甜食的跳转
+         */
+        Intent intent = new Intent(context, FoodCommentActivity.class);
         intent.putExtra(Constants.KEY.SWEETFOOD_KEY,url_staplefood);
         context.startActivity(intent);
     }

@@ -44,16 +44,20 @@
         <activity android:name=".activity.RegisterActivity">
         </activity>
 
-        <!--甜食Activity-->
-        <activity android:name=".activity.CommendFoodActivity">
+        <!--食物内容的Activity-->
+        <activity android:name=".activity.FoodCommentActivity">
 
         </activity>
-        <!--甜食Activity-->
+        <!--用户的菜谱Activity-->
         <activity android:name=".activity.UserRecipeActivity">
 
         </activity>
         <!--厨具详情的Activity-->
         <activity android:name=".activity.MegCookDetailActivity">
+
+        </activity>
+        <!--最新作品的Activity-->
+        <activity android:name=".activity.LabelNewWorkActivity">
 
         </activity>
 

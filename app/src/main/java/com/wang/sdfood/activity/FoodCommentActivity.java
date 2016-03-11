@@ -17,9 +17,10 @@ import java.util.List;
 import butterknife.Bind;
 
 /**
+ * 食物内容的列表的activity
  * Created by Administrator on 2016/3/9.
  */
-public class CommendFoodActivity extends BaseActivity implements OkHttpUtil.OnDownLoadListener {
+public class FoodCommentActivity extends BaseActivity implements OkHttpUtil.OnDownLoadListener {
     @Bind(R.id.lv_commenfoodlist)
     public ListView listView;
     //传递过来的url
@@ -31,16 +32,30 @@ public class CommendFoodActivity extends BaseActivity implements OkHttpUtil.OnDo
 
     @Override
     protected int getViewResId() {
-        return R.layout.activity_commenfood;
+        return R.layout.activity_comment_food;
     }
 
     @Override
     protected void init() {
         super.init();
         Intent intent = getIntent();
+        /**
+         * 甜食跳转过来的数据
+         */
         url_sweetfood = intent.getStringExtra(Constants.KEY.SWEETFOOD_KEY);
         mList_stapleFood = new ArrayList<>();
-
+        /**
+         * 热门标签本周最热跳转过来的url
+         */
+        if(url_sweetfood==null){
+            url_sweetfood = intent.getStringExtra(Constants.KEY.NEW_LABLE_WORK_ID);
+        }
+        /**
+         * 热门标签最新菜谱跳转过来的url
+         */
+        if(url_sweetfood==null){
+            url_sweetfood = intent.getStringExtra(Constants.KEY.NEW_LABLE_RECIPE_ID);
+        }
     }
 
     @Override

@@ -12,6 +12,7 @@ import android.support.v4.app.FragmentTransaction;
 import android.util.DisplayMetrics;
 import android.util.Log;
 import android.view.View;
+import android.view.animation.TranslateAnimation;
 import android.widget.AdapterView;
 import android.widget.ImageView;
 import android.widget.LinearLayout;
@@ -30,6 +31,8 @@ import com.wang.sdfood.fragment.MsgFragment;
 import com.wang.sdfood.fragment.VisiableFragment;
 import com.wang.sdfood.model.EBUserInfoEntity;
 import com.wang.sdfood.model.FragmentMsgEntity;
+import com.wang.sdfood.model.SearchYEntity;
+import com.wang.sdfood.model.SearchYEntity2;
 import com.wang.sdfood.util.Constants;
 
 import org.greenrobot.eventbus.EventBus;
@@ -41,8 +44,8 @@ import java.util.List;
 
 import butterknife.Bind;
 
-public class MainActivity extends BaseActivity implements RadioGroup.OnCheckedChangeListener,AdapterView.OnItemClickListener, View.OnClickListener {
-    private static final String TAG ="MainActivity" ;
+public class MainActivity extends BaseActivity implements RadioGroup.OnCheckedChangeListener, AdapterView.OnItemClickListener, View.OnClickListener {
+    private static final String TAG = "MainActivity";
     //这是搜索框的父布局
     @Bind(R.id.fragment_search)
     public LinearLayout mLinearLayout;
@@ -64,7 +67,7 @@ public class MainActivity extends BaseActivity implements RadioGroup.OnCheckedCh
     //找到Nfab的ID
     @Bind(R.id.activty_main_fab)
     public FloatingActionButton floatingActionButton;
-    private Fragment fragmentHome,fragmentVisible,fragmentMsg,fragmentMine;
+    private Fragment fragmentHome, fragmentVisible, fragmentMsg, fragmentMine;
     private FragmentManager fragmentManager;
     private android.support.v4.app.FragmentTransaction beginTransaction;
     //用户名
@@ -72,7 +75,6 @@ public class MainActivity extends BaseActivity implements RadioGroup.OnCheckedCh
 
     @Override
     protected int getViewResId() {
-
         return R.layout.activity_main;
     }
 
@@ -83,19 +85,53 @@ public class MainActivity extends BaseActivity implements RadioGroup.OnCheckedCh
     protected void onStart() {
         super.onStart();
         EventBus.getDefault().register(this);
-        if(nickName!=null){
-            Log.e("a",nickName);
+        if (nickName != null) {
+            Log.e("a", nickName);
 //            mTextView.setText(nickName);
 //            mImageView.setImageResource(R.drawable.ic_social_share_120_qq);
         }
     }
-    @Subscribe(priority = 1,sticky = true,threadMode = ThreadMode.MAIN)
-    public void ab(EBUserInfoEntity ebUserInfoEntity){
+
+    @Subscribe(priority = 1, sticky = true, threadMode = ThreadMode.MAIN)
+    public void ab(EBUserInfoEntity ebUserInfoEntity) {
         nickName = ebUserInfoEntity.getNickName();
     }
 
     /**
-     *消除事件
+     * 搜索框上滑的方法
+     * @param searchYEntity
+     */
+    @Subscribe(priority = 1, sticky = true, threadMode = ThreadMode.MAIN)
+    public void scroolUp(SearchYEntity searchYEntity) {
+        if (searchYEntity.getI() == 1) {
+            TranslateAnimation translateAnimation = new TranslateAnimation(0, 0, 0, -300);
+            translateAnimation.setDuration(200);
+            translateAnimation.setFillAfter(true);
+            mLinearLayout.startAnimation(translateAnimation);
+//            mLinearLayout.setBackgroundColor(getResources().getColor(R.color.activityBottomTextCheckColor));
+        }
+    }
+
+    /**
+     * 搜索框下滑的方法
+     * @param searchYEntity2
+     */
+    @Subscribe(priority = 1, sticky = true, threadMode = ThreadMode.MAIN)
+    public void scrollDown(SearchYEntity2 searchYEntity2) {
+        if (searchYEntity2.getI() == 2) {
+            /**
+             *相对移动位置
+             */
+            TranslateAnimation translateAnimationa = new TranslateAnimation(0,0, -200, 0);
+            translateAnimationa.setDuration(200);
+//            translateAnimationa.setFillAfter(true);
+            mLinearLayout.startAnimation(translateAnimationa);
+//            mLinearLayout.setBackgroundColor(getResources().getColor(R.color.activityLVMenuWordColor));
+        }
+    }
+
+    /**
+     * 消除事件
      */
     @Override
     protected void onStop() {
@@ -106,8 +142,8 @@ public class MainActivity extends BaseActivity implements RadioGroup.OnCheckedCh
     @Override
     protected void init() {
         super.init();
-        mImageView= (ImageView) findViewById(R.id.activity_main_dl_headview_iv1);
-        mTextView= (TextView) findViewById(R.id.activity_main_dl_headview_tv);
+        mImageView = (ImageView) findViewById(R.id.activity_main_dl_headview_iv1);
+        mTextView = (TextView) findViewById(R.id.activity_main_dl_headview_tv);
         radioGroup.setOnCheckedChangeListener(this);
         fragmentManager = getSupportFragmentManager();
         fragmentHome = new HomeFragment();
@@ -134,7 +170,7 @@ public class MainActivity extends BaseActivity implements RadioGroup.OnCheckedCh
          */
         Intent intent = getIntent();
         int registerOk = intent.getIntExtra(Constants.KEY.ACTIVITY_REG_OK, -1);
-        if(registerOk!=-1) {
+        if (registerOk != -1) {
             radioButtonList.get(registerOk).setChecked(true);
         }
     }
@@ -143,16 +179,17 @@ public class MainActivity extends BaseActivity implements RadioGroup.OnCheckedCh
     protected void loadDatas() {
         super.loadDatas();
         List<FragmentMsgEntity> list = getListByResource();
-        FragmentMsgLVAdapter fragmentMsgLVAdapter=new FragmentMsgLVAdapter(this,list);
+        FragmentMsgLVAdapter fragmentMsgLVAdapter = new FragmentMsgLVAdapter(this, list);
         listView.setAdapter(fragmentMsgLVAdapter);
     }
 
     /**
      * 这是抽屉布局的List菜单
+     *
      * @return
      */
     private List<FragmentMsgEntity> getListByResource() {
-        List<FragmentMsgEntity> list=new ArrayList<>();
+        List<FragmentMsgEntity> list = new ArrayList<>();
         Bitmap bitmap = BitmapFactory.decodeResource(getResources(), R.drawable.ic_menu_document);
         Bitmap bitmap1 = BitmapFactory.decodeResource(getResources(), R.drawable.ic_menu_star);
         Bitmap bitmap2 = BitmapFactory.decodeResource(getResources(), R.drawable.ic_menu_private);
@@ -164,11 +201,11 @@ public class MainActivity extends BaseActivity implements RadioGroup.OnCheckedCh
         String string2 = getResources().getString(R.string.activity_main_dl_menu_private);
         String string3 = getResources().getString(R.string.activity_main_dl_menu_sensor);
         String string4 = getResources().getString(R.string.activity_main_dl_menu_settings);
-        FragmentMsgEntity fragmentMsgEntity=new FragmentMsgEntity(bitmap,string,bitmap5);
-        FragmentMsgEntity fragmentMsgEntity1=new FragmentMsgEntity(bitmap1,string1,bitmap5);
-        FragmentMsgEntity fragmentMsgEntity2=new FragmentMsgEntity(bitmap2,string2,bitmap5);
-        FragmentMsgEntity fragmentMsgEntity3=new FragmentMsgEntity(bitmap3,string3,bitmap5);
-        FragmentMsgEntity fragmentMsgEntity4=new FragmentMsgEntity(bitmap4,string4,bitmap5);
+        FragmentMsgEntity fragmentMsgEntity = new FragmentMsgEntity(bitmap, string, bitmap5);
+        FragmentMsgEntity fragmentMsgEntity1 = new FragmentMsgEntity(bitmap1, string1, bitmap5);
+        FragmentMsgEntity fragmentMsgEntity2 = new FragmentMsgEntity(bitmap2, string2, bitmap5);
+        FragmentMsgEntity fragmentMsgEntity3 = new FragmentMsgEntity(bitmap3, string3, bitmap5);
+        FragmentMsgEntity fragmentMsgEntity4 = new FragmentMsgEntity(bitmap4, string4, bitmap5);
         list.add(fragmentMsgEntity);
         list.add(fragmentMsgEntity1);
         list.add(fragmentMsgEntity2);
@@ -179,6 +216,7 @@ public class MainActivity extends BaseActivity implements RadioGroup.OnCheckedCh
 
     /**
      * 这是跳转不同的Fragment的方法
+     *
      * @param group
      * @param checkedId
      */
@@ -192,7 +230,7 @@ public class MainActivity extends BaseActivity implements RadioGroup.OnCheckedCh
                  */
                 mLinearLayout.setVisibility(View.VISIBLE);
                 FragmentTransaction fragmentTransactionHome = getSupportFragmentManager().beginTransaction();
-                fragmentTransactionHome .show(fragmentHome)
+                fragmentTransactionHome.show(fragmentHome)
                         .hide(fragmentVisible)
                         .hide(fragmentMsg)
                         .hide(fragmentMine)
@@ -231,8 +269,10 @@ public class MainActivity extends BaseActivity implements RadioGroup.OnCheckedCh
 
         }
     }
+
     /**
      * 抽屉布局的ListView的监听事件处理
+     *
      * @param parent
      * @param view
      * @param position
@@ -240,17 +280,17 @@ public class MainActivity extends BaseActivity implements RadioGroup.OnCheckedCh
      */
     @Override
     public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
-        if(parent.equals(listView)){
-            Log.e(TAG, "onItemClick: "+position );
+        if (parent.equals(listView)) {
+            Log.e(TAG, "onItemClick: " + position);
         }
     }
 
     @Override
     public void onClick(View v) {
         //这里是跳转二维码的代码
-        if(v.getId()==R.id.fragment_search_qrcode){
-            Intent intent=new Intent(Intents.Scan.ACTION);
-            intent.putExtra(Intents.Scan.MODE,Intents.Scan.QR_CODE_MODE);
+        if (v.getId() == R.id.fragment_search_qrcode) {
+            Intent intent = new Intent(Intents.Scan.ACTION);
+            intent.putExtra(Intents.Scan.MODE, Intents.Scan.QR_CODE_MODE);
             //设置扫描预览框的宽高，建议根据屏幕宽高来设置：
             DisplayMetrics displayMetrics =
                     getResources().getDisplayMetrics();
@@ -272,7 +312,7 @@ public class MainActivity extends BaseActivity implements RadioGroup.OnCheckedCh
         if (requestCode == 0x001) {
             // 0x001 代表的 startActivityForResule
             if (resultCode == RESULT_OK && data != null) {
-                Bitmap bitmap= data.getParcelableExtra("data");
+                Bitmap bitmap = data.getParcelableExtra("data");
 //                String code = data.getStringExtra(Intents.Scan.RESULT);
             }
         }
