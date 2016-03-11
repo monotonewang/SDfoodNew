@@ -20,6 +20,7 @@ import com.wang.sdfood.activity.FoodDetailActivity;
 import com.wang.sdfood.adapter.FragmentHomeLVAdapter;
 import com.wang.sdfood.adapter.FragmentHomeNewuserLVAdapter;
 import com.wang.sdfood.base.BaseFragment;
+import com.wang.sdfood.custem.cycleviewpager.CycleViewPagerM;
 import com.wang.sdfood.custem.mainlvcustem.Menu;
 import com.wang.sdfood.custem.mainlvcustem.MenuItem;
 import com.wang.sdfood.custem.mainlvcustem.SlideAndDragListView;
@@ -51,7 +52,7 @@ public class HomeFragment extends BaseFragment implements OkHttpUtil.OnDownLoadL
     @Bind(R.id.tv_index)
     public TextView mTvIndex;
     //ViewPager
-    private CycleViewPager cycleViewPager;
+    private CycleViewPagerM cycleViewPager;
     //川菜
     @Bind(R.id.btn_chuancai)
     public TextView chuancai;
@@ -135,7 +136,7 @@ public class HomeFragment extends BaseFragment implements OkHttpUtil.OnDownLoadL
         mTvIndex.setFocusable(true);
         mTvIndex.setFocusableInTouchMode(true);
         mListView = (SlideAndDragListView) view.findViewById(R.id.fragment_home_sadlView);
-        cycleViewPager = (CycleViewPager) getActivity().getFragmentManager().findFragmentById(R.id.cycleViewPager);
+        cycleViewPager = (CycleViewPagerM) getActivity().getFragmentManager().findFragmentById(R.id.cycleViewPager);
         //这是不同菜系的点击事件
         chuancai.setOnClickListener(this);
         lucai.setOnClickListener(this);

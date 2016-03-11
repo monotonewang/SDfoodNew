@@ -55,7 +55,7 @@ public interface Constants {
          * POST
          * 菜系下面的评论。没有登录的跳到登录界面。登录的就会带上SessionId
          */
-        String FOOD_DETAIL_USER_COMMENt="http://www.xdmeishi.com/index.php?m=mobile&c=index&a=addComment&sessionId=649d5acd76fa47f44de6f65a8231aa25&id=212&content=%E4%B8%8D%E9%94%99%E5%95%8A&type=0";
+        String FOOD_DETAIL_USER_COMMENT="http://www.xdmeishi.com/index.php?m=mobile&c=index&a=addComment&sessionId=649d5acd76fa47f44de6f65a8231aa25&id=212&content=%E4%B8%8D%E9%94%99%E5%95%8A&type=0";
         /**
          * POST
          * 菜系下面的praise。没有登录的跳到登录界面。登录的就会带上SessionId
