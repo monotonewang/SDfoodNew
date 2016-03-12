@@ -224,6 +224,10 @@ public interface Constants {
          */
         String NEW_LABLE_RECIPE_ID="new_lable_recipe_id";
         /**
+         * Intent-最新工作的菜名Id
+         */
+        String NEW_LABLE_WORKS_ID="new_lable_works_id";
+        /**
          *甜食的传递的关键字
          */
         String SWEETFOOD_KEY = "foodnameid";

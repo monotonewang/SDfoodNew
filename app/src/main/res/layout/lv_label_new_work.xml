@@ -4,7 +4,58 @@
     xmlns:fresco="http://schemas.android.com/apk/res-auto"
     android:layout_height="match_parent">
     <com.facebook.drawee.view.SimpleDraweeView
+        android:id="@+id/sdv_lv_label_new_work"
         android:layout_width="match_parent"
         fresco:viewAspectRatio="2"
         android:layout_height="wrap_content" />
+    <!--用户的头像-->
+    <com.facebook.drawee.view.SimpleDraweeView
+        android:id="@+id/sdv_lv_label_new_work_user"
+        android:layout_width="@dimen/x100"
+        fresco:viewAspectRatio="2"
+        android:layout_height="wrap_content" />
+    <!--昵称-->
+    <TextView
+        android:textColor="@color/activityBottomTextUnCheckColor"
+        android:id="@+id/lv_Label_new_work_nickname"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content" />
+    <!--菜名-->
+    <TextView
+        android:textColor="@color/activityBottomTextUnCheckColor"
+        android:id="@+id/lv_Label_new_work_recipeName"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content" />
+    <!--内容-->
+    <TextView
+        android:textColor="@color/activityBottomTextUnCheckColor"
+        android:id="@+id/lv_Label_new_work_content"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content" />
+    <!--称赞的网友-->
+    <LinearLayout
+        android:id="@+id/ll_lv_label_new_work_lv_priase"
+        android:orientation="horizontal"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content">
+       <!-- <com.wang.sdfood.custem.ActivityNewLabelRyView
+            android:id="@+id/lv_label_new_work_lv_priase"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent">
+        </com.wang.sdfood.custem.ActivityNewLabelRyView>-->
+
+    </LinearLayout>
+    <!--评论的网友-->
+    <LinearLayout
+        android:id="@+id/ll_lv_label_new_work_lv_comment"
+        android:orientation="vertical"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content">
+        <com.wang.sdfood.custem.ActivityMegbookLVView
+            android:id="@+id/lv_label_new_work_lv_comment"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent">
+        </com.wang.sdfood.custem.ActivityMegbookLVView>
+
+    </LinearLayout>
 </LinearLayout>

@@ -20,6 +20,7 @@ import com.wang.sdfood.R;
 import com.wang.sdfood.activity.FoodCommentActivity;
 import com.wang.sdfood.activity.FoodDetailActivity;
 import com.wang.sdfood.activity.FoodListActivity;
+import com.wang.sdfood.activity.LabelNewWorkActivity;
 import com.wang.sdfood.adapter.FragmentHomeLVAdapter;
 import com.wang.sdfood.adapter.FragmentHomeNewuserLVAdapter;
 import com.wang.sdfood.base.BaseFragment;
@@ -448,7 +449,13 @@ public class HomeFragment extends BaseFragment implements OkHttpUtil.OnDownLoadL
             intent.putExtra(Constants.KEY.NEW_LABLE_RECIPE_ID, newWorkUrl);
             startActivity(intent);
         } else if (view.getId() == R.id.fragment_home_hotcategries_newWorks_sdv) {
-
+            /**
+             * 最新作品的跳转
+             */
+            Intent intent = new Intent(getContext(), LabelNewWorkActivity.class);
+            String newWorkUrl = String.format(Constants.URL.NEW_WORKS, Integer.valueOf(moreCookBooksEntityByJson.getData().getNewWorks().getId()));
+            intent.putExtra(Constants.KEY.NEW_LABLE_WORKS_ID, newWorkUrl);
+            startActivity(intent);
         } else if (view.getId() == R.id.fragment_home_hotcategries_newPai_sdv) {
 
         }

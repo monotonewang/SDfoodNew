@@ -3,6 +3,7 @@ package com.wang.sdfood.util;
 import com.google.gson.Gson;
 import com.wang.sdfood.model.CaiXiEntity;
 import com.wang.sdfood.model.DiscoverEntitys;
+import com.wang.sdfood.model.LabelNewWorkEntity;
 import com.wang.sdfood.model.MoreCookBookDetailEntity;
 import com.wang.sdfood.model.MoreCookBooksEntity;
 import com.wang.sdfood.model.StapleFoodEntitys;
@@ -54,4 +55,14 @@ public class JsonUtil {
     public static MoreCookBookDetailEntity getMoreCookBookByJson(String json){
         return new Gson().fromJson(json,MoreCookBookDetailEntity.class);
     }
+    /**
+     * 解析得到最新作品的数据
+     * @param json
+     * @return
+     */
+    public static LabelNewWorkEntity getLabelNewWorkByJson(String json){
+        return new Gson().fromJson(json,LabelNewWorkEntity.class);
+    }
+
+
 }
