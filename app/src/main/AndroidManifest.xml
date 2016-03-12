@@ -60,6 +60,10 @@
         <activity android:name=".activity.LabelNewWorkActivity">
 
         </activity>
+        <!--西顿网友的Activity-->
+        <activity android:name=".activity.XiDunUserActivity">
+
+        </activity>
 
         <!--搜索的透明Activity-->
         <!--<activity android:name=".activity.SearchTranSparentActivity"

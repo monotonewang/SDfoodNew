@@ -21,9 +21,18 @@ import java.util.List;
 public class FragmentHomeNewuserLVAdapter extends RecyclerView.Adapter<FragmentHomeNewuserLVAdapter.ViewHolder> {
     private Context context;
     private List<MoreCookBooksEntity.DataEntity.NewUserEntity> datas;
+    private View.OnClickListener onClickListener;
     public FragmentHomeNewuserLVAdapter(Context context, List<MoreCookBooksEntity.DataEntity.NewUserEntity> datas) {
             this.context=context;
         this.datas=datas;
+    }
+
+    /**
+     * Item点击的接口回调方法
+     * @param onClickListener
+     */
+    public void setOnClickListener(View.OnClickListener onClickListener) {
+        this.onClickListener = onClickListener;
     }
 
     @Override
@@ -43,11 +52,14 @@ public class FragmentHomeNewuserLVAdapter extends RecyclerView.Adapter<FragmentH
         return datas.size();
     }
 
-    class ViewHolder extends RecyclerView.ViewHolder{
+    class ViewHolder extends RecyclerView.ViewHolder {
         TextView textView;
         SimpleDraweeView simpleDraweeView;
         public ViewHolder(View itemView) {
             super(itemView);
+            if(onClickListener!=null){
+                itemView.setOnClickListener(onClickListener);
+            }
             textView= (TextView) itemView.findViewById(R.id.fragment_home_newuser_nickName);
             simpleDraweeView= (SimpleDraweeView) itemView.findViewById(R.id.fragment_home_newuser_user_sdv);
         }

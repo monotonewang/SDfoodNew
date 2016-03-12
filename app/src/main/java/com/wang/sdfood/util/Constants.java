@@ -232,6 +232,10 @@ public interface Constants {
          */
         String SWEETFOOD_KEY = "foodnameid";
         /**
+         *西顿网友的关键字
+         */
+        String XINDUN_USER_KEY = "xindun_user_key";
+        /**
          * 这是注册界面完成的值传递
          */
         String ACTIVITY_REG_OK="activity_reg_ok";

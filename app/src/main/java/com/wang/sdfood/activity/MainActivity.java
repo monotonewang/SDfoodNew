@@ -14,6 +14,7 @@ import android.util.Log;
 import android.view.View;
 import android.view.animation.TranslateAnimation;
 import android.widget.AdapterView;
+import android.widget.EditText;
 import android.widget.ImageView;
 import android.widget.LinearLayout;
 import android.widget.ListView;
@@ -49,8 +50,19 @@ public class MainActivity extends BaseActivity implements RadioGroup.OnCheckedCh
     //这是搜索框的父布局
     @Bind(R.id.fragment_search)
     public LinearLayout mLinearLayout;
+    //这是搜索框的打开抽屉布局的方法第一个是回退的按钮，第二个是搜索的图标
+    @Bind({R.id.fragment_search_iv_search,R.id.fragment_search_iv_search_et,R.id.fragment_search_qrcode})
+    public List<ImageView> mSearchiv;
+    //这是搜索框的Edittext
+    @Bind(R.id.fragment_search_et)
+    public EditText mSearchEditText;
     @Bind(R.id.fragment_search_qrcode)
     public ImageView mQRCode;
+    //这是搜索框的下面的线性布局
+    @Bind(R.id.ll_search_bottom_lv)
+    public LinearLayout mSearchLinearLayout;
+    //这是搜索框的下面的线性布局是否可见
+    private boolean mSearchLinearLayoutIsShow;
     //这是抽屉布局的用户头像
     public ImageView mImageView;
     //这是抽屉布局的用户名
@@ -99,6 +111,7 @@ public class MainActivity extends BaseActivity implements RadioGroup.OnCheckedCh
 
     /**
      * 搜索框上滑的方法
+     *
      * @param searchYEntity
      */
     @Subscribe(priority = 1, sticky = true, threadMode = ThreadMode.MAIN)
@@ -114,6 +127,7 @@ public class MainActivity extends BaseActivity implements RadioGroup.OnCheckedCh
 
     /**
      * 搜索框下滑的方法
+     *
      * @param searchYEntity2
      */
     @Subscribe(priority = 1, sticky = true, threadMode = ThreadMode.MAIN)
@@ -122,7 +136,7 @@ public class MainActivity extends BaseActivity implements RadioGroup.OnCheckedCh
             /**
              *相对移动位置
              */
-            TranslateAnimation translateAnimationa = new TranslateAnimation(0,0, -200, 0);
+            TranslateAnimation translateAnimationa = new TranslateAnimation(0, 0, -200, 0);
             translateAnimationa.setDuration(200);
 //            translateAnimationa.setFillAfter(true);
             mLinearLayout.startAnimation(translateAnimationa);
@@ -144,6 +158,14 @@ public class MainActivity extends BaseActivity implements RadioGroup.OnCheckedCh
         super.init();
         mImageView = (ImageView) findViewById(R.id.activity_main_dl_headview_iv1);
         mTextView = (TextView) findViewById(R.id.activity_main_dl_headview_tv);
+        //搜索框的TextView-设置监听
+        mSearchEditText.setOnClickListener(this);
+        //这是搜索框前面打开抽屉布局的iv
+        mSearchiv.get(0).setOnClickListener(this);
+        mSearchiv.get(1).setOnClickListener(this);
+        mSearchiv.get(2).setOnClickListener(this);
+        //首次进入把线性布局设置不可见
+        mSearchLinearLayout.setVisibility(View.GONE);
         radioGroup.setOnCheckedChangeListener(this);
         fragmentManager = getSupportFragmentManager();
         fragmentHome = new HomeFragment();
@@ -303,6 +325,43 @@ public class MainActivity extends BaseActivity implements RadioGroup.OnCheckedCh
             intent.putExtra(Intents.Scan.HEIGHT, size);
             intent.setFlags(Intent.FLAG_ACTIVITY_NO_ANIMATION);
             startActivityForResult(intent, 0x001);
+        } else if (v.getId() == R.id.fragment_search_et) {
+            /**
+             * 这里是点击EditText里面的响应
+             */
+            Log.e("print", "in");
+//            if (mSearchLinearLayoutIsShow == true) {
+//                Log.e("print", "inf");
+//                mSearchLinearLayoutIsShow = false;
+//                mLinearLayout.setBackgroundColor(getResources().getColor(R.color.activityBottomTextCheckColor));
+//                mSearchLinearLayout.setVisibility(View.GONE);
+//            } else
+            if (mSearchLinearLayoutIsShow == false) {
+                Log.e("print", "int");
+                mSearchLinearLayoutIsShow = true;
+                mSearchLinearLayout.setVisibility(View.VISIBLE);
+                //设置二维码的图标不可见
+                mSearchiv.get(2).setVisibility(View.GONE);
+                mSearchiv.get(0).setImageResource(R.drawable.common_head_btn_back);
+            }
+        }else if(v.getId()==R.id.fragment_search_iv_search){
+            //隐藏掉mSearchLinearLayout的布局
+            Log.e("print", "intsearch");
+            if (mSearchLinearLayoutIsShow == true) {
+                Log.e("print", "intsearchon");
+                mSearchLinearLayoutIsShow = false;
+                mSearchiv.get(0).setImageResource(R.drawable.common_icon_list_def);
+                //设置二维码的图标可见
+                mSearchiv.get(2).setVisibility(View.VISIBLE);
+                mSearchLinearLayout.setVisibility(View.GONE);
+            } else if (mSearchLinearLayoutIsShow == false) {
+                Log.e("print", "intsearchoff");
+                //这里是打开抽屉布局的方法
+//                Log.e("print", "int");
+//                mSearchLinearLayoutIsShow = true;
+//                mLinearLayout.setBackgroundColor(getResources().getColor(R.color.activityLVMenuWordColor));
+//                mSearchLinearLayout.setVisibility(View.VISIBLE);
+            }
         }
     }
 

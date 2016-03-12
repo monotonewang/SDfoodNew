@@ -14,6 +14,7 @@
     android:paddingTop="@dimen/y5">
 
     <ImageView
+          android:id="@+id/fragment_search_iv_search"
         android:layout_gravity="center_vertical"
         android:layout_width="0dp"
         android:layout_height="wrap_content"
@@ -33,6 +34,7 @@
             android:layout_height="match_parent">
 
             <ImageView
+                android:id="@+id/fragment_search_iv_search_et"
                 android:layout_marginLeft="@dimen/x20"
                 android:layout_width="wrap_content"
                 android:layout_height="match_parent"

@@ -21,6 +21,7 @@ import com.wang.sdfood.activity.FoodCommentActivity;
 import com.wang.sdfood.activity.FoodDetailActivity;
 import com.wang.sdfood.activity.FoodListActivity;
 import com.wang.sdfood.activity.LabelNewWorkActivity;
+import com.wang.sdfood.activity.XiDunUserActivity;
 import com.wang.sdfood.adapter.FragmentHomeLVAdapter;
 import com.wang.sdfood.adapter.FragmentHomeNewuserLVAdapter;
 import com.wang.sdfood.base.BaseFragment;
@@ -247,8 +248,22 @@ public class HomeFragment extends BaseFragment implements OkHttpUtil.OnDownLoadL
 //            //recycleView的adapter
         FragmentHomeNewuserLVAdapter fragmentHomeNewuserLVAdapter = new FragmentHomeNewuserLVAdapter(getContext(), newUser);
 //            //线性布局管理器
+        //这是recycleView的点击事件
+        fragmentHomeNewuserLVAdapter.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                //当前点击的下标
+                int childAdapterPosition = newUserrecyclerView.getChildAdapterPosition(v);
+                String newUserUrl = String.format(Constants.URL.XIDUN_USER, Integer.valueOf(moreCookBooksEntityByJson.getData().getNewUser().get(childAdapterPosition).getId()));
+                //跳转到网友的acitivty
+                Intent intent=new Intent(getContext(), XiDunUserActivity.class);
+                intent.putExtra(Constants.KEY.XINDUN_USER_KEY,newUserUrl);
+                startActivity(intent);
+            }
+        });
         newUserrecyclerView.setLayoutManager(new LinearLayoutManager(getContext(), LinearLayout.HORIZONTAL, false));
         newUserrecyclerView.setAdapter(fragmentHomeNewuserLVAdapter);
+
     }
 
     /**
