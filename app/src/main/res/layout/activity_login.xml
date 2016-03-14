@@ -62,4 +62,9 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content" />
     </RelativeLayout>
+    <ImageView
+        android:src="@drawable/ic_social_share_120_qq"
+        android:id="@+id/iv_login_qq"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content" />
 </LinearLayout>
