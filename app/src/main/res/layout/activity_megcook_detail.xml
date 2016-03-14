@@ -13,7 +13,6 @@
     </ScrollView>
     <TextView
         android:id="@+id/tv_activity_megcook_detail_buy"
-
         android:text="立即购买"
         android:layout_marginLeft="@dimen/x160"
         android:layout_gravity="bottom"

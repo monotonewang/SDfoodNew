@@ -27,9 +27,7 @@ public class AppContext extends Application{
     @Override
     public void onCreate() {
         super.onCreate();
-
         appContext=this;
-
         OkHttpUtil.initOkHttp();
         FrescoUtil.initFresco(this);
         Shareutil.initShared(this);

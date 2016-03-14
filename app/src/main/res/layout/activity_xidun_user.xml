@@ -1,23 +1,42 @@
 <?xml version="1.0" encoding="utf-8"?>
 <ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
-    android:orientation="vertical" android:layout_width="match_parent"
-    android:layout_height="match_parent">
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical">
+
     <LinearLayout
-        android:orientation="vertical"
         android:layout_width="match_parent"
-        android:layout_height="match_parent">
+        android:layout_height="match_parent"
+        android:orientation="vertical">
+
+        <com.facebook.drawee.view.SimpleDraweeView
+            android:layout_width="@dimen/x100"
+            android:layout_height="@dimen/x100" />
 
         <TextView
+            android:id="@+id/textView"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="xindun user Text"
-            android:id="@+id/textView" />
+            android:text="xindun user Text" />
+
+        <Button
+            android:layout_width="@dimen/x100"
+            android:layout_height="wrap_content" />
+
+
         <com.wang.sdfood.custem.ActivityMegbookLVView
             android:layout_width="match_parent"
             android:layout_height="match_parent">
 
         </com.wang.sdfood.custem.ActivityMegbookLVView>
 
+        <android.support.design.widget.TabLayout
+            android:id="@+id/tab_xidunUser"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content">
+
+
+        </android.support.design.widget.TabLayout>
 
     </LinearLayout>
 

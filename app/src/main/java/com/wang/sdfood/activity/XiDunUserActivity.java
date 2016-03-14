@@ -1,6 +1,7 @@
 package com.wang.sdfood.activity;
 
 import android.content.Intent;
+import android.content.res.Configuration;
 
 import com.wang.sdfood.R;
 import com.wang.sdfood.base.BaseActivity;
@@ -42,5 +43,15 @@ public class XiDunUserActivity extends BaseActivity implements OkHttpUtil.OnDown
     @Override
     public void onFailure(String url, String json) {
 
+    }
+
+    @Override
+    protected void onStart() {
+        super.onStart();
+    }
+
+    @Override
+    public void onConfigurationChanged(Configuration newConfig) {
+        super.onConfigurationChanged(newConfig);
     }
 }
