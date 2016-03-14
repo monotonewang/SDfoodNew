@@ -1,22 +1,23 @@
 <?xml version="1.0" encoding="utf-8"?>
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
     package="com.wang.sdfood">
-    <uses-permission android:name="android.permission.INTERNET"></uses-permission>
-    <uses-permission android:name="android.permission.WRITE_EXTERNAL_STORAGE"></uses-permission>
-    <uses-permission android:name="android.permission.READ_EXTERNAL_STORAGE"></uses-permission>
+
+    <uses-permission android:name="android.permission.INTERNET" />
+    <uses-permission android:name="android.permission.WRITE_EXTERNAL_STORAGE" />
+    <uses-permission android:name="android.permission.READ_EXTERNAL_STORAGE" />
     <uses-permission android:name="android.permission.GET_TASKS" />
     <uses-permission android:name="android.permission.ACCESS_WIFI_STATE" />
     <uses-permission android:name="android.permission.ACCESS_NETWORK_STATE" />
     <uses-permission android:name="android.permission.CHANGE_WIFI_STATE" />
     <uses-permission android:name="android.permission.READ_PHONE_STATE" />
-    <uses-permission android:name="android.permission.MANAGE_ACCOUNTS"/>
-    <uses-permission android:name="android.permission.GET_ACCOUNTS"/>
+    <uses-permission android:name="android.permission.MANAGE_ACCOUNTS" />
+    <uses-permission android:name="android.permission.GET_ACCOUNTS" />
     <!-- 蓝牙分享所需的权限 -->
     <uses-permission android:name="android.permission.BLUETOOTH" />
     <uses-permission android:name="android.permission.BLUETOOTH_ADMIN" />
 
     <application
-        android:name="com.wang.sdfood.application.AppContext"
+        android:name=".application.AppContext"
         android:allowBackup="true"
         android:icon="@drawable/ic_launcher"
         android:label="@string/app_name"
@@ -29,67 +30,51 @@
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
-        <!--收藏Activity-->
-        <activity android:name=".activity.CollectActivity">
+        <!-- 收藏Activity -->
+        <activity android:name=".activity.CollectActivity"></activity>
+        <!-- 评论Activity -->
+        <activity android:name=".activity.DiscussActivity"></activity>
+        <!-- 菜系列表Activity -->
+        <activity android:name=".activity.FoodListActivity"></activity>
+        <!-- 菜系详情Activity -->
+        <activity android:name=".activity.FoodDetailActivity"></activity>
+        <!-- 厨具的的详情Activity -->
+        <activity android:name=".activity.MegcookActvity"></activity>
+        <!-- 登录界面 -->
+        <activity android:name=".activity.LoginActivity"></activity>
+        <!-- 注册界面 -->
+        <activity android:name=".activity.RegisterActivity"></activity>
 
-        </activity>
-        <!--评论Activity-->
-        <activity android:name=".activity.DiscussActivity">
+        <!-- 食物内容的Activity -->
+        <activity android:name=".activity.FoodCommentActivity"></activity>
+        <!-- 用户的菜谱Activity -->
+        <activity android:name=".activity.UserRecipeActivity"></activity>
+        <!-- 厨具详情的Activity -->
+        <activity android:name=".activity.MegCookDetailActivity"></activity>
+        <!-- 最新作品的Activity -->
+        <activity android:name=".activity.LabelNewWorkActivity"></activity>
+        <!-- 西顿网友的Activity -->
+        <activity android:name=".activity.XiDunUserActivity"></activity>
 
-        </activity>
-        <!--菜系列表Activity-->
-        <activity android:name=".activity.FoodListActivity">
-        </activity>
-        <!--菜系详情Activity-->
-        <activity android:name=".activity.FoodDetailActivity">
-        </activity>
-        <!--厨具的的详情Activity-->
-        <activity android:name=".activity.MegcookActvity">
-        </activity>
-        <!--登录界面-->
-        <activity android:name=".activity.LoginActivity">
-        </activity>
-        <!--注册界面-->
-        <activity android:name=".activity.RegisterActivity">
-        </activity>
-
-        <!--食物内容的Activity-->
-        <activity android:name=".activity.FoodCommentActivity">
-
-        </activity>
-        <!--用户的菜谱Activity-->
-        <activity android:name=".activity.UserRecipeActivity">
-
-        </activity>
-        <!--厨具详情的Activity-->
-        <activity android:name=".activity.MegCookDetailActivity">
-
-        </activity>
-        <!--最新作品的Activity-->
-        <activity android:name=".activity.LabelNewWorkActivity">
-
-        </activity>
-        <!--西顿网友的Activity-->
-        <activity android:name=".activity.XiDunUserActivity">
-
-        </activity>
-
-        <!--搜索的透明Activity-->
-        <!--<activity android:name=".activity.SearchTranSparentActivity"
+        <!-- 搜索的透明Activity -->
+        <!--
+        <activity android:name=".activity.SearchTranSparentActivity"
             android:label="@string/app_name"
             android:theme="Theme">
 
-        </activity>-->
+        </activity>
+        -->
         <activity
             android:name="com.mob.tools.MobUIShell"
-            android:theme="@android:style/Theme.Translucent.NoTitleBar"
             android:configChanges="keyboardHidden|orientation|screenSize"
             android:screenOrientation="portrait"
-            android:windowSoftInputMode="stateHidden|adjustResize" >
-
+            android:theme="@android:style/Theme.Translucent.NoTitleBar"
+            android:windowSoftInputMode="stateHidden|adjustResize">
             <intent-filter>
                 <data android:scheme="tencent100371282" />
+
                 <action android:name="android.intent.action.VIEW" />
+
                 <category android:name="android.intent.category.BROWSABLE" />
                 <category android:name="android.intent.category.DEFAULT" />
             </intent-filter>
@@ -97,12 +82,19 @@
             <!-- 调用新浪原生SDK，需要注册的回调activity -->
             <intent-filter>
                 <action android:name="com.sina.weibo.sdk.action.ACTION_SDK_REQ_ACTIVITY" />
+
                 <category android:name="android.intent.category.DEFAULT" />
             </intent-filter>
         </activity>
-        <!--数据库的操作-->
-        <meta-data android:name="AA_DB_NAME" android:value="SDfood.db" />
-        <meta-data android:name="AA_DB_VERSION" android:value="1" />
+        <!-- 数据库的操作 -->
+        <meta-data
+            android:name="AA_DB_NAME"
+            android:value="SDfood.db" />
+        <meta-data
+            android:name="AA_DB_VERSION"
+            android:value="1" />
+
+        <activity android:name=".activity.PayWaysActivity"></activity>
     </application>
 
 </manifest>
