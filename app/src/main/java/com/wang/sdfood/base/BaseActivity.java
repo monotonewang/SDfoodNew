@@ -1,8 +1,13 @@
 package com.wang.sdfood.base;
 
+import android.app.ActionBar;
 import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
 import android.util.Log;
+import android.view.View;
+
+
+import com.wang.sdfood.R;
 
 import butterknife.ButterKnife;
 
@@ -14,7 +19,7 @@ public abstract class BaseActivity extends AppCompatActivity {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        Log.e(TAG, "onCreate: " );
+        Log.e(TAG, "onCreate: ");
         setContentView(getViewResId());
         ButterKnife.bind(this);
         init();

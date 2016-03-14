@@ -1,5 +1,5 @@
 <resources>
-    <string name="app_name">SDfood</string>
+    <string name="app_name">我的西顿美食</string>
     <!--主页的Activity的抽屉布局的menu的文字-->
     <string name="activity_main_dl_headview_login">注册/登录</string>
     <string name="activity_main_dl_menu_doucument">历史浏览</string>
