@@ -51,9 +51,7 @@ public class PayWaysActivity extends BaseActivity implements View.OnClickListene
                 case SDK_PAY_FLAG: {
                     PayResult payResult = new PayResult((String) msg.obj);
                     /**
-                     * 同步返回的结果必须放置到服务端进行验证（验证的规则请看https://doc.open.alipay.com/doc2/
-                     * detail.htm?spm=0.0.0.0.xdvAU6&treeId=59&articleId=103665&
-                     * docType=1) 建议商户依赖异步通知
+                     * 同步返回的结果必须放置到服务端进行验证（验证的规则请看  建议商户依赖异步通知
                      */
                     String resultInfo = payResult.getResult();// 同步返回需要验证的信息
 
@@ -86,7 +84,6 @@ public class PayWaysActivity extends BaseActivity implements View.OnClickListene
             new AlertDialog.Builder(this).setTitle("警告").setMessage("需要配置PARTNER | RSA_PRIVATE| SELLER")
                     .setPositiveButton("确定", new DialogInterface.OnClickListener() {
                         public void onClick(DialogInterface dialoginterface, int i) {
-                            //
                             finish();
                         }
                     }).show();
