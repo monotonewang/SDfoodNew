@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <!--这是fragmenthome的布局-->
-<android.support.v4.widget.SwipeRefreshLayout
+<androidx.swiperefreshlayout.widget.SwipeRefreshLayout
     android:id="@+id/fragment_home_srl"
     xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="match_parent"
@@ -52,4 +52,4 @@
 
         </FrameLayout>
     </ScrollView>
-</android.support.v4.widget.SwipeRefreshLayout>
+</androidx.swiperefreshlayout.widget.SwipeRefreshLayout>

@@ -9,7 +9,7 @@ import com.wang.sdfood.base.BaseActivity;
  */
 public class DiscussActivity extends BaseActivity {
     @Override
-    protected int getViewResId() {
+    protected void getViewResId() {
         return R.layout.activity_home_discuss;
     }
 }

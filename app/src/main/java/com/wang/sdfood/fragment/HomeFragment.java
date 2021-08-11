@@ -5,9 +5,11 @@ import android.content.Intent;
 import android.graphics.Color;
 import android.graphics.drawable.ColorDrawable;
 import android.os.Handler;
-import android.support.v4.widget.SwipeRefreshLayout;
-import android.support.v7.widget.LinearLayoutManager;
-import android.support.v7.widget.RecyclerView;
+
+import androidx.swiperefreshlayout.widget.SwipeRefreshLayout;
+import androidx.recyclerview.widget.LinearLayoutManager;
+import androidx.recyclerview.widget.RecyclerView;
+
 import android.util.Log;
 import android.view.MotionEvent;
 import android.view.View;
@@ -44,8 +46,6 @@ import org.greenrobot.eventbus.EventBus;
 import java.util.ArrayList;
 import java.util.List;
 
-import butterknife.Bind;
-import butterknife.OnClick;
 import me.codeboy.android.cycleviewpager.BaseViewPager;
 import me.codeboy.android.cycleviewpager.CycleViewPager;
 
@@ -55,37 +55,43 @@ import me.codeboy.android.cycleviewpager.CycleViewPager;
  */
 public class HomeFragment extends BaseFragment implements OkHttpUtil.OnDownLoadListener, SlideAndDragListView.OnListItemClickListener, SlideAndDragListView.OnSlideListener, SlideAndDragListView.OnMenuItemClickListener, View.OnClickListener {
     //刷新的控件
-    @Bind(R.id.fragment_home_srl)
     public SwipeRefreshLayout swipeRefreshLayout;
-    @Bind(R.id.sv_fragment_home)
     public ScrollView scrollView;
     public Handler handler = new Handler();
-    @Bind(R.id.tv_index)
     public TextView mTvIndex;
     //ViewPager
     private CycleViewPager cycleViewPager;
     //川菜
-    @Bind(R.id.btn_chuancai)
     public TextView chuancai;
     //鲁菜
-    @Bind(R.id.btn_lucai)
     public TextView lucai;
     //苏菜
-    @Bind(R.id.btn_sucai)
     public TextView sucai;
     //浙菜
-    @Bind(R.id.btn_zhecai)
     public TextView zhecai;
     //这是热门标签的子控件ID
-    @Bind({R.id.fragment_home_hotcategries_mostPopularOfWeek_tv, R.id.fragment_home_hotcategries_newCookbook_tv, R.id.fragment_home_hotcategries_newWorks_tv, R.id.fragment_home_hotcategries_newPai_tv})
-    public List<TextView> hotCategoriestv;
-    @Bind({R.id.fragment_home_hotcategries_mostPopularOfWeek_sdv, R.id.fragment_home_hotcategries_newCookbook_sdv, R.id.fragment_home_hotcategries_newWorks_sdv, R.id.fragment_home_hotcategries_newPai_sdv})
-    public List<SimpleDraweeView> hotCategoriessdv;
+//    @Bind({R.id.fragment_home_hotcategries_mostPopularOfWeek_tv, R.id.fragment_home_hotcategries_newCookbook_tv, R.id.fragment_home_hotcategries_newWorks_tv, R.id.fragment_home_hotcategries_newPai_tv})
+//    public List<TextView> hotCategoriestv;
+    public TextView textView1;
+    public TextView textView2;
+    public TextView textView3;
+    public TextView textView4;
+
+    public SimpleDraweeView simpleDraweeView1;
+    public SimpleDraweeView simpleDraweeView2;
+    public SimpleDraweeView simpleDraweeView3;
+    public SimpleDraweeView simpleDraweeView4;
 
     //这是sweet的View
     //LinearLayout的布局id
     @Bind({R.id.fragment_home_sweet_sweets, R.id.fragment_home_sweet_porridge, R.id.fragment_home_sweet_hotfood, R.id.fragment_home_sweet_snacks})
     public List<LinearLayout> linearLayouts;
+
+    public LinearLayout linearLayout1;
+    public LinearLayout linearLayout2;
+    public LinearLayout linearLayout3;
+    public LinearLayout linearLayout4;
+
     //这是推荐的甜点美食的数据
     private MoreCookBooksEntity.DataEntity.RecommendEntity recommend;
     //这是推荐的breakfast的LinearLayout
@@ -125,6 +131,22 @@ public class HomeFragment extends BaseFragment implements OkHttpUtil.OnDownLoadL
     @Override
     protected void init(View view) {
         super.init(view);
+        swipeRefreshLayout = view.findViewById(R.id.fragment_home_srl);
+        scrollView = view.findViewById(R.id.sv_fragment_home);
+        mTvIndex = view.findViewById(R.id.tv_index);
+        chuancai = view.findViewById(R.id.btn_chuancai);
+        lucai = view.findViewById(R.id.btn_lucai);
+        sucai = view.findViewById(R.id.btn_sucai);
+        zhecai = view.findViewById(R.id.btn_zhecai);
+        textView1 = view.findViewById(R.id.fragment_home_hotcategries_mostPopularOfWeek_tv);
+        textView2 = view.findViewById(R.id.fragment_home_hotcategries_newCookbook_tv);
+        textView3 = view.findViewById(R.id.fragment_home_hotcategries_newWorks_tv);
+        textView4 = view.findViewById(R.id.fragment_home_hotcategries_newPai_tv);
+        simpleDraweeView1 = view.findViewById(R.id.fragment_home_hotcategries_mostPopularOfWeek_sdv);
+        simpleDraweeView2 = view.findViewById(R.id.fragment_home_hotcategries_newCookbook_sdv);
+        simpleDraweeView3 = view.findViewById(R.id.fragment_home_hotcategries_newWorks_sdv);
+        simpleDraweeView4 = view.findViewById(R.id.fragment_home_hotcategries_newPai_sdv);
+
 //        下拉刷新的监听事件
         swipeRefreshLayout.setOnRefreshListener(new SwipeRefreshLayout.OnRefreshListener() {
             @Override
@@ -256,8 +278,8 @@ public class HomeFragment extends BaseFragment implements OkHttpUtil.OnDownLoadL
                 int childAdapterPosition = newUserrecyclerView.getChildAdapterPosition(v);
                 String newUserUrl = String.format(Constants.URL.XIDUN_USER, Integer.valueOf(moreCookBooksEntityByJson.getData().getNewUser().get(childAdapterPosition).getId()));
                 //跳转到网友的acitivty
-                Intent intent=new Intent(getContext(), XiDunUserActivity.class);
-                intent.putExtra(Constants.KEY.XINDUN_USER_KEY,newUserUrl);
+                Intent intent = new Intent(getContext(), XiDunUserActivity.class);
+                intent.putExtra(Constants.KEY.XINDUN_USER_KEY, newUserUrl);
                 startActivity(intent);
             }
         });
@@ -271,14 +293,14 @@ public class HomeFragment extends BaseFragment implements OkHttpUtil.OnDownLoadL
      */
     private void BindViewHotCategrories() {
         Log.e(TAG, "BindViewHotCategrories: " + moreCookBooksEntityByJson.getData().getMostPopularOfWeek().getDescription());
-        hotCategoriestv.get(0).setText(moreCookBooksEntityByJson.getData().getMostPopularOfWeek().getDescription());
-        hotCategoriestv.get(1).setText(moreCookBooksEntityByJson.getData().getNewCookbook().getDescription());
-        hotCategoriestv.get(2).setText(moreCookBooksEntityByJson.getData().getNewWorks().getDescription());
-        hotCategoriestv.get(3).setText(moreCookBooksEntityByJson.getData().getNewPai().getDescription());
-        FrescoUtil.imageViewBind(moreCookBooksEntityByJson.getData().getMostPopularOfWeek().getImageUrl(), hotCategoriessdv.get(0));
-        FrescoUtil.imageViewBind(moreCookBooksEntityByJson.getData().getNewCookbook().getImageUrl(), hotCategoriessdv.get(1));
-        FrescoUtil.imageViewBind(moreCookBooksEntityByJson.getData().getNewWorks().getImageUrl(), hotCategoriessdv.get(2));
-        FrescoUtil.imageViewBind(moreCookBooksEntityByJson.getData().getNewPai().getImageUrl(), hotCategoriessdv.get(3));
+        textView1.setText(moreCookBooksEntityByJson.getData().getMostPopularOfWeek().getDescription());
+        textView2.setText(moreCookBooksEntityByJson.getData().getNewCookbook().getDescription());
+        textView3.setText(moreCookBooksEntityByJson.getData().getNewWorks().getDescription());
+        textView4.setText(moreCookBooksEntityByJson.getData().getNewPai().getDescription());
+        FrescoUtil.imageViewBind(moreCookBooksEntityByJson.getData().getMostPopularOfWeek().getImageUrl(), simpleDraweeView1);
+        FrescoUtil.imageViewBind(moreCookBooksEntityByJson.getData().getNewCookbook().getImageUrl(), simpleDraweeView2);
+        FrescoUtil.imageViewBind(moreCookBooksEntityByJson.getData().getNewWorks().getImageUrl(), simpleDraweeView3);
+        FrescoUtil.imageViewBind(moreCookBooksEntityByJson.getData().getNewPai().getImageUrl(), simpleDraweeView4);
     }
 
     /**

@@ -1,18 +1,24 @@
-<?xml version="1.0" encoding="utf-8"?>
-<!--不同菜系的列表的listView-->
-<FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
-    android:layout_width="match_parent"
-    android:layout_height="match_parent"
-    android:orientation="vertical">
+<?xml version="1.0" encoding="utf-8"?><!--不同菜系的列表的listView-->
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools">
+
     <FrameLayout
         android:layout_width="match_parent"
-        android:layout_height="match_parent">
+        android:layout_height="match_parent"
+        android:orientation="vertical">
 
-        <ListView
-            android:id="@+id/activity_detail_lv"
+        <FrameLayout
             android:layout_width="match_parent"
-            android:layout_height="match_parent" />
-        <!--搜索框的界面-->
-        <include layout="@layout/fragment_search"></include>
+            android:layout_height="match_parent">
+
+            <ListView
+                android:id="@+id/activity_detail_lv"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent" />
+            <!--搜索框的界面-->
+            <include layout="@layout/fragment_search"></include>
+        </FrameLayout>
     </FrameLayout>
-</FrameLayout>
+</layout>
+

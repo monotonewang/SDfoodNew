@@ -3,11 +3,14 @@ package com.wang.sdfood.activity;
 import android.content.Intent;
 import android.widget.TextView;
 
+import androidx.databinding.DataBindingUtil;
+
 import com.wang.sdfood.R;
 import com.wang.sdfood.adapter.ActivityMegcookIngredientsLVAdapter;
 import com.wang.sdfood.adapter.ActivitymegcookDetailAdapter;
 import com.wang.sdfood.base.BaseActivity;
 import com.wang.sdfood.custem.ActivityMegbookLVView;
+import com.wang.sdfood.databinding.ActivityFoodDetailBinding;
 import com.wang.sdfood.model.MoreCookBookDetailEntity;
 import com.wang.sdfood.util.Constants;
 import com.wang.sdfood.util.JsonUtil;
@@ -15,37 +18,42 @@ import com.wang.sdfood.util.OkHttpUtil;
 
 import java.util.List;
 
-import butterknife.Bind;
 
 /**
  * 菜系详情的Activity
  * Created by user on 2016/3/8.
- *     http://www.xdmeishi.com/index.php?m=mobile&c=index&a=getCookbookDetails&id=1506
+ * http://www.xdmeishi.com/index.php?m=mobile&c=index&a=getCookbookDetails&id=1506
  */
 public class FoodDetailActivity extends BaseActivity implements OkHttpUtil.OnDownLoadListener {
 
     private static final String TAG = "print";
-    @Bind({R.id.activity_mcbook_detail_steps_foot_detail_lv,R.id.activity_mcbook_detail_steps_lv})
     public List<ActivityMegbookLVView> activityMegbookLVView;
+    ActivityMegbookLVView m1;
+    ActivityMegbookLVView m2;
     /**
      * 这是制作步骤的TextView
      */
-    @Bind({R.id.fragment_home_gl_tv1,R.id.fragment_home_gl_tv2})
-    public List<TextView> textViews;
+    TextView t1;
+    TextView t2;
     private String moreBookDetailUrl;
     /**
      * 这是菜系详情的所有数据
      */
     private MoreCookBookDetailEntity moreCookBookDetailByJson;
+    private ActivityFoodDetailBinding foodDetailBinding;
 
     @Override
-    protected int getViewResId() {
-        return R.layout.activity_food_detail;
+    protected void getViewResId() {
+        foodDetailBinding = DataBindingUtil.setContentView(this, R.layout.activity_food_detail);
     }
 
     @Override
     protected void init() {
         super.init();
+        m1 = foodDetailBinding.activityMcbookDetailStepsFootDetailLv;
+        m2 = foodDetailBinding.activityMcbookDetailStepsLv;
+        t1=foodDetailBinding.guess.fragmentHomeGlTv1;
+        t2=foodDetailBinding.guess.fragmentHomeGlTv2;
         Intent intent = getIntent();
         int intExtra = intent.getIntExtra(Constants.KEY.FOODNAME_ID_KEY, -1);
         /**
@@ -62,15 +70,15 @@ public class FoodDetailActivity extends BaseActivity implements OkHttpUtil.OnDow
             /**
              * 这是homeFragment调过来的
              */
-            if(moreBookDetailUrl==null){
-                moreBookDetailUrl=String.format(Constants.URL.MORECOOKBOOKS,Integer.valueOf(intent.getStringExtra(Constants.KEY.HOME_FRAGMENT_LIST_MCBOOK_ID)));
+            if (moreBookDetailUrl == null) {
+                moreBookDetailUrl = String.format(Constants.URL.MORECOOKBOOKS, Integer.valueOf(intent.getStringExtra(Constants.KEY.HOME_FRAGMENT_LIST_MCBOOK_ID)));
             }
         }
         /**
          * 设置TextView的字
          */
-        textViews.get(0).setText(getResources().getString(R.string.activity_megbook_detail_steps_production_steps));
-        textViews.get(1).setText(getResources().getString(R.string.activity_megbook_detail_steps_production_steps_big));
+        t1.setText(getResources().getString(R.string.activity_megbook_detail_steps_production_steps));
+        t2.setText(getResources().getString(R.string.activity_megbook_detail_steps_production_steps_big));
 //        Log.e(TAG, "moreBookDetailUrl:" + moreBookDetailUrl + "id=" + intExtra);
     }
 
@@ -89,13 +97,13 @@ public class FoodDetailActivity extends BaseActivity implements OkHttpUtil.OnDow
         moreCookBookDetailByJson = JsonUtil.getMoreCookBookByJson(json);
         //做菜需要的材料的数据
         List<MoreCookBookDetailEntity.DataEntity.IngredientsEntity> ingredients = moreCookBookDetailByJson.getData().getIngredients();
-        ActivityMegcookIngredientsLVAdapter activityMegcookIngredientsLVAdapter=new ActivityMegcookIngredientsLVAdapter(this);
+        ActivityMegcookIngredientsLVAdapter activityMegcookIngredientsLVAdapter = new ActivityMegcookIngredientsLVAdapter(this);
         activityMegbookLVView.get(0).setAdapter(activityMegcookIngredientsLVAdapter);
         activityMegbookLVView.get(0).setDividerHeight(0);
         activityMegcookIngredientsLVAdapter.setDatas(ingredients);
         //做菜步骤 的List数据
         List<MoreCookBookDetailEntity.DataEntity.MakingStepsEntity> makingSteps = moreCookBookDetailByJson.getData().getMakingSteps();
-        ActivitymegcookDetailAdapter activitymegcookDetailAdapter=new ActivitymegcookDetailAdapter(this);
+        ActivitymegcookDetailAdapter activitymegcookDetailAdapter = new ActivitymegcookDetailAdapter(this);
         activityMegbookLVView.get(1).setAdapter(activitymegcookDetailAdapter);
         activitymegcookDetailAdapter.setDatas(makingSteps);
     }

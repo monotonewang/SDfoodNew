@@ -10,9 +10,12 @@ import android.view.View;
 import android.widget.Button;
 import android.widget.Toast;
 
+import androidx.databinding.DataBindingUtil;
+
 import com.alipay.sdk.app.PayTask;
 import com.wang.sdfood.R;
 import com.wang.sdfood.base.BaseActivity;
+import com.wang.sdfood.databinding.ActivityPayWaysBinding;
 import com.wang.sdfood.pay.PayKeys;
 import com.wang.sdfood.pay.PayResult;
 import com.wang.sdfood.pay.SignUtils;
@@ -24,25 +27,27 @@ import java.util.Date;
 import java.util.Locale;
 import java.util.Random;
 
-import butterknife.Bind;
 
 /**
  * 支付MegCook燃气灶的activity
  */
 public class PayWaysActivity extends BaseActivity implements View.OnClickListener {
     private static final int SDK_PAY_FLAG = 1;
-    @Bind(R.id.btn_pay)
     public Button button;
+    private ActivityPayWaysBinding payWaysBinding;
+
     @Override
-    protected int getViewResId() {
-        return R.layout.activity_pay_ways;
+    protected void getViewResId() {
+        payWaysBinding = DataBindingUtil.setContentView(this, R.layout.activity_pay_ways);
     }
 
     @Override
     protected void init() {
         super.init();
+        button = payWaysBinding.btnPay;
         button.setOnClickListener(this);
     }
+
     @SuppressLint("HandlerLeak")
     private Handler mHandler = new Handler() {
         @SuppressWarnings("unused")
@@ -76,8 +81,11 @@ public class PayWaysActivity extends BaseActivity implements View.OnClickListene
                 default:
                     break;
             }
-        };
+        }
+
+        ;
     };
+
     @Override
     public void onClick(View v) {
         if (TextUtils.isEmpty(PayKeys.PARTNER) || TextUtils.isEmpty(PayKeys.RSA_PRIVATE) || TextUtils.isEmpty(PayKeys.SELLER)) {
@@ -128,7 +136,6 @@ public class PayWaysActivity extends BaseActivity implements View.OnClickListene
 
     /**
      * create the order info. 创建订单信息
-     *
      */
     private String getOrderInfo(String subject, String body, String price) {
 
@@ -180,9 +187,9 @@ public class PayWaysActivity extends BaseActivity implements View.OnClickListene
 
         return orderInfo;
     }
+
     /**
      * get the out_trade_no for an order. 生成商户订单号，该值在商户端应保持唯一（可自定义格式规范）
-     *
      */
     private String getOutTradeNo() {
         SimpleDateFormat format = new SimpleDateFormat("MMddHHmmss", Locale.getDefault());
@@ -194,18 +201,18 @@ public class PayWaysActivity extends BaseActivity implements View.OnClickListene
         key = key.substring(0, 15);
         return key;
     }
+
     /**
      * sign the order info. 对订单信息进行签名
      *
-     * @param content
-     *            待签名订单信息
+     * @param content 待签名订单信息
      */
     private String sign(String content) {
         return SignUtils.sign(content, PayKeys.RSA_PRIVATE);
     }
+
     /**
      * get the sign type we use. 获取签名方式
-     *
      */
     private String getSignType() {
         return "sign_type=\"RSA\"";

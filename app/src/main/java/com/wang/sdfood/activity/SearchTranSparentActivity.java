@@ -8,7 +8,7 @@ import com.wang.sdfood.base.BaseActivity;
  */
 public class SearchTranSparentActivity extends BaseActivity{
     @Override
-    protected int getViewResId() {
-        return 0;
+    protected void getViewResId() {
+        return ;
     }
 }

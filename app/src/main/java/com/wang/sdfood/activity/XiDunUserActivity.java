@@ -17,7 +17,7 @@ public class XiDunUserActivity extends BaseActivity implements OkHttpUtil.OnDown
     private String murl;
 
     @Override
-    protected int getViewResId() {
+    protected void getViewResId() {
         return R.layout.activity_xidun_user;
     }
 

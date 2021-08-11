@@ -8,16 +8,17 @@ import android.widget.EditText;
 import android.widget.ImageView;
 import android.widget.TextView;
 
+import androidx.databinding.DataBindingUtil;
+
 import com.wang.sdfood.R;
 import com.wang.sdfood.base.BaseActivity;
+import com.wang.sdfood.databinding.ActivityLoginBinding;
 import com.wang.sdfood.model.LoginETEntitys;
 
 import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
 
-import butterknife.Bind;
-import butterknife.OnClick;
 import cn.sharesdk.framework.Platform;
 import cn.sharesdk.framework.PlatformActionListener;
 import cn.sharesdk.framework.PlatformDb;
@@ -32,48 +33,43 @@ import cn.sharesdk.tencent.qq.QQ;
  */
 public class LoginActivity extends BaseActivity implements View.OnClickListener, PlatformActionListener {
     //头部的两个TextView--第二个是注册
-    @Bind({R.id.fragment_login_headview_tv1, R.id.activity_login_region_textView})
-    public List<TextView> textViews;
     //EditText的id
-    @Bind({R.id.ll_activity_login_et, R.id.ll_activity_login_et_pwd})
-    public List<EditText> editTexts;
-    @Bind(R.id.iv_login_qq)
     public ImageView imageView;
+    private ActivityLoginBinding loginBinding;
 
     @Override
-    protected int getViewResId() {
-
-        return R.layout.activity_login;
-
-    }
-
-    @OnClick({R.id.tv_activity_login_now, R.id.activity_login_region_textView})
-    public void OnClick(View v) {
-        /**
-         * 如果EditText为空 ，设置立即登录 按钮不可以点击
-         */
-        if (v.getId() == R.id.tv_activity_login_now) {
-            if (TextUtils.isEmpty(editTexts.get(0).getText()) && TextUtils.isEmpty(editTexts.get(1).getText())) {
-                TextView textView = (TextView) v;
-                textView.setClickable(false);
-            } else {
-
-            }
-            //如果点击的是注册--跳转到注册界面
-        } else if (v.getId() == R.id.activity_login_region_textView) {
-            Intent intent = new Intent(getApplicationContext(), RegisterActivity.class);
-            startActivity(intent);
-
-        }
+    protected void getViewResId() {
+        loginBinding = DataBindingUtil.setContentView(this, R.layout.activity_login);
     }
 
     @Override
     protected void init() {
         super.init();
+        imageView = loginBinding.ivLoginQq;
+
         imageView.setOnClickListener(this);
         //设置头部的字体
-        textViews.get(0).setText(getResources().getString(R.string.activity_login_head_mid_text));
-        textViews.get(1).setText(getResources().getString(R.string.activity_login_region_tv));
+        loginBinding.head.fragmentLoginHeadviewTv1.setText(getResources().getString(R.string.activity_login_head_mid_text));
+        loginBinding.head.activityLoginRegionTextView.setText(getResources().getString(R.string.activity_login_region_tv));
+        loginBinding.tvActivityLoginNow.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                if (TextUtils.isEmpty(loginBinding.et.llActivityLoginEt.getText()) && TextUtils.isEmpty(loginBinding.et.llActivityLoginEtPwd.getText())) {
+                    TextView textView = (TextView) v;
+                    textView.setClickable(false);
+                } else {
+
+                }
+            }
+        });
+        loginBinding.head.activityLoginRegionTextView.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent intent = new Intent(getApplicationContext(), RegisterActivity.class);
+                startActivity(intent);
+
+            }
+        });
         /**
          * lv处理
          */
@@ -107,6 +103,7 @@ public class LoginActivity extends BaseActivity implements View.OnClickListener,
 
     /**
      * 点击了Seession的Id,,操作。
+     *
      * @param v
      */
     @Override
@@ -151,7 +148,7 @@ public class LoginActivity extends BaseActivity implements View.OnClickListener,
     /**
      * QQ三方登录方法
      */
-    public void getQQUserInfo(){
+    public void getQQUserInfo() {
         ShareSDK.initSDK(this);
         Platform qq = ShareSDK.getPlatform(getApplicationContext(), QQ.NAME);
         qq.setPlatformActionListener(this);
@@ -163,20 +160,20 @@ public class LoginActivity extends BaseActivity implements View.OnClickListener,
     public void onComplete(Platform platform, int action, HashMap<String, Object> hashMap) {
         //用户资源都保存到res
         //通过打印res数据看看有哪些数据是你想要的
-            if (action == Platform.ACTION_USER_INFOR) {
-                PlatformDb platDB = platform.getDb();//获取数平台数据DB
-                //通过DB获取各种数据
-                String token = platDB.getToken();
-                String userGender = platDB.getUserGender();
-                String userIcon = platDB.getUserIcon();
-                String userId = platDB.getUserId();
-                String userName = platDB.getUserName();
-                Log.e("print","token"+token);
-                Log.e("print","userGender"+userGender);
-                Log.e("print","userIcon"+userIcon);
-                Log.e("print","userId"+userId);
-                Log.e("print","userName"+userName);
-            }
+        if (action == Platform.ACTION_USER_INFOR) {
+            PlatformDb platDB = platform.getDb();//获取数平台数据DB
+            //通过DB获取各种数据
+            String token = platDB.getToken();
+            String userGender = platDB.getUserGender();
+            String userIcon = platDB.getUserIcon();
+            String userId = platDB.getUserId();
+            String userName = platDB.getUserName();
+            Log.e("print", "token" + token);
+            Log.e("print", "userGender" + userGender);
+            Log.e("print", "userIcon" + userIcon);
+            Log.e("print", "userId" + userId);
+            Log.e("print", "userName" + userName);
+        }
     }
 
     @Override

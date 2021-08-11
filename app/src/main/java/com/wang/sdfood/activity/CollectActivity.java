@@ -9,7 +9,7 @@ import com.wang.sdfood.base.BaseActivity;
  */
 public class CollectActivity extends BaseActivity {
     @Override
-    protected int getViewResId() {
+    protected void getViewResId() {
         return R.layout.activity_home_collect;
     }
 }

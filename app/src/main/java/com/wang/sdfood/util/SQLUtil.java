@@ -1,6 +1,6 @@
 package com.wang.sdfood.util;
 
-import com.activeandroid.query.Select;
+//import com.activeandroid.query.Select;
 import com.wang.sdfood.model.UserInfoEntity;
 
 import java.util.List;
@@ -24,7 +24,8 @@ public class SQLUtil {
         userInfoEntity.setNickName(userName);
         userInfoEntity.setPwd(pwd);
         userInfoEntity.setAskCode(askcode);
-        userInfoEntity.save();
+        //TODO
+//        userInfoEntity.save();
     }
 
     /**
@@ -33,24 +34,28 @@ public class SQLUtil {
      * @param phoneNum
      */
     public static UserInfoEntity queryUser(String phoneNum) {
-        UserInfoEntity userInfoEntity = new Select().from(UserInfoEntity.class).where("phoneNum=?", phoneNum).executeSingle();
-        return userInfoEntity;
+//        UserInfoEntity userInfoEntity = new Select().from(UserInfoEntity.class).where("phoneNum=?", phoneNum).executeSingle();
+//        return userInfoEntity;
+        //TODO
+        return null;
     }
 
     /**
      * 删除所有用户
      */
     public static void delUser() {
-        List<UserInfoEntity> userInfoEntity = new Select().from(UserInfoEntity.class).execute();
-        for (int i = 0; i < userInfoEntity.size(); i++) {
-            userInfoEntity.get(i).delete();
-        }
+//        List<UserInfoEntity> userInfoEntity = new Select().from(UserInfoEntity.class).execute();
+//        for (int i = 0; i < userInfoEntity.size(); i++) {
+//            userInfoEntity.get(i).delete();
+//        }
+        //TODO
     }
     /**
      * 删除该手机号码的用户
      */
     public static void delUser(String PhoneNum) {
-        UserInfoEntity userInfoEntity = new Select().from(UserInfoEntity.class).where("phoneNum=?", PhoneNum).executeSingle();
-        userInfoEntity.delete();
+//        UserInfoEntity userInfoEntity = new Select().from(UserInfoEntity.class).where("phoneNum=?", PhoneNum).executeSingle();
+//        userInfoEntity.delete();
+        //TODO
     }
 }

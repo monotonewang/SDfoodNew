@@ -10,10 +10,12 @@ import android.view.ViewGroup;
 import android.widget.PopupWindow;
 import android.widget.TextView;
 
+import androidx.databinding.DataBindingUtil;
+
 import com.wang.sdfood.R;
 import com.wang.sdfood.base.BaseActivity;
+import com.wang.sdfood.databinding.ActivityMegcookDetailBinding;
 
-import butterknife.Bind;
 
 /**
  * 这是厨具的详情activity
@@ -21,18 +23,19 @@ import butterknife.Bind;
  */
 public class MegCookDetailActivity extends BaseActivity implements View.OnClickListener {
     //立即购买的textView
-    @Bind(R.id.tv_activity_megcook_detail_buy)
     public TextView textView;
     private PopupWindow mPopupWindow;
+    private ActivityMegcookDetailBinding megcookDetailBinding;
 
     @Override
-    protected int getViewResId() {
-        return R.layout.activity_megcook_detail;
+    protected void getViewResId() {
+        megcookDetailBinding = DataBindingUtil.setContentView(this, R.layout.activity_megcook_detail);
     }
 
     @Override
     protected void init() {
         super.init();
+        textView=megcookDetailBinding.tvActivityMegcookDetailBuy;
         textView.setOnClickListener(this);
 
         initPopoupWindow();

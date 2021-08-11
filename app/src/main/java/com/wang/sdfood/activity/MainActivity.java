@@ -4,21 +4,19 @@ package com.wang.sdfood.activity;
 import android.content.Intent;
 import android.graphics.Bitmap;
 import android.graphics.BitmapFactory;
-import android.support.design.widget.FloatingActionButton;
-import android.support.design.widget.NavigationView;
-import android.support.v4.app.Fragment;
-import android.support.v4.app.FragmentManager;
-import android.support.v4.app.FragmentTransaction;
+
+
+import androidx.databinding.DataBindingUtil;
+import androidx.fragment.app.Fragment;
+import androidx.fragment.app.FragmentManager;
+import androidx.fragment.app.FragmentTransaction;
+
 import android.util.DisplayMetrics;
 import android.util.Log;
 import android.view.View;
 import android.view.animation.TranslateAnimation;
 import android.widget.AdapterView;
-import android.widget.EditText;
 import android.widget.ImageView;
-import android.widget.LinearLayout;
-import android.widget.ListView;
-import android.widget.RadioButton;
 import android.widget.RadioGroup;
 import android.widget.TextView;
 
@@ -26,6 +24,7 @@ import com.google.zxing.client.android.Intents;
 import com.wang.sdfood.R;
 import com.wang.sdfood.adapter.FragmentMsgLVAdapter;
 import com.wang.sdfood.base.BaseActivity;
+import com.wang.sdfood.databinding.ActivityMainBinding;
 import com.wang.sdfood.fragment.HomeFragment;
 import com.wang.sdfood.fragment.MineFragment;
 import com.wang.sdfood.fragment.MsgFragment;
@@ -43,51 +42,28 @@ import org.greenrobot.eventbus.ThreadMode;
 import java.util.ArrayList;
 import java.util.List;
 
-import butterknife.Bind;
 
 public class MainActivity extends BaseActivity implements RadioGroup.OnCheckedChangeListener, AdapterView.OnItemClickListener, View.OnClickListener {
     private static final String TAG = "MainActivity";
     //这是搜索框的父布局
-    @Bind(R.id.fragment_search)
-    public LinearLayout mLinearLayout;
     //这是搜索框的打开抽屉布局的方法第一个是回退的按钮，第二个是搜索的图标
-    @Bind({R.id.fragment_search_iv_search,R.id.fragment_search_iv_search_et,R.id.fragment_search_qrcode})
-    public List<ImageView> mSearchiv;
-    //这是搜索框的Edittext
-    @Bind(R.id.fragment_search_et)
-    public EditText mSearchEditText;
-    @Bind(R.id.fragment_search_qrcode)
-    public ImageView mQRCode;
     //这是搜索框的下面的线性布局
-    @Bind(R.id.ll_search_bottom_lv)
-    public LinearLayout mSearchLinearLayout;
     //这是搜索框的下面的线性布局是否可见
     private boolean mSearchLinearLayoutIsShow;
     //这是抽屉布局的用户头像
     public ImageView mImageView;
     //这是抽屉布局的用户名
     public TextView mTextView;
-    @Bind(R.id.activiy_home_radiogp)
-    public RadioGroup radioGroup;
-    @Bind({R.id.activiy_radiobtn_home, R.id.activiy_radiobtn_visible, R.id.activiy_radiobtn_msg, R.id.activiy_radiobtn_mine})
-    public List<RadioButton> radioButtonList;
-    //找到NavView的ID
-    @Bind(R.id.activity_main_dl_nav)
-    public NavigationView navigationView;
-    @Bind(R.id.activity_main_dl_nav_lv)
-    public ListView listView;
-    //找到Nfab的ID
-    @Bind(R.id.activty_main_fab)
-    public FloatingActionButton floatingActionButton;
     private Fragment fragmentHome, fragmentVisible, fragmentMsg, fragmentMine;
     private FragmentManager fragmentManager;
-    private android.support.v4.app.FragmentTransaction beginTransaction;
+    private FragmentTransaction beginTransaction;
     //用户名
     private String nickName;
+    private ActivityMainBinding mainBinding;
 
     @Override
-    protected int getViewResId() {
-        return R.layout.activity_main;
+    protected void getViewResId() {
+        mainBinding = DataBindingUtil.setContentView(this, R.layout.activity_main);
     }
 
     /**
@@ -120,8 +96,8 @@ public class MainActivity extends BaseActivity implements RadioGroup.OnCheckedCh
             TranslateAnimation translateAnimation = new TranslateAnimation(0, 0, 0, -300);
             translateAnimation.setDuration(200);
             translateAnimation.setFillAfter(true);
-            mLinearLayout.startAnimation(translateAnimation);
-//            mLinearLayout.setBackgroundColor(getResources().getColor(R.color.activityBottomTextCheckColor));
+            mainBinding.inSearch.fragmentSearch.startAnimation(translateAnimation);
+//            mainBinding.inSearch.fragmentSearch.setBackgroundColor(getResources().getColor(R.color.activityBottomTextCheckColor));
         }
     }
 
@@ -139,8 +115,8 @@ public class MainActivity extends BaseActivity implements RadioGroup.OnCheckedCh
             TranslateAnimation translateAnimationa = new TranslateAnimation(0, 0, -200, 0);
             translateAnimationa.setDuration(200);
 //            translateAnimationa.setFillAfter(true);
-            mLinearLayout.startAnimation(translateAnimationa);
-//            mLinearLayout.setBackgroundColor(getResources().getColor(R.color.activityLVMenuWordColor));
+            mainBinding.inSearch.fragmentSearch.startAnimation(translateAnimationa);
+//            mainBinding.inSearch.fragmentSearch.setBackgroundColor(getResources().getColor(R.color.activityLVMenuWordColor));
         }
     }
 
@@ -159,20 +135,21 @@ public class MainActivity extends BaseActivity implements RadioGroup.OnCheckedCh
         mImageView = (ImageView) findViewById(R.id.activity_main_dl_headview_iv1);
         mTextView = (TextView) findViewById(R.id.activity_main_dl_headview_tv);
         //搜索框的TextView-设置监听
-        mSearchEditText.setOnClickListener(this);
+        mainBinding.inSearch.fragmentSearchEt.setOnClickListener(this);
         //这是搜索框前面打开抽屉布局的iv
-        mSearchiv.get(0).setOnClickListener(this);
-        mSearchiv.get(1).setOnClickListener(this);
-        mSearchiv.get(2).setOnClickListener(this);
+        mainBinding.inSearch.fragmentSearchIvSearch.setOnClickListener(this);
+        mainBinding.inSearch.fragmentSearchEt.setOnClickListener(this);
+        mainBinding.inSearch.fragmentSearchQrcode.setOnClickListener(this);
+
         //首次进入把线性布局设置不可见
-        mSearchLinearLayout.setVisibility(View.GONE);
-        radioGroup.setOnCheckedChangeListener(this);
+        mainBinding.inSearchBottom.llSearchBottomLv.setVisibility(View.GONE);
+        mainBinding.inRadioGroup.activiyHomeRadiogp.setOnCheckedChangeListener(this);
         fragmentManager = getSupportFragmentManager();
         fragmentHome = new HomeFragment();
         fragmentVisible = new VisiableFragment();
         fragmentMsg = new MsgFragment();
         fragmentMine = new MineFragment();
-        radioButtonList.get(0).setChecked(true);
+        mainBinding.inRadioGroup.activiyRadiobtnHome.setChecked(true);
         beginTransaction = fragmentManager.beginTransaction();
         beginTransaction.add(R.id.activity_main_fl, fragmentHome);
         beginTransaction.add(R.id.activity_main_fl, fragmentVisible);
@@ -180,20 +157,20 @@ public class MainActivity extends BaseActivity implements RadioGroup.OnCheckedCh
         beginTransaction.add(R.id.activity_main_fl, fragmentMine);
         beginTransaction.commit();
 
-        mQRCode.setOnClickListener(this);
+        mainBinding.inSearch.fragmentSearchQrcode.setOnClickListener(this);
         /**
          * 刷新控件的监听方法
          */
 //
         //设置ListView的监听
-        listView.setOnItemClickListener(this);
+        mainBinding.activityMainDlNavLv.setOnItemClickListener(this);
         /**
          * 接受注册成功界面返回的值/并且显示第三个页面
          */
         Intent intent = getIntent();
         int registerOk = intent.getIntExtra(Constants.KEY.ACTIVITY_REG_OK, -1);
         if (registerOk != -1) {
-            radioButtonList.get(registerOk).setChecked(true);
+            mainBinding.inRadioGroup.activiyRadiobtnHome.setChecked(true);
         }
     }
 
@@ -202,7 +179,7 @@ public class MainActivity extends BaseActivity implements RadioGroup.OnCheckedCh
         super.loadDatas();
         List<FragmentMsgEntity> list = getListByResource();
         FragmentMsgLVAdapter fragmentMsgLVAdapter = new FragmentMsgLVAdapter(this, list);
-        listView.setAdapter(fragmentMsgLVAdapter);
+        mainBinding.activityMainDlNavLv.setAdapter(fragmentMsgLVAdapter);
     }
 
     /**
@@ -250,7 +227,7 @@ public class MainActivity extends BaseActivity implements RadioGroup.OnCheckedCh
                 /**
                  * 显示搜索框
                  */
-                mLinearLayout.setVisibility(View.VISIBLE);
+                mainBinding.inSearch.fragmentSearch.setVisibility(View.VISIBLE);
                 FragmentTransaction fragmentTransactionHome = getSupportFragmentManager().beginTransaction();
                 fragmentTransactionHome.show(fragmentHome)
                         .hide(fragmentVisible)
@@ -262,7 +239,7 @@ public class MainActivity extends BaseActivity implements RadioGroup.OnCheckedCh
                 /**
                  * 隐藏搜索框
                  */
-                mLinearLayout.setVisibility(View.GONE);
+                mainBinding.inSearch.fragmentSearch.setVisibility(View.GONE);
                 FragmentTransaction fragmentTransactionMatch = getSupportFragmentManager().beginTransaction();
                 fragmentTransactionMatch.hide(fragmentHome)
                         .show(fragmentVisible)
@@ -271,7 +248,7 @@ public class MainActivity extends BaseActivity implements RadioGroup.OnCheckedCh
                         .commit();
                 break;
             case R.id.activiy_radiobtn_msg:
-                mLinearLayout.setVisibility(View.GONE);
+                mainBinding.inSearch.fragmentSearch.setVisibility(View.GONE);
                 FragmentTransaction fragmentTransactionItem = getSupportFragmentManager().beginTransaction();
                 fragmentTransactionItem.hide(fragmentHome)
                         .hide(fragmentVisible)
@@ -280,7 +257,7 @@ public class MainActivity extends BaseActivity implements RadioGroup.OnCheckedCh
                         .commit();
                 break;
             case R.id.activiy_radiobtn_mine:
-                mLinearLayout.setVisibility(View.GONE);
+                mainBinding.inSearch.fragmentSearch.setVisibility(View.GONE);
                 FragmentTransaction fragmentTransactionCart = getSupportFragmentManager().beginTransaction();
                 fragmentTransactionCart.hide(fragmentHome)
                         .hide(fragmentVisible)
@@ -302,7 +279,7 @@ public class MainActivity extends BaseActivity implements RadioGroup.OnCheckedCh
      */
     @Override
     public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
-        if (parent.equals(listView)) {
+        if (parent.equals(mainBinding.activityMainDlNavLv)) {
             Log.e(TAG, "onItemClick: " + position);
         }
     }
@@ -333,34 +310,34 @@ public class MainActivity extends BaseActivity implements RadioGroup.OnCheckedCh
 //            if (mSearchLinearLayoutIsShow == true) {
 //                Log.e("print", "inf");
 //                mSearchLinearLayoutIsShow = false;
-//                mLinearLayout.setBackgroundColor(getResources().getColor(R.color.activityBottomTextCheckColor));
-//                mSearchLinearLayout.setVisibility(View.GONE);
+//                mainBinding.inSearch.fragmentSearch.setBackgroundColor(getResources().getColor(R.color.activityBottomTextCheckColor));
+//                mainBinding.inSearchBottom.llSearchBottomLv.setVisibility(View.GONE);
 //            } else
             if (mSearchLinearLayoutIsShow == false) {
                 Log.e("print", "int");
                 mSearchLinearLayoutIsShow = true;
-                mSearchLinearLayout.setVisibility(View.VISIBLE);
+                mainBinding.inSearchBottom.llSearchBottomLv.setVisibility(View.VISIBLE);
                 //设置二维码的图标不可见
-                mSearchiv.get(2).setVisibility(View.GONE);
-                mSearchiv.get(0).setImageResource(R.drawable.common_head_btn_back);
+                mainBinding.inSearch.fragmentSearchQrcode.setVisibility(View.GONE);
+                mainBinding.inSearch.fragmentSearchIvSearch.setImageResource(R.drawable.common_head_btn_back);
             }
-        }else if(v.getId()==R.id.fragment_search_iv_search){
+        } else if (v.getId() == R.id.fragment_search_iv_search) {
             //隐藏掉mSearchLinearLayout的布局
             Log.e("print", "intsearch");
             if (mSearchLinearLayoutIsShow == true) {
                 Log.e("print", "intsearchon");
                 mSearchLinearLayoutIsShow = false;
-                mSearchiv.get(0).setImageResource(R.drawable.common_icon_list_def);
+                mainBinding.inSearch.fragmentSearchIvSearch.setImageResource(R.drawable.common_icon_list_def);
                 //设置二维码的图标可见
-                mSearchiv.get(2).setVisibility(View.VISIBLE);
-                mSearchLinearLayout.setVisibility(View.GONE);
+                mainBinding.inSearch.fragmentSearchQrcode.setVisibility(View.VISIBLE);
+                mainBinding.inSearchBottom.llSearchBottomLv.setVisibility(View.GONE);
             } else if (mSearchLinearLayoutIsShow == false) {
                 Log.e("print", "intsearchoff");
                 //这里是打开抽屉布局的方法
 //                Log.e("print", "int");
 //                mSearchLinearLayoutIsShow = true;
-//                mLinearLayout.setBackgroundColor(getResources().getColor(R.color.activityLVMenuWordColor));
-//                mSearchLinearLayout.setVisibility(View.VISIBLE);
+//                mainBinding.inSearch.fragmentSearch.setBackgroundColor(getResources().getColor(R.color.activityLVMenuWordColor));
+//                mainBinding.inSearchBottom.llSearchBottomLv.setVisibility(View.VISIBLE);
             }
         }
     }

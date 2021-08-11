@@ -1,15 +1,21 @@
 apply plugin: 'com.android.application'
 
 android {
-    compileSdkVersion 23
-    buildToolsVersion "23.0.2"
+    compileSdkVersion 30
+    buildToolsVersion "30.0.3"
 
     defaultConfig {
         applicationId "com.wang.sdfood"
-        minSdkVersion 19
-        targetSdkVersion 23
-        versionCode 1
-        versionName "1.0"
+        minSdkVersion 21
+        targetSdkVersion 30
+        versionCode 2
+        versionName "1.0.1"
+    }
+/*    dataBinding {
+        enabled = true
+    }*/
+    buildFeatures {
+        dataBinding true
     }
     buildTypes {
         release {
@@ -20,33 +26,33 @@ android {
 }
 
 dependencies {
-    compile fileTree(dir: 'libs', include: ['*.jar'])
-    testCompile 'junit:junit:4.12'
-    compile 'com.android.support:appcompat-v7:23.1.1'
-    compile 'com.android.support:design:23.1.1'
-    compile 'com.android.support:cardview-v7:23.1.1'
-    compile 'com.facebook.fresco:fresco:0.9.0'
-    compile 'com.squareup.okhttp3:okhttp:3.2.0'
-    compile 'com.google.code.gson:gson:2.6.2'
-    compile 'org.greenrobot:eventbus:3.0.0'
-    compile 'com.jakewharton:butterknife:7.0.1'
-    compile 'me.codeboy.android:cycle-view-pager:1.0.0'
-    compile 'com.nostra13.universalimageloader:universal-image-loader:1.9.5'
-    compile project(':ActiveAndroid-master')
-    compile project(':library')
-    compile project(':ZXingAndroid')
-    compile files('libs/MobCommons-2016.0301.1053.jar')
-    compile files('libs/MobTools-2016.0301.1053.jar')
-    compile files('libs/ShareSDK-Core-2.7.0.jar')
-    compile files('libs/ShareSDK-Email-2.7.0.jar')
-    compile files('libs/ShareSDK-QQ-2.7.0.jar')
-    compile files('libs/ShareSDK-QZone-2.7.0.jar')
-    compile files('libs/ShareSDK-ShortMessage-2.7.0.jar')
-    compile files('libs/ShareSDK-SinaWeibo-2.7.0.jar')
-    compile files('libs/ShareSDK-TencentWeibo-2.7.0.jar')
-    compile files('libs/ShareSDK-Wechat-2.7.0.jar')
-    compile files('libs/ShareSDK-Wechat-Core-2.7.0.jar')
-    compile files('libs/ShareSDK-Wechat-Favorite-2.7.0.jar')
-    compile files('libs/ShareSDK-Wechat-Moments-2.7.0.jar')
-    compile files('libs/alipaySdk-20160223.jar')
+    implementation fileTree(dir: 'libs', include: ['*.jar'])
+    testImplementation 'junit:junit:4.12'
+    implementation 'androidx.appcompat:appcompat:1.0.0'
+    implementation 'com.google.android.material:material:1.0.0'
+    implementation 'androidx.cardview:cardview:1.0.0'
+    implementation 'com.facebook.fresco:fresco:0.9.0'
+    implementation 'com.squareup.okhttp3:okhttp:3.2.0'
+    implementation 'com.google.code.gson:gson:2.6.2'
+    implementation 'org.greenrobot:eventbus:3.0.0'
+//    implementation 'com.jakewharton:butterknife:7.0.1'
+    implementation 'me.codeboy.android:cycle-view-pager:1.0.0'
+    implementation 'com.nostra13.universalimageloader:universal-image-loader:1.9.5'
+    //orm
+    implementation project(':library')
+    implementation project(':ZXingAndroid')
+    implementation files('libs/MobCommons-2016.0301.1053.jar')
+    implementation files('libs/MobTools-2016.0301.1053.jar')
+    implementation files('libs/ShareSDK-Core-2.7.0.jar')
+    implementation files('libs/ShareSDK-Email-2.7.0.jar')
+    implementation files('libs/ShareSDK-QQ-2.7.0.jar')
+    implementation files('libs/ShareSDK-QZone-2.7.0.jar')
+    implementation files('libs/ShareSDK-ShortMessage-2.7.0.jar')
+    implementation files('libs/ShareSDK-SinaWeibo-2.7.0.jar')
+    implementation files('libs/ShareSDK-TencentWeibo-2.7.0.jar')
+    implementation files('libs/ShareSDK-Wechat-2.7.0.jar')
+    implementation files('libs/ShareSDK-Wechat-Core-2.7.0.jar')
+    implementation files('libs/ShareSDK-Wechat-Favorite-2.7.0.jar')
+    implementation files('libs/ShareSDK-Wechat-Moments-2.7.0.jar')
+    implementation files('libs/alipaySdk-20160223.jar')
 }

@@ -1,70 +1,80 @@
 <?xml version="1.0" encoding="utf-8"?>
-<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
-    xmlns:tools="http://schemas.android.com/tools"
-    android:layout_width="match_parent"
-    android:layout_height="match_parent"
-    android:orientation="vertical"
-    tools:context=".activity.MainActivity">
+    xmlns:tools="http://schemas.android.com/tools">
 
-    <!--这是抽屉布局的view-->
-    <android.support.v4.widget.DrawerLayout
+    <LinearLayout
         android:layout_width="match_parent"
-        android:layout_height="match_parent">
+        android:layout_height="match_parent"
+        android:orientation="vertical"
+        tools:context=".activity.MainActivity">
 
-        <android.support.design.widget.CoordinatorLayout
+        <!--这是抽屉布局的view-->
+        <androidx.drawerlayout.widget.DrawerLayout
             android:layout_width="match_parent"
-            android:layout_height="match_parent"
-            android:orientation="vertical">
-            <!--Fragment帧布局占位-->
-            <FrameLayout
+            android:layout_height="match_parent">
 
-                android:id="@+id/activity_main_fl"
+            <androidx.coordinatorlayout.widget.CoordinatorLayout
                 android:layout_width="match_parent"
-                android:layout_height="@dimen/y432"></FrameLayout>
+                android:layout_height="match_parent"
+                android:orientation="vertical">
+                <!--Fragment帧布局占位-->
+                <FrameLayout
+                    android:id="@+id/activity_main_fl"
+                    android:layout_width="match_parent"
+                    android:layout_height="@dimen/y432">
 
-            <android.support.design.widget.FloatingActionButton
-                android:id="@+id/activty_main_fab"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_gravity="bottom|right"
-                android:layout_marginBottom="@dimen/x20"
-                android:layout_marginRight="@dimen/x20"
-                android:src="@drawable/menu_icon_upload_recipe"
-                app:backgroundTint="@color/activityBottomTextCheckColor" />
-            <!--添加radioGroup的布局-->
-            <include layout="@layout/activity_main_radiogroup"></include>
-            <!--这是搜索框界面-->
-            <include layout="@layout/fragment_search"></include>
-            <!--搜索框下面的帧布局-->
-            <include layout="@layout/search_bottom_lv"></include>
-        </android.support.design.widget.CoordinatorLayout>
+                </FrameLayout>
+
+                <com.google.android.material.floatingactionbutton.FloatingActionButton
+                    android:id="@+id/activty_main_fab"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_gravity="bottom|right"
+                    android:layout_marginRight="@dimen/x20"
+                    android:layout_marginBottom="@dimen/x20"
+                    android:src="@drawable/menu_icon_upload_recipe"
+                    app:backgroundTint="@color/activityBottomTextCheckColor" />
+                <!--添加radioGroup的布局-->
+                <include
+                    android:id="@+id/in_radio_group"
+                    layout="@layout/activity_main_radiogroup"></include>
+                <!--这是搜索框界面-->
+                <include
+                    android:id="@+id/in_search"
+                    layout="@layout/fragment_search"></include>
+                <!--搜索框下面的帧布局-->
+                <include
+                    android:id="@+id/in_search_bottom"
+                    layout="@layout/search_bottom_lv"></include>
+            </androidx.coordinatorlayout.widget.CoordinatorLayout>
 
 
-        <android.support.design.widget.NavigationView
-            android:id="@+id/activity_main_dl_nav"
-            android:layout_width="match_parent"
-            android:layout_height="match_parent"
-            android:layout_gravity="left"
-            app:headerLayout="@layout/activity_main_dl_headview">
-
-            <ListView
-                android:id="@+id/activity_main_dl_nav_lv"
+            <com.google.android.material.navigation.NavigationView
+                android:id="@+id/activity_main_dl_nav"
                 android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:layout_gravity="center">
+                android:layout_height="match_parent"
+                android:layout_gravity="left"
+                app:headerLayout="@layout/activity_main_dl_headview">
 
-            </ListView>
+                <ListView
+                    android:id="@+id/activity_main_dl_nav_lv"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_gravity="center">
 
-            <ImageView
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_gravity="bottom|center_horizontal"
-                android:layout_marginBottom="@dimen/y1"
-                android:src="@drawable/menu_advert2" />
+                </ListView>
 
-        </android.support.design.widget.NavigationView>
-    </android.support.v4.widget.DrawerLayout>
+                <ImageView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_gravity="bottom|center_horizontal"
+                    android:layout_marginBottom="@dimen/y1"
+                    android:src="@drawable/menu_advert2" />
+
+            </com.google.android.material.navigation.NavigationView>
+        </androidx.drawerlayout.widget.DrawerLayout>
 
 
-</LinearLayout>
+    </LinearLayout>
+</layout>

@@ -3,12 +3,14 @@ package com.wang.sdfood.activity;
 import android.view.View;
 import android.widget.TextView;
 
+import androidx.databinding.DataBindingUtil;
+
 import com.wang.sdfood.R;
 import com.wang.sdfood.base.BaseActivity;
+import com.wang.sdfood.databinding.ActivityRecipeBinding;
 
 import java.util.List;
 
-import butterknife.Bind;
 
 /**
  * 用户菜谱的页面
@@ -16,11 +18,11 @@ import butterknife.Bind;
  * Created by user on 2016/3/10.
  */
 public class UserRecipeActivity extends BaseActivity {
-    @Bind({R.id.fragment_login_headview_tv,R.id.activity_login_region_textView})
-    public List<TextView> textView;
+    private ActivityRecipeBinding recipeBinding;
+
     @Override
-    protected int getViewResId() {
-        return R.layout.activity_recipe;
+    protected void getViewResId() {
+        recipeBinding = DataBindingUtil.setContentView(this, R.layout.activity_recipe);
     }
 
     @Override
@@ -30,6 +32,6 @@ public class UserRecipeActivity extends BaseActivity {
 //        Intent intent = getIntent();
 //        intent.getStringExtra();
         //把右边的字隐藏掉
-        textView.get(1).setVisibility(View.GONE);
+        recipeBinding.head3.activityLoginRegionTextView.setVisibility(View.GONE);
     }
 }

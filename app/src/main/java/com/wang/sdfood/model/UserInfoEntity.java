@@ -1,22 +1,14 @@
 package com.wang.sdfood.model;
 
-import com.activeandroid.Model;
-import com.activeandroid.annotation.Column;
-import com.activeandroid.annotation.Table;
 
 /**
  * 这是西顿厨友的用户名
  * Created by user on 2016/3/9.
  */
-@Table(name ="UserInfo")
-public class UserInfoEntity extends Model {
-    @Column
+public class UserInfoEntity {
     private String phoneNum;
-    @Column
     private String nickName;
-    @Column
     private String pwd;
-    @Column
     private String askCode;
 
     public String getPhoneNum() {

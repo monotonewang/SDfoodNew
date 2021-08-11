@@ -4,8 +4,7 @@
     android:id="@+id/fragment_visible_ptrv"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:orientation="vertical"
-   >
+    android:orientation="vertical">
 
     <LinearLayout
         android:id="@+id/ll_fragment_visible"
