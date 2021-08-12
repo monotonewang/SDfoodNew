@@ -1,6 +1,7 @@
 package com.wang.sdfood.activity;
 
 import android.content.Intent;
+import android.util.Log;
 import android.view.View;
 import android.widget.AdapterView;
 import android.widget.ListView;
@@ -47,6 +48,7 @@ public class FoodListActivity extends BaseActivity implements OkHttpUtil.OnDownL
         Intent intent = getIntent();
         //通过替换得到详细菜系的URL
         String name = intent.getStringExtra(Constants.KEY.CAIXI_KEY);
+        Log.e(TAG, "init: name=" + name);
         url_caixi = String.format(Constants.URL.CAIXIURL, name);
         /**
          * 给ListView添加一个头部

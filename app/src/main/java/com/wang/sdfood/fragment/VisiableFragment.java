@@ -3,7 +3,6 @@ package com.wang.sdfood.fragment;
 
 import android.content.Intent;
 
-import androidx.annotation.Nullable;
 
 import android.util.Log;
 import android.view.View;
@@ -23,8 +22,6 @@ import com.wang.sdfood.util.FrescoUtil;
 import com.wang.sdfood.util.JsonUtil;
 import com.wang.sdfood.util.OkHttpUtil;
 
-import java.util.List;
-
 
 /**
  * 这是发现的Fragment
@@ -41,7 +38,6 @@ public class VisiableFragment extends BaseFragment implements OkHttpUtil.OnDownL
     public ImageView imageViews1;
     public ImageView imageViews2;
     public SimpleDraweeView simpleDraweeView;
-    public List<TextView> textViews;
     public TextView textViews1;
     public TextView textViews2;
     public TextView textViews3;
@@ -105,12 +101,12 @@ public class VisiableFragment extends BaseFragment implements OkHttpUtil.OnDownL
 
     private void BindItemId() {
         FrescoUtil.imageViewBind(discoverEntityByJson.getData().get(0).getGoodsImg(), simpleDraweeView);
-        textViews.get(0).setText(discoverEntityByJson.getData().get(0).getGoodsName());
-        textViews.get(1).setText(discoverEntityByJson.getData().get(0).getBriefInfo());
-        textViews.get(2).setText(getResources().getString(R.string.fragment_discover_price) + discoverEntityByJson.getData().get(0).getPrice());
-        textViews.get(2).setTextColor(getResources().getColor(R.color.colorPrimary));
-        textViews.get(3).setText(discoverEntityByJson.getData().get(0).getSalesCount() + getResources().getString(R.string.fragment_discover_salecount));
-        textViews.get(3).setTextColor(getResources().getColor(R.color.colorPrimary));
+        textViews1.setText(discoverEntityByJson.getData().get(0).getGoodsName());
+        textViews2.setText(discoverEntityByJson.getData().get(0).getBriefInfo());
+        textViews3.setText(getResources().getString(R.string.fragment_discover_price) + discoverEntityByJson.getData().get(0).getPrice());
+        textViews3.setTextColor(getResources().getColor(R.color.colorPrimary));
+        textViews4.setText(discoverEntityByJson.getData().get(0).getSalesCount() + getResources().getString(R.string.fragment_discover_salecount));
+        textViews4.setTextColor(getResources().getColor(R.color.colorPrimary));
 
     }
 

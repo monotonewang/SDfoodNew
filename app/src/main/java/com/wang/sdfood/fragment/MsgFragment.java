@@ -27,7 +27,6 @@ public class MsgFragment extends BaseFragment {
 
     //绑定头部的TextView
     public TextView textView;
-    public List<ImageView> imageViews;
     public ImageView imageViews1;
     public ImageView imageViews2;
     public ListView listView;
@@ -47,8 +46,8 @@ public class MsgFragment extends BaseFragment {
         imageViews2 = view.findViewById(R.id.fragment_common_headview_share);
 
         textView.setText(getResources().getString(R.string.fragment_msg_head_text));
-        imageViews.get(0).setVisibility(View.GONE);
-        imageViews.get(1).setVisibility(View.GONE);
+        imageViews1.setVisibility(View.GONE);
+        imageViews2.setVisibility(View.GONE);
         List<FragmentMsgEntity> list = getListByResource();
         FragmentMsgLVAdapter fragmentMsgLVAdapter = new FragmentMsgLVAdapter(getContext(), list);
         listView.setAdapter(fragmentMsgLVAdapter);

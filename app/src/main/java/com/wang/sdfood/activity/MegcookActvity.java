@@ -3,8 +3,11 @@ package com.wang.sdfood.activity;
 import android.content.Intent;
 import android.util.Log;
 
+import androidx.databinding.DataBindingUtil;
+
 import com.wang.sdfood.R;
 import com.wang.sdfood.base.BaseActivity;
+import com.wang.sdfood.databinding.ActivityMegcookBinding;
 import com.wang.sdfood.util.Constants;
 
 /**
@@ -14,8 +17,9 @@ import com.wang.sdfood.util.Constants;
 public class MegcookActvity extends BaseActivity {
     private String TAG = "print";
     @Override
-    protected int getViewResId() {
-        return R.layout.activity_megcook;
+    protected void getViewResId() {
+
+        ActivityMegcookBinding megcookBinding= DataBindingUtil.setContentView(this, R.layout.activity_megcook);
     }
 
     @Override

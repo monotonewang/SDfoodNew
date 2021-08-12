@@ -3,8 +3,11 @@ package com.wang.sdfood.activity;
 import android.content.Intent;
 import android.content.res.Configuration;
 
+import androidx.databinding.DataBindingUtil;
+
 import com.wang.sdfood.R;
 import com.wang.sdfood.base.BaseActivity;
+import com.wang.sdfood.databinding.ActivityXidunUserBinding;
 import com.wang.sdfood.util.Constants;
 import com.wang.sdfood.util.OkHttpUtil;
 
@@ -18,7 +21,8 @@ public class XiDunUserActivity extends BaseActivity implements OkHttpUtil.OnDown
 
     @Override
     protected void getViewResId() {
-        return R.layout.activity_xidun_user;
+
+        ActivityXidunUserBinding xidunUserBinding = DataBindingUtil.setContentView(this, R.layout.activity_xidun_user);
     }
 
     @Override
@@ -32,7 +36,7 @@ public class XiDunUserActivity extends BaseActivity implements OkHttpUtil.OnDown
     @Override
     protected void loadDatas() {
         super.loadDatas();
-        OkHttpUtil.asyncDownJSON(murl,this);
+        OkHttpUtil.asyncDownJSON(murl, this);
     }
 
     @Override

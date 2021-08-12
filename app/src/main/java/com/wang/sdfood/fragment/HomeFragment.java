@@ -84,8 +84,6 @@ public class HomeFragment extends BaseFragment implements OkHttpUtil.OnDownLoadL
 
     //这是sweet的View
     //LinearLayout的布局id
-    @Bind({R.id.fragment_home_sweet_sweets, R.id.fragment_home_sweet_porridge, R.id.fragment_home_sweet_hotfood, R.id.fragment_home_sweet_snacks})
-    public List<LinearLayout> linearLayouts;
 
     public LinearLayout linearLayout1;
     public LinearLayout linearLayout2;
@@ -101,16 +99,24 @@ public class HomeFragment extends BaseFragment implements OkHttpUtil.OnDownLoadL
     //这是推荐的dinner的LinearLayout
     private MoreCookBooksEntity.DataEntity.DinnerEntity dinner;
     //这是该页面所有的TextView
-    @Bind({R.id.fragment__home_sweet_recommend_tvname, R.id.fragment__home_sweet_recommend_tvdescription, R.id.fragment__home_sweet_breakfast_tvname, R.id.fragment__home_sweet_breakfast_tvdescription, R.id.fragment__home_sweet_lunch_tvname, R.id.fragment__home_sweet_lunch_tvdescription, R.id.fragment__home_sweet_dinner_tvname, R.id.fragment__home_sweet_dinner_tvdescription})
-    public List<TextView> textViews;
+
+    public TextView textView11;
+    public TextView textView12;
+    public TextView textView13;
+    public TextView textView14;
+    public TextView textView15;
+    public TextView textView16;
+    public TextView textView17;
+    public TextView textView18;
+
     //这是该页面所有的simpledreewView
-    @Bind({R.id.fragment__home_sweet_recommend_imageurl, R.id.fragment__home_sweet_breakfast_imageurl, R.id.fragment__home_sweet_lnuch_imageurl, R.id.fragment__home_sweet_dinner_imageurl})
-    public List<SimpleDraweeView> simpleDraweeViews;
+    SimpleDraweeView simpleDraweeView11;
+    SimpleDraweeView simpleDraweeView12;
+    SimpleDraweeView simpleDraweeView13;
+    SimpleDraweeView simpleDraweeView14;
 
     //这是西顿厨友的TextView
-    @Bind(R.id.fragment_home_newuser_user)
     public TextView newUsertextView;
-    @Bind(R.id.fragment_home_newuser_recyclerview)
     public RecyclerView newUserrecyclerView;
     private static final String TAG = "WrapperAdapter";
     private SlideAndDragListView mListView;
@@ -146,6 +152,59 @@ public class HomeFragment extends BaseFragment implements OkHttpUtil.OnDownLoadL
         simpleDraweeView2 = view.findViewById(R.id.fragment_home_hotcategries_newCookbook_sdv);
         simpleDraweeView3 = view.findViewById(R.id.fragment_home_hotcategries_newWorks_sdv);
         simpleDraweeView4 = view.findViewById(R.id.fragment_home_hotcategries_newPai_sdv);
+        linearLayout1 = view.findViewById(R.id.fragment_home_sweet_sweets);
+        linearLayout2 = view.findViewById(R.id.fragment_home_sweet_porridge);
+        linearLayout3 = view.findViewById(R.id.fragment_home_sweet_hotfood);
+        linearLayout4 = view.findViewById(R.id.fragment_home_sweet_snacks);
+        textView11 = view.findViewById(R.id.fragment__home_sweet_recommend_tvname);
+        textView12 = view.findViewById(R.id.fragment__home_sweet_recommend_tvdescription);
+        textView13 = view.findViewById(R.id.fragment__home_sweet_breakfast_tvname);
+        textView14 = view.findViewById(R.id.fragment__home_sweet_breakfast_tvdescription);
+        textView15 = view.findViewById(R.id.fragment__home_sweet_lunch_tvname);
+        textView16 = view.findViewById(R.id.fragment__home_sweet_lunch_tvdescription);
+        textView17 = view.findViewById(R.id.fragment__home_sweet_dinner_tvname);
+        textView18 = view.findViewById(R.id.fragment__home_sweet_dinner_tvdescription);
+        newUsertextView = view.findViewById(R.id.fragment_home_newuser_user);
+        newUserrecyclerView = view.findViewById(R.id.fragment_home_newuser_recyclerview);
+        simpleDraweeView11 = view.findViewById(R.id.fragment__home_sweet_recommend_imageurl);
+        simpleDraweeView12 = view.findViewById(R.id.fragment__home_sweet_breakfast_imageurl);
+        simpleDraweeView13 = view.findViewById(R.id.fragment__home_sweet_lnuch_imageurl);
+        simpleDraweeView14 = view.findViewById(R.id.fragment__home_sweet_dinner_imageurl);
+
+
+        simpleDraweeView1.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                /**
+                 * 跳到食物内容的列表的activity
+                 */
+                Intent intent = new Intent(getContext(), FoodCommentActivity.class);
+                String newWorkUrl = String.format(Constants.URL.WEKK_HOT, Integer.valueOf(moreCookBooksEntityByJson.getData().getMostPopularOfWeek().getId()));
+                intent.putExtra(Constants.KEY.NEW_LABLE_WORK_ID, newWorkUrl);
+                startActivity(intent);
+            }
+        });
+        simpleDraweeView2.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent intent = new Intent(getContext(), FoodCommentActivity.class);
+                String newWorkUrl = String.format(Constants.URL.WEKK_HOT, Integer.valueOf(moreCookBooksEntityByJson.getData().getNewCookbook().getId()));
+                intent.putExtra(Constants.KEY.NEW_LABLE_RECIPE_ID, newWorkUrl);
+                startActivity(intent);
+            }
+        });
+        simpleDraweeView3.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                /**
+                 * 最新作品的跳转
+                 */
+                Intent intent = new Intent(getContext(), LabelNewWorkActivity.class);
+                String newWorkUrl = String.format(Constants.URL.NEW_WORKS, Integer.valueOf(moreCookBooksEntityByJson.getData().getNewWorks().getId()));
+                intent.putExtra(Constants.KEY.NEW_LABLE_WORKS_ID, newWorkUrl);
+                startActivity(intent);
+            }
+        });
 
 //        下拉刷新的监听事件
         swipeRefreshLayout.setOnRefreshListener(new SwipeRefreshLayout.OnRefreshListener() {
@@ -283,7 +342,7 @@ public class HomeFragment extends BaseFragment implements OkHttpUtil.OnDownLoadL
                 startActivity(intent);
             }
         });
-        newUserrecyclerView.setLayoutManager(new LinearLayoutManager(getContext(), LinearLayout.HORIZONTAL, false));
+        newUserrecyclerView.setLayoutManager(new LinearLayoutManager(getContext(), RecyclerView.HORIZONTAL, false));
         newUserrecyclerView.setAdapter(fragmentHomeNewuserLVAdapter);
 
     }
@@ -352,18 +411,18 @@ public class HomeFragment extends BaseFragment implements OkHttpUtil.OnDownLoadL
         //这是推荐的dinner的LinearLayout
         dinner = moreCookBooksEntityByJson.getData().getDinner();
         //下面开始进行设置文字和图片操作
-        textViews.get(0).setText(recommend.getName());
-        textViews.get(1).setText(recommend.getDescription());
-        textViews.get(2).setText(breakfast.getName());
-        textViews.get(3).setText(breakfast.getDescription());
-        textViews.get(4).setText(lunch.getName());
-        textViews.get(5).setText(lunch.getDescription());
-        textViews.get(6).setText(dinner.getName());
-        textViews.get(7).setText(dinner.getDescription());
-        FrescoUtil.imageViewBind(recommend.getImageUrl(), simpleDraweeViews.get(0));
-        FrescoUtil.imageViewBind(breakfast.getImageUrl(), simpleDraweeViews.get(1));
-        FrescoUtil.imageViewBind(lunch.getImageUrl(), simpleDraweeViews.get(2));
-        FrescoUtil.imageViewBind(dinner.getImageUrl(), simpleDraweeViews.get(3));
+        textView11.setText(recommend.getName());
+        textView12.setText(recommend.getDescription());
+        textView13.setText(breakfast.getName());
+        textView14.setText(breakfast.getDescription());
+        textView15.setText(lunch.getName());
+        textView16.setText(lunch.getDescription());
+        textView17.setText(dinner.getName());
+        textView18.setText(dinner.getDescription());
+        FrescoUtil.imageViewBind(recommend.getImageUrl(), simpleDraweeView11);
+        FrescoUtil.imageViewBind(breakfast.getImageUrl(), simpleDraweeView12);
+        FrescoUtil.imageViewBind(lunch.getImageUrl(), simpleDraweeView13);
+        FrescoUtil.imageViewBind(dinner.getImageUrl(), simpleDraweeView14);
     }
 
     @Override
@@ -375,10 +434,10 @@ public class HomeFragment extends BaseFragment implements OkHttpUtil.OnDownLoadL
             /**
              * LinearLayout的监听--热门标签
              */
-            linearLayouts.get(0).setOnClickListener(new FragmentHomeLLSweetListener(getActivity(), moreCookBooksEntityByJson.getData().getRecommend().getId()));
-            linearLayouts.get(1).setOnClickListener(new FragmentHomeLLSweetListener(getActivity(), moreCookBooksEntityByJson.getData().getBreakfast().getId()));
-            linearLayouts.get(2).setOnClickListener(new FragmentHomeLLSweetListener(getActivity(), moreCookBooksEntityByJson.getData().getLunch().getId()));
-            linearLayouts.get(3).setOnClickListener(new FragmentHomeLLSweetListener(getActivity(), moreCookBooksEntityByJson.getData().getDinner().getId()));
+            linearLayout1.setOnClickListener(new FragmentHomeLLSweetListener(getActivity(), moreCookBooksEntityByJson.getData().getRecommend().getId()));
+            linearLayout2.setOnClickListener(new FragmentHomeLLSweetListener(getActivity(), moreCookBooksEntityByJson.getData().getBreakfast().getId()));
+            linearLayout3.setOnClickListener(new FragmentHomeLLSweetListener(getActivity(), moreCookBooksEntityByJson.getData().getLunch().getId()));
+            linearLayout4.setOnClickListener(new FragmentHomeLLSweetListener(getActivity(), moreCookBooksEntityByJson.getData().getDinner().getId()));
 //            home的ListView数据
             moreCookbooks = moreCookBooksEntityByJson.getData().getMoreCookbooks();
         }
@@ -468,33 +527,5 @@ public class HomeFragment extends BaseFragment implements OkHttpUtil.OnDownLoadL
         Intent intent = new Intent(getActivity(), FoodListActivity.class);
         intent.putExtra(Constants.KEY.CAIXI_KEY, caixi_key);
         startActivity(intent);
-    }
-
-    @OnClick({R.id.fragment_home_hotcategries_mostPopularOfWeek_sdv, R.id.fragment_home_hotcategries_newCookbook_sdv, R.id.fragment_home_hotcategries_newWorks_sdv, R.id.fragment_home_hotcategries_newPai_sdv})
-    public void onCLick(View view) {
-        if (view.getId() == R.id.fragment_home_hotcategries_mostPopularOfWeek_sdv) {
-            /**
-             * 跳到食物内容的列表的activity
-             */
-            Intent intent = new Intent(getContext(), FoodCommentActivity.class);
-            String newWorkUrl = String.format(Constants.URL.WEKK_HOT, Integer.valueOf(moreCookBooksEntityByJson.getData().getMostPopularOfWeek().getId()));
-            intent.putExtra(Constants.KEY.NEW_LABLE_WORK_ID, newWorkUrl);
-            startActivity(intent);
-        } else if (view.getId() == R.id.fragment_home_hotcategries_newCookbook_sdv) {
-            Intent intent = new Intent(getContext(), FoodCommentActivity.class);
-            String newWorkUrl = String.format(Constants.URL.WEKK_HOT, Integer.valueOf(moreCookBooksEntityByJson.getData().getNewCookbook().getId()));
-            intent.putExtra(Constants.KEY.NEW_LABLE_RECIPE_ID, newWorkUrl);
-            startActivity(intent);
-        } else if (view.getId() == R.id.fragment_home_hotcategries_newWorks_sdv) {
-            /**
-             * 最新作品的跳转
-             */
-            Intent intent = new Intent(getContext(), LabelNewWorkActivity.class);
-            String newWorkUrl = String.format(Constants.URL.NEW_WORKS, Integer.valueOf(moreCookBooksEntityByJson.getData().getNewWorks().getId()));
-            intent.putExtra(Constants.KEY.NEW_LABLE_WORKS_ID, newWorkUrl);
-            startActivity(intent);
-        } else if (view.getId() == R.id.fragment_home_hotcategries_newPai_sdv) {
-
-        }
     }
 }

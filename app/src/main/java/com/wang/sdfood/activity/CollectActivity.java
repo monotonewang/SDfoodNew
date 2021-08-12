@@ -1,7 +1,10 @@
 package com.wang.sdfood.activity;
 
+import androidx.databinding.DataBindingUtil;
+
 import com.wang.sdfood.R;
 import com.wang.sdfood.base.BaseActivity;
+import com.wang.sdfood.databinding.ActivityHomeCollectBinding;
 
 /**
  * 这是收藏的Activity
@@ -10,6 +13,6 @@ import com.wang.sdfood.base.BaseActivity;
 public class CollectActivity extends BaseActivity {
     @Override
     protected void getViewResId() {
-        return R.layout.activity_home_collect;
+        ActivityHomeCollectBinding binding = DataBindingUtil.setContentView(this, R.layout.activity_home_collect);
     }
 }
